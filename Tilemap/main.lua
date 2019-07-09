@@ -3,7 +3,7 @@ local sti = require "sti"
 function love.load()
 	-- Grab window size
 	windowWidth  = love.graphics.getWidth()
-	windowHeight = love.graphics.getHeight()
+	windowHeight  love.graphics.getHeight()
 
 	-- Set world meter size (in pixels)
 	love.physics.setMeter(32)
