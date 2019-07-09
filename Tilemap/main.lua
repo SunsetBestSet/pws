@@ -40,6 +40,7 @@ function love.load()
 
 	-- Draw callback for Custom Layer
 	function spriteLayer:draw()
+		love.graphics.setColor(1, 1, 1)
 		for _, sprite in pairs(self.sprites) do
 			local x = math.floor(sprite.x)
 			local y = math.floor(sprite.y)
@@ -64,14 +65,15 @@ function love.draw()
 	love.graphics.setColor(1, 1, 1)
 	map:draw(-tx, -ty)
 
+
 	-- Draw Collision Map (useful for debugging)
 	love.graphics.setColor(1, 0, 0)
 	map:box2d_draw()
 
-	-- Translate world so that player is always centred
+	--[[ Translate world so that player is always centred
 	local player = map.layers["Sprite Layer"].sprites.player
 	local tx = math.floor(player.x - love.graphics.getWidth()  / 2)
-	local ty = math.floor(player.y - love.graphics.getHeight() / 2)
+	local ty = math.floor(player.y - love.graphics.getHeight() / 2)]]--
 
 	-- Please note that map:draw, map:box2d_draw, and map:bump_draw take
 	-- translate and scale arguments (tx, ty, sx, sy) for when you want to
