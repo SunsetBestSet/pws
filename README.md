@@ -24,4 +24,5 @@
 
 ## check for updates
 
-`$ git pull origin master`
+`$ git pull origin master` — pull master
+`$ git pull origin readme-md` — pull branch readme-md
