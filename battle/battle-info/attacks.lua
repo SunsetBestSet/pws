@@ -15,7 +15,14 @@ return {
 		target.cursed = true
 		target.cursedBy = user
 	end,
-	hypnotise = function (target) 
+	setToSleep = function (target) 
 		table.insert(target.status_effects, "sleeping")
-	end
+	end,
+	raiseAttack = function(user) 
+		user.attack = user.attack * 1.2
+	end,
+	damage = function(user, target, move)
+		local damage = user.attack * move.strength * 0.01
+		target.hp = target.hp * (1 - damage)
+	end,
 }
