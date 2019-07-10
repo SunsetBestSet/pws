@@ -1,90 +1,84 @@
-io.stdout:setvbuf("no")
-local love = _G.love
-local sti  = require "sti"
-local map, world, tx, ty, points
+-- This example uses the included Box2D (love.physics) plugin!!
+
+local sti = require "sti"
 
 function love.load()
-	-- Load map
-	--map = sti("tests/ortho.lua",     { "box2d" })
-	map = sti("assets/test.lua", { "box2d" })
-	--map = sti("tests/iso.lua",       { "box2d" })
-	--map = sti("tests/stag.lua",      { "box2d" })
-	--map = sti("tests/hex.lua",       { "box2d" })
-	--map = sti("tests/objects.lua",   { "box2d" })
+	-- Grab window size
+	windowWidth  = love.graphics.getWidth()
+	windowHeight = love.graphics.getHeight()
 
-	-- Print versions
-	print("STI: " .. sti._VERSION)
-	print("Map: " .. map.tiledversion)
-
-	-- Prepare translations
-	tx, ty = 0, 0
-
-	-- Prepare physics world
+	-- Set world meter size (in pixels)
 	love.physics.setMeter(32)
+
+	-- Load a map exported to Lua from Tiled
+	map = sti("assets/test.lua", { "box2d" })
+
+	-- Prepare physics world with horizontal and vertical gravity
 	world = love.physics.newWorld(0, 0)
+
+	-- Prepare collision objects
 	map:box2d_init(world)
 
-	-- Drop points on clicked areas
-	points = {
-		mouse = {},
-		pixel = {}
+	-- Setup translations
+	tx, ty = 0, 0
+
+	-- Create a Custom Layer
+	map:addCustomLayer("Sprite Layer", 5)
+
+	-- Add data to Custom Layer
+	local spriteLayer = map.layers["Sprite Layer"]
+	spriteLayer.sprites = {
+		player = {
+			image = love.graphics.newImage("assets/link.png"),
+			x = 64,
+			y = 64,
+			r = 0,
+		}
 	}
-	love.graphics.setPointSize(5)
+
+	-- Update callback for Custom Layer
+	function spriteLayer:update(dt)
+		for _, sprite in pairs(self.sprites) do
+			sprite.r = sprite.r + math.rad(90 * dt)
+		end
+	end
+
+	-- Draw callback for Custom Layer
+	function spriteLayer:draw()
+		for _, sprite in pairs(self.sprites) do
+			local x = math.floor(sprite.x)
+			local y = math.floor(sprite.y)
+			local r = sprite.r
+			love.graphics.draw(sprite.image, x, y, r)
+		end
+	end
 end
 
 function love.update(dt)
-	world:update(dt)
 	map:update(dt)
 
 	-- Move map
 	local kd = love.keyboard.isDown
-	tx = kd("a", "left")  and tx - 128 * dt or tx
-	tx = kd("d", "right") and tx + 128 * dt or tx
-	ty = kd("w", "up")    and ty - 128 * dt or ty
-	ty = kd("s", "down")  and ty + 128 * dt or ty
-end
+	local link = map.layers["Sprite Layer"].sprites.player
+	tx = (kd("a", "left")  and tx - 128 * dt) or tx
+	link.x = (kd("a", "left")  and link.x - 128 * dt) or link.x -- if button pressed then change tx, otherwise don't change tx
+	tx = (kd("d", "right") and tx + 128 * dt) or tx
+	ty = (kd("w", "up")    and ty - 128 * dt) or ty
+	ty = (kd("s", "down")  and ty + 128 * dt) or ty
+	end
+
+--end
 
 function love.draw()
-	-- Draw map
-	love.graphics.setColor(1, 1, 1)
+	-- Draw the map and all objects within
+	love.graphics.setColor(255, 255, 255)
 	map:draw(-tx, -ty)
 
-	-- Draw physics objects
-	love.graphics.setColor(1, 0, 1)
-	map:box2d_draw(-tx, -ty)
+	-- Draw Collision Map (useful for debugging)
+	love.graphics.setColor(255, 0, 0)
+	map:box2d_draw()
 
-	-- Draw points
-	love.graphics.translate(-tx, -ty)
-
-	--[[love.graphics.setColor(0, 1, 1)
-	for _, point in ipairs(points.mouse) do
-		love.graphics.points(point.x, point.y)
-	end
-
-	love.graphics.setColor(1, 1, 0)
-	for _, point in ipairs(points.pixel) do
-		love.graphics.points(point.x, point.y)
-	end]]--
-end
-
- function love.mousepressed(x, y, button)
-	--[[
-	if button == 1 then
-		x = x + tx
-		y = y + ty
-
-		local tilex,  tiley  = map:convertPixelToTile(x, y)
-		local pixelx, pixely = map:convertTileToPixel(tilex, tiley)
-
-		table.insert(points.pixel, { x=pixelx, y=pixely })
-		table.insert(points.mouse, { x=x,      y=y      })
-
-		print(x, tilex, pixelx)
-		print(y, tiley, pixely)
-	end
-	]]--
-end
-
-function love.resize(w, h)
-	map:resize(w, h)
+	-- Please note that map:draw, map:box2d_draw, and map:bump_draw take
+	-- translate and scale arguments (tx, ty, sx, sy) for when you want to
+	-- grow, shrink, or reposition your map on screen.
 end

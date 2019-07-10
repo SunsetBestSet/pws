@@ -1,6 +1,6 @@
 local lg       = _G.love.graphics
 local graphics = { isCreated = lg and true or false }
-
+ 
 function graphics.newSpriteBatch(...)
 	if graphics.isCreated then
 		return lg.newSpriteBatch(...)
