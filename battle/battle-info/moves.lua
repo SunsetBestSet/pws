@@ -1,4 +1,5 @@
 status = require 'battle-info/status'
+special = require 'battle-info/special'
 return {
 	
 	scratch = {
@@ -29,4 +30,25 @@ return {
 			status = status.poisoned,
 		},
 	},
+	heart_swap = {
+		id = 04,
+		name = "Heart Swap",
+		type = "purple",
+		description = "The user’s health is swapped with the target’s health.",
+		strength = 0,
+		properties = {
+			special = special.swap_health
+		},
+	},
+		
 }
+--[[
+a_move = {
+		id = 01,
+		name = "Name",
+		type = "colour",
+		description = "Description",
+		strength = 0,
+		properties = {},
+	},	
+]]--
