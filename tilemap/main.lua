@@ -57,18 +57,29 @@ end
 function love.update(dt)
 	map:update(dt)
 
-	-- Move map
+	-- Move map and Link
 	local kd = love.keyboard.isDown
 	local link = map.layers["Sprite Layer"].sprites.player
-	tx = (kd("a", "left") and tx - 128 * dt) or tx -- if button pressed then change tx, otherwise don't change tx
-		link.x = (kd("a", "left")  and link.x - 128 * dt) or link.x
-		tx = (kd("d", "right") and tx + 128 * dt) or tx
-		link.x = (kd("d", "right") and link.x + 128 * dt) or link.x
-		ty = (kd("w", "up")    and ty - 128 * dt) or ty
-		link.y = (kd("w", "up")    and link.y - 128 * dt) or link.y
-		ty = (kd("s", "down")  and ty + 128 * dt) or ty
-		link.y = (kd("s", "down")  and link.y + 128 * dt) or link.y
+	local speed = 200
+	
+	if kd("a", "left") then
+		tx = tx - speed * dt
+		link.x = link.x - speed * dt
 	end
+	if kd("d", "right") then
+		tx = tx + speed * dt
+		link.x = link.x + speed * dt
+	end
+	if kd("w", "up") then
+		ty = ty - speed * dt
+		link.y = link.y - speed * dt
+	end
+	if kd("s", "down") then
+		ty = ty + speed * dt
+		link.y = link.y + speed * dt
+	end
+
+end
 
 	function love.draw()
 		-- Draw the map and all objects within
