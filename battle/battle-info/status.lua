@@ -5,6 +5,6 @@ return {
 	},
 	poisoned = {
 		id = 02,
-		name = "humiliated",
+		name = "poisoned",
 	},
 }
