@@ -1,5 +1,11 @@
+--[[
+Moves that need to be updated:
+- Poison Powder
+- Flower Dance
+]]--
+
 status = require 'battle-info/status'
-attack = require 'battle-info/attacks'
+attack = require 'battle-info/subattacks'
 return {
 	
 	scratch = {
@@ -9,7 +15,7 @@ return {
 		description = "The user uses their long nails to scratch their opponent.",
 		type = "physical",
 		strength = 5,
-		properties = {},
+		properties = {attack.damage},
 	},	
 	humiliate = {
 		id = 02,
@@ -18,7 +24,7 @@ return {
 		description = "The user insults their opponent until the opponent cries. The next time the opponent uses a move, the opponent will hit themselves (if the opponent uses a healing item in the next turn, the user will steal it.)",
 		type = "special",
 		strength = 0,
-		attack = attack.humiliated,
+		attack = {attack.humiliated},
 	},
 	poison_powder = {
 		id = 03,
@@ -27,7 +33,7 @@ return {
 		description = "The user throws/blows poison powder onto the target. The target loses health and gets a poison status effect.",
 		type = "special",
 		strength = 2,
-		attack = attack.poison
+		attack = {attack.poison, attack.damage}
 	},
 	heart_swap = {
 		id = 04,
@@ -36,7 +42,7 @@ return {
 		description = "The user’s health is swapped with the target’s health.",
 		type = "special",
 		strength = 0,
-		attack = attack.swap_health,
+		attack = {attack.swap_health},
 	},
 	captivating_curse = {
 		id = 05,
@@ -45,25 +51,27 @@ return {
 		description = "The target faints if the user also does.",
 		type = "special",
 		strength = 0,
-		attack = attack.curse,
+		attack = {attack.curse},
 	},	
 	flower_dance = {
 		id = 06,
 		name = "Flower Dance",
 		magic = "purple",
-		description = "Leiko uses her magic to turn the nectar of the flowers in her hair into poison. Upon using this attack, the target is poisoned.",
+		description = "Leiko uses her magic to turn the nectar of the flowers in her hair into poison. Upon using this attack, the target is poisoned and their defense is lowered.",
 		type = "special",
 		strength = 0,
-		attack = attack.poison
+		amount = 2,
+		attack = {attack.poison, attack.lowerDefense}
 	},
-	irene_move = {
+	wrath = {
 		id = 07,
-		name = "Name",
+		name = "Wrath",
 		magic = "purple",
-		description = "description",
+		description = "Inflicts small HP damage as well as lowers the target’s attack and defense with 1 for the entirety of the game. Has cooldown",
 		type = "special/physical",
-		strength = 0,
-		attack = attack.someAttack
+		strength = 2,
+		amount = 1,
+		attack = {attack.damage, attack.lowerAttack}
 	},
 	hypnosis = {
 		id = 08,
@@ -72,7 +80,7 @@ return {
 		description = "Puts the target to sleep.",
 		type = "special",
 		strength = 0,
-		attack = attack.setToSleep,
+		attack = {attack.setToSleep},
 	},
 	meditate = {
 		id = 09,
@@ -80,8 +88,8 @@ return {
 		magic = "blue",
 		description = "Raises user’s attack stats.",
 		type = "special",
-		strength = 0,
-		attack = attack.raiseAttack,
+		strength = 2,
+		attack = {attack.raiseAttack},
 	},
 	sunsteel_strike = {
 		id = 10,
@@ -90,9 +98,26 @@ return {
 		description = "The user uses their weapon to strike the target.",
 		type = "physical",
 		strength = 8,
-		attack = attack.damage,
+		attack = {attack.damage},
 	},
-
+	moonblast = {
+		id = 11,
+		name = "Moonblast",
+		magic = "blue",
+		description = "The user redirects moonlight onto the target. (very strong move but can only be used at night.)",
+		type = "physical",
+		strength = 7,
+		attack = {attack.damage},
+	},
+	telekinesis = {
+		id = 12,
+		name = "Telekinesis",
+		magic = "colour",
+		description = "User lifts up the target and smashes them to the ground.",
+		type = "physical",
+		strength = 5,
+		attack = {attack.damage},
+	},
 }
 --[[
 
@@ -103,7 +128,7 @@ return {
 		description = "description",
 		type = "special/physical",
 		strength = 0,
-		properties = {},
+		attack = {},
 	},
 
 	]]--

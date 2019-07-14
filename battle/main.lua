@@ -1,5 +1,5 @@
-moves = require 'battle-info/moves'
+moveInfo = require 'battle-info/move_info'
 status = require 'battle-info/status'
-special = require 'battle-info/special'
+subAttacks = require 'battle-info/subattacks'
 
 print(status.humiliated.id)
