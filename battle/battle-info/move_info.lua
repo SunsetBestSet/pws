@@ -119,7 +119,51 @@ return {
 		strength = 5,
 		attack = {attack.damage},
 	},
-
+	kana_move = {
+		id = 13,
+		name = "Name",
+		magic = "colour",
+		description = "description",
+		type = "special/physical",
+		strength = 0,
+		attack = {},
+	},
+	dance = {
+		id = 14,
+		name = "Name",
+		magic = "colour",
+		description = "description",
+		type = "special/physical",
+		strength = 0,
+		attack = {},
+	},
+	drain = {
+		id = 01,
+		name = "Name",
+		magic = "colour",
+		description = "description",
+		type = "special/physical",
+		strength = 0,
+		attack = {},
+	},
+	floral_healing = {
+		id = 01,
+		name = "Name",
+		magic = "colour",
+		description = "description",
+		type = "special/physical",
+		strength = 0,
+		attack = {},
+	},
+	screech = {
+		id = 01,
+		name = "Name",
+		magic = "colour",
+		description = "description",
+		type = "special/physical",
+		strength = 0,
+		attack = {},
+	},
 }
 --[[
 
