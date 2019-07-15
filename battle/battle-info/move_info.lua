@@ -138,7 +138,7 @@ return {
 		attack = {},
 	},
 	drain = {
-		id = 01,
+		id = 15,
 		name = "Name",
 		magic = "colour",
 		description = "description",
@@ -147,7 +147,7 @@ return {
 		attack = {},
 	},
 	floral_healing = {
-		id = 01,
+		id = 16,
 		name = "Name",
 		magic = "colour",
 		description = "description",
@@ -156,7 +156,7 @@ return {
 		attack = {},
 	},
 	screech = {
-		id = 01,
+		id = 17,
 		name = "Name",
 		magic = "colour",
 		description = "description",
