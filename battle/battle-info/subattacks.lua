@@ -34,4 +34,15 @@ return {
 		local damage = user.attack * move_info.strength * 0.01
 		target.hp = target.hp * (1 - damage)
 	end,
+	dance = function(target)
+		-- idk how to do this yet
+	end,
+	drain = function(target, user)
+		local damage = target.hp / 2
+		target.hp = target.hp - damage
+		user.hp = user.hp + damage
+	end,
+	heal = function(target)
+		target.hp = target.stats.hp * 0.5 -- we moeten kijken hoe dit werkt precies
+	end,
 }
