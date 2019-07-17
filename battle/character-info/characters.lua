@@ -36,7 +36,7 @@ return {
 		magic = "blue",
 		stats = {
 			attack = 4,
-			defense 3,
+			defense = 3,
 			focus = 4,
 			speed = 2,
 			hp = 1, 
