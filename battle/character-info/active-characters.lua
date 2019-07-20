@@ -1,6 +1,6 @@
 -- copy of characters for battle
 
-active_characters = { 
+characters = { 
 		hiko = {
 		name = "Hiko",
 		character_id = 3,
@@ -12,30 +12,20 @@ active_characters = {
 			speed = 4,
 			hp = 2,
 		},
+		EXP = 0,
+		LVL = 1,
+		status = {
+			status_effects = {}
+		},
 		move = {
 			moves.screech, 
 			moves.dance, 
 			moves.drain,
 
 		}
-	},
-	irene = {
-		name = "Irene", 
-		character_id = 4, 
-		magic = "purple", 
-		stats = {
-			attack = 3, 
-			defense = 1, 
-			focus = 3,
-			speed = 3, 
-			hp = 4,
-		},
-		move = {
-			moves.wrath,
-			moves.poison_powder,
-			moves.captivating_curse, 
-		},
-		cooldown = {false, 0}, 
-	},
-
 }
+}
+
+characters.hiko.status.hitpoints = characters.hiko.stats.hp * 100
+
+return characters
