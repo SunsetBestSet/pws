@@ -12,7 +12,7 @@ character = {
 
 moves = require 'battle-info/move_info'
 
-return {
+characters = {
 	leiko = {
 		name = "Leiko",
 		character_id = 1,
@@ -23,6 +23,11 @@ return {
 			focus = 1,
 			speed = 3,
 			hp = 3,
+		},
+		EXP = 0,
+		LVL = 1,
+		status = {
+			status_effects = {}
 		},
 		move = {
 			moves.flower_dance,
@@ -41,6 +46,11 @@ return {
 			speed = 2,
 			hp = 1, 
 		},
+		EXP = 0,
+		LVL = 1,
+		status = {
+			status_effects = {}
+		},
 		move = {
 			moves.calamity,
 			moves.sunsteel_strike,
@@ -57,6 +67,11 @@ return {
 			focus = 3,
 			speed = 4,
 			hp = 2,
+		},
+		EXP = 0,
+		LVL = 1,
+		status = {
+			status_effects = {}
 		},
 		move = {
 			moves.screech, 
@@ -76,6 +91,11 @@ return {
 			speed = 3, 
 			hp = 4,
 		},
+		EXP = 0,
+		LVL = 1,
+		status = {
+			status_effects = {}
+		},
 		move = {
 			moves.wrath,
 			moves.poison_powder,
@@ -85,8 +105,10 @@ return {
 	},
 }
 
+-- set actual hitpoints
+characters.hiko.status.hitpoints = characters.hiko.stats.hp * 100
+characters.leiko.status.hitpoints = characters.leiko.stats.hp * 100
+characters.kana.status.hitpoints = characters.kana.stats.hp * 100
+characters.irene.status.hitpoints = characters.irene.stats.hp * 100
 
-
-
-
-
+return characters
