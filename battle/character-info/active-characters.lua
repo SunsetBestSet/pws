@@ -1,3 +1,5 @@
+-- copy of characters for battle
+
 active_characters = { 
 		hiko = {
 		name = "Hiko",
