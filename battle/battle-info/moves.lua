@@ -2,8 +2,8 @@ attack = require 'battle-info/subattacks'
 status = require 'battle-info/status'
 
 return {
-	scratch = function(target, user)
-		attack.damage(user, target, move_info[scratch])
+	scratch = function(target, user, move)
+		attack.damage(target, user, move)
 	end,
 	humiliate = attack.humiliate,
 	poison_powder = function(target, user)
@@ -50,4 +50,6 @@ return {
 		attack.poison(target)
 		attack.setToSleep(target)
 	end,
+	drain = attack.drain,
+	heal = attack.heal,
 }

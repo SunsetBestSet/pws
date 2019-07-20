@@ -12,7 +12,7 @@ return {
 		description = "The user uses their long nails to scratch their opponent.",
 		type = "physical",
 		strength = 5,
-		move = move.scratch,
+		attack = move.scratch,
 	},
 	humiliate = {
 		id = 02,
@@ -21,7 +21,7 @@ return {
 		description = "The user insults their opponent until the opponent cries. The next time the opponent uses a move, the opponent will hit themselves (if the opponent uses a healing item in the next turn, the user will steal it.)",
 		type = "special",
 		strength = 0,
-		move = move.humiliate,
+		attack = move.humiliate,
 	},
 	poison_powder = {
 		id = 03,

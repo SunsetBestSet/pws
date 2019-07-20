@@ -6,7 +6,7 @@ enemies = {
 			defense = 4,
 			focus = 3,
 			speed = 4,
-			hp = 2,
+			hp = 1,
 		},
 		EXP = 0,
 		LVL = 1,
@@ -20,6 +20,6 @@ enemies = {
 		}
 }
 }
-enemies.enemy1.status.hitpoints = enemies.enemy1.stats.hp * 100
+enemies.enemy1.status.hp = enemies.enemy1.stats.hp * 100
 
 return enemies

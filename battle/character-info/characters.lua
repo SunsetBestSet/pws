@@ -80,7 +80,7 @@ characters = {
 			status_effects = {}
 		},
 		move = {
-			moves.screech, 
+			moves.floral_healing, 
 			moves.dance, 
 			moves.drain,
 
@@ -113,9 +113,9 @@ characters = {
 }
 
 -- set actual hitpoints
-characters.hiko.status.hitpoints = characters.hiko.stats.hp * 100
-characters.leiko.status.hitpoints = characters.leiko.stats.hp * 100
-characters.kana.status.hitpoints = characters.kana.stats.hp * 100
-characters.irene.status.hitpoints = characters.irene.stats.hp * 100
+characters.hiko.status.hp = characters.hiko.stats.hp * 100
+characters.leiko.status.hp = characters.leiko.stats.hp * 100
+characters.kana.status.hp = characters.kana.stats.hp * 100
+characters.irene.status.hp = characters.irene.stats.hp * 100
 
 return characters
