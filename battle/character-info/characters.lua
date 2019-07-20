@@ -1,17 +1,17 @@
 --[[
 
 character = {
-	name = "name", 
+	name = "name", 	
 	character_id = 0,
-	magic = "magic"
-	stats = {},
-	EXP = 0,
-	LVL = 1, 
-	status = {]
+	magic = "magic"			(type of magic)
+	stats = {},				(table with set of stats)
+	EXP = 0,				(amount of EXP the character has)
+	LVL = 1, 				(EXP level of the character)
+	status = {]				(Status: effects, hitpoints)
 		status_effects = {},
 		hitpoints, 
 	},
-	moves = {}, 
+	moves = {}, 			(List of moves of the character)
 }
 
 ]]-- 
