@@ -42,7 +42,7 @@ return {
 			hp = 1, 
 		},
 		move = {
-			-- nog invoeren,
+			moves.calamity,
 			moves.sunsteel_strike,
 			moves.meditate,
 		},

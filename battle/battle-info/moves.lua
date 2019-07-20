@@ -47,4 +47,8 @@ return {
 	screech = function(target)
 		attack.lowerDefense(target, move_info[screech].amount)
 	end,
+	calamity = function(target)
+		attack.poison(target)
+		attack.setToSleep(target)
+	end,
 }

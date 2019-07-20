@@ -120,14 +120,14 @@ return {
 		strength = 5,
 		attack = move.telekinesis,
 	},
-	kana_move = {
+	calamity = {
 		id = 13,
-		name = "Name",
+		name = "Calamity",
 		magic = "blue",
-		description = "description",
-		type = "special/physical",
+		description = "The user poisons target and puts them to sleep.",
+		type = "special",
 		strength = 0,
-		attack = {},
+		attack = move.calamity,
 	},
 	dance = {
 		id = 14,
