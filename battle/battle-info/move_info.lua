@@ -1,8 +1,4 @@
---[[
-Moves that need to be updated:
-- Poison Powder
-- Flower Dance
-]]--
+-- list of moves. Tables with information
 
 attack = require 'battle-info/subattacks'
 status = require 'battle-info/status'
