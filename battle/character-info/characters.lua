@@ -5,6 +5,12 @@ character = {
 	character_id = 0,
 	magic = "magic"
 	stats = {},
+	EXP = 0,
+	LVL = 1, 
+	status = {]
+		status_effects = {},
+		hitpoints, 
+	},
 	moves = {}, 
 }
 
