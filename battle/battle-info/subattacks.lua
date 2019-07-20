@@ -30,7 +30,7 @@ return {
 	lowerDefense = function(target, amount)
 		target.defense = target.defense - amount
 	end,
-	damage = function(target, user, move)
+	damage = function(target, user, move) -- effectiveness of attacks. magic relations
 		if (target.magic == 'green' and user.magic == 'purple') or (target.magic == 'blue' and user.magic == 'green') or (target.magic == 'purple' and user.magic == 'blue') then
 			effectiveness = 1.5
 		elseif (target.magic == 'purple' and user.magic == 'green') or (target.magic == 'green' and user.magic == 'blue') or (target.magic == 'blue' and user.magic == 'purple') then
