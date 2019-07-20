@@ -31,7 +31,14 @@ return {
 		target.defense = target.defense - amount
 	end,
 	damage = function(target, user, move)
-		local damage = user.attack * move_info.strength * 0.01
+		if (target.magic == 'green' and user.magic == 'purple') or (target.magic == 'blue' and user.magic == 'green') or (target.magic == 'purple' and user.magic == 'blue') then
+			effectiveness = 1.5
+		elseif (target.magic == 'purple' and user.magic == 'green') or (target.magic == 'green' and user.magic == 'blue') or (target.magic == 'blue' and user.magic == 'purple') then
+		    effectiveness = 0.75
+		else
+			effectiveness = 1
+		end
+		local damage = user.attack * move_info.strength * effectiveness * 0.01 
 		target.hp = target.hp * (1 - damage)
 	end,
 	dance = function(target)
