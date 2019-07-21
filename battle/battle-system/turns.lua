@@ -4,7 +4,7 @@ function start_battle(enemy, player)
 end
 
 function attack:execute(enemy, player, selected_move)
-	selected_move:attack(enemy, player, selected_move)
+	selected_move.attack(enemy, player, selected_move)
 end
 
 function display_stats(enemy1, enemy2, player)

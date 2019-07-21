@@ -12,14 +12,14 @@ active_characters = require 'character-info/active-characters'
 active_enemies = require 'character-info/active-enemies'
 require 'battle-system/turns'
 
-local player = active_characters.leiko
-local enemy1 = active_enemies.enemy1
-local enemy2 = active_enemies.enemy2
-local enemies = active_enemies
+player = active_characters.leiko
+enemy1 = active_enemies.enemy1
+enemy2 = active_enemies.enemy2
+enemies = active_enemies
+enemy_list = {enemy1, enemy2}
 
 screen = 1
 canSwitchScreen = true
-canSwitchScreenCountdown = 100
 
 function love.draw()
 	display_stats(enemy1, enemy2, player)
@@ -32,16 +32,9 @@ function love.draw()
 end
 
 function love.update(dt)
-	local countdown = canSwitchScreenCountdown
 	if not canSwitchScreen then
-		countdown = countdown - 1
-	end
-	--[[if countdown == 0 then
 		canSwitchScreen = true
-		countdown = 100
-	end]]--
-	print(countdown)
-	print(screen)
+	end
 end
 
 function love.keypressed(key)
@@ -58,8 +51,7 @@ function love.keypressed(key)
 		canSwitchScreen = false
 	end
 	if key == 'return' and screen == 2 and canSwitchScreen then
-		local target = enemies[selection]
 		screen = 3
-		attack:execute(target, player, selected_move)
+		attack:execute(enemy_list[selection], player, selected_move)
 	end
 end
