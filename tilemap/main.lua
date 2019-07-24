@@ -25,17 +25,25 @@ function love.load()
 
 	-- Add data to Custom Layer
 	local spriteLayer = map.layers["Sprite Layer"]
-	spriteLayer.sprites = {
-		player = {
-			image = love.graphics.newImage("assets/link.png"),
+	
+	-- Get player spawn object
+	local player
+	for k, object in pairs(map.objects) do
+		if object.name == "Player" then
+			player = object
+			break
+		end
+	end
+
+	spriteLayer.player = {
+			sprite = love.graphics.newImage("assets/link.png"),
 			x = windowWidth / 2,
 			y = windowHeight / 2,
 			properties = {
 				collidable = true,
-				sensor = true,
+        		sensor = true,
 			}
 		}
-	}
 	
 
 	-- Update callback for Custom Layer
@@ -45,11 +53,21 @@ function love.load()
 
 	-- Draw callback for Custom Layer
 	function spriteLayer:draw()
-		for _, sprite in pairs(self.sprites) do
-			local x = math.floor(sprite.x)
-			local y = math.floor(sprite.y)
-			love.graphics.draw(sprite.image, x, y)
-		end
+		love.graphics.draw(
+			self.player.sprite,
+			math.floor(self.player.x),
+			math.floor(self.player.y),
+			0,
+			1,
+			1,
+			self.player.ox,
+			self.player.oy
+		)
+
+		-- Temporarily draw a point at our location so we know
+		-- that our sprite is offset properly
+		love.graphics.setPointSize(5)
+		love.graphics.points(math.floor(self.player.x), math.floor(self.player.y))
 	end
 end
 
@@ -59,7 +77,7 @@ function love.update(dt)
 
 	-- Move map and Link
 	local kd = love.keyboard.isDown
-	local link = map.layers["Sprite Layer"].sprites.player
+	local link = map.layers["Sprite Layer"].player
 	local speed = 200
 	
 	if kd("a", "left") then

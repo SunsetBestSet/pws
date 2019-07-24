@@ -1,6 +1,13 @@
+function love.load() -- Run while loading up the game, declare variables and load libraries
+
+-- Declare some global variables/tables needed to load libraries--
+
 selection = 1
 select_target = {}
 attack = {}
+timer = {}
+
+-- Load libraries
 
 move_info = require 'battle-info/move_info'
 attack = require 'battle-info/subattacks'
@@ -12,46 +19,60 @@ active_characters = require 'character-info/active-characters'
 active_enemies = require 'character-info/active-enemies'
 require 'battle-system/turns'
 
+-- Declare variables/tables that require the libraries
+
 player = active_characters.leiko
 enemy1 = active_enemies.enemy1
 enemy2 = active_enemies.enemy2
 enemies = active_enemies
 enemy_list = {enemy1, enemy2}
 
+-- Declare other variables
+
 screen = 1
 canSwitchScreen = true
 
-function love.draw()
-	display_stats(enemy1, enemy2, player)
+end
+
+function love.draw() -- graphics
+	display_stats(enemy_list[1], enemy_list[2], player)
 	if screen == 1 then
 		select_move(player)
-	end
-	if screen == 2 then
-		select_target:draw(enemy1, enemy2)
+	elseif screen == 2 then
+		select_target:draw(enemy_list[1], enemy_list[2])
+	elseif screen == 3 then
+		attack:draw(enemy_list[selection], player, selected_move)
 	end
 end
 
-function love.update(dt)
+function love.update(dt) -- game updates
 	if not canSwitchScreen then
 		canSwitchScreen = true
 	end
+	timer:update()
 end
 
-function love.keypressed(key)
-	if key == 'right' and selection < 3 then
-		selection = selection + 1
+function love.keypressed(key) -- detect key presses
+	if key == 'right' then -- move selection to the right
+		if (screen == 2 and selection < 2) or (screen == 1 and selection < 3) then
+			selection = selection + 1
+		end
 	end
-	if key == 'left' and selection > 1 then
+
+	if key == 'left' and selection > 1 then -- move selection to the left
 		selection = selection - 1
 	end
+
 	if key == 'return' and screen == 1 then
 		selected_move = player.move[selection]
 		screen = 2
 		select_target:execute()
 		canSwitchScreen = false
 	end
+
 	if key == 'return' and screen == 2 and canSwitchScreen then
 		screen = 3
 		attack:execute(enemy_list[selection], player, selected_move)
 	end
+
 end
