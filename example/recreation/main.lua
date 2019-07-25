@@ -1,6 +1,13 @@
-require 'game'
+bump = require "libs/bump"
+sti = require "libs/sti"
+Object = require "libs/classic"
+require "player"
+require "game"
+
+anim8 = require 'libs/anim8'
 
 local cols, map, world
+local entities = {}
 
 local game
 

@@ -14,7 +14,7 @@ function DynamicEntity:new(x, y, width, height, image, world, maxVelX, maxVelY)
   self.direction = 1;
   self.grounded = false;
   
-  --GRAVITY = world.gravity or 9.8
+  GRAVITY = world.gravity or 9.8
 end
 
 function DynamicEntity:new(x, y, width, height, image, world, maxVelX, maxVelY, ent_name, mass)
@@ -27,7 +27,7 @@ function DynamicEntity:new(x, y, width, height, image, world, maxVelX, maxVelY, 
   self.grounded = false;
   self.mass = mass or 1
   
-  --GRAVITY = world.gravity or 9.8
+  GRAVITY = world.gravity or 9.8
 end
 
 function DynamicEntity:checkCols(cols)
@@ -45,14 +45,14 @@ function DynamicEntity:checkCols(cols)
 	end
 end
 
---[[function DynamicEntity:updatePhysics(dt)
+function DynamicEntity:updatePhysics(dt)
   if self.grounded == true then
     self.xVel = self.xVel - 50 * dt * physicsMult
   else
     self.xVel = self.xVel - (8 * self.mass) * dt * physicsMult
   end
 	
-	self.yVel = self.yVel + (GRAVITY) * dt * physicsMult
+	--self.yVel = self.yVel + (GRAVITY) * dt * physicsMult
 
 	if self.xVel > self.maxVelX then self.xVel = self.maxVelX end
 
@@ -62,4 +62,4 @@ end
 	self.y = self.y + (self.yVel)*dt
   
   
-end]]
+end
