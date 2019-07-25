@@ -44,22 +44,9 @@ end
 
 function Player:checkCols(cols)
   Player.super:checkCols(cols)
-  self.grounded = false
-  for i,v in ipairs (cols) do
-
-    if cols[i].normal.y == -1 then
-     self.yVel = 0
-     self.grounded = true
-   elseif cols[i].normal.y == 1 then
-     self.yVel = -self.yVel/4
-   end
-   if cols[i].normal.x ~= 0 and cols[i].other.xVel == nil then
-     self.xVel = 0
-   end
- end
 end
 
-function Player:isEntityGrippable(entity)
+--[[function Player:isEntityGrippable(entity)
   local yReq = math.abs(entity.h - self.h) + 3
   local xReq = math.abs(entity.w / 2 + self.w / 2) + 5
   local xDiff = entity.x - self.x;
@@ -74,7 +61,7 @@ function Player:isEntityGrippable(entity)
   if entity.name == "ent_crate" and math.abs(yDiff) <= yReq and math.abs(xDiff) <= xReq and self.grounded then
     return true;
   end
-end
+end]]
 
 function Player:updateAnimations(dt)
   --[[self.animationNorth:update(dt)
@@ -85,24 +72,24 @@ end
 
 function Player:moveRight(dt)
   self.x = self.x + self.speed * dt
-  direction = "E"
+  self.facing = "E"
   self.updateAnimations(dt)
 end
 
 function Player:moveLeft(dt)
   self.x = self.x - self.speed * dt
-  direction = "W"
+  self.facing = "W"
   self.updateAnimations(dt)
 end
 
 function Player:moveDown(dt)
   self.y = self.y + self.speed * dt
-  direction = "S"
+  self.facing = "S"
   self.updateAnimations(dt)
 end
 
 function Player:moveUp(dt)
   self.y = self.y - self.speed * dt
-  direction = "N"
+  self.facing = "N"
   self.updateAnimations(dt)
 end
