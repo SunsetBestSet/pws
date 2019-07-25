@@ -64,32 +64,32 @@ end
 end]]
 
 function Player:updateAnimations(dt)
-  --[[self.animationNorth:update(dt)
+  self.animationNorth:update(dt)
   self.animationEast:update(dt)
   self.animationSouth:update(dt)
-  self.animationWest:update(dt)]]
+  self.animationWest:update(dt)
 end
 
 function Player:moveRight(dt)
   self.x = self.x + self.speed * dt
   self.facing = "E"
-  self.updateAnimations(dt)
+  --self.updateAnimations(dt)
 end
 
 function Player:moveLeft(dt)
   self.x = self.x - self.speed * dt
   self.facing = "W"
-  self.updateAnimations(dt)
+  --self.updateAnimations(dt)
 end
 
 function Player:moveDown(dt)
   self.y = self.y + self.speed * dt
   self.facing = "S"
-  self.updateAnimations(dt)
+  --self.updateAnimations(dt)
 end
 
 function Player:moveUp(dt)
   self.y = self.y - self.speed * dt
   self.facing = "N"
-  self.updateAnimations(dt)
+  --self.updateAnimations(dt)
 end

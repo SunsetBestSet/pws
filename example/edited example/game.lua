@@ -71,6 +71,7 @@ function Game:update(dt)
   end
   
   self.player:update(dt)
+  self.player:updateAnimations(dt)
 end
  
 function Game:manageKeyboard(dt)
