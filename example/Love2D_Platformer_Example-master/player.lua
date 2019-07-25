@@ -11,6 +11,7 @@ function Player:new(x, y, width, height, image, world, maxVelX, maxVelY, speed)
   self.isGripping = false;
   self.grippedEntity = nil;
   self.origMaxVel = maxVelX;
+  self.facing = "south"
   
   self.tempDistance = ""
   

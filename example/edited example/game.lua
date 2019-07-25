@@ -15,7 +15,7 @@ function Game:new()
 end
 
 function Game:loadAssets()
-  self.charImage = love.graphics.newImage('sprites/main_char.png')
+  self.charImage = love.graphics.newImage('sprites/link_down.png')
   self.crate = love.graphics.newImage("sprites/crate.png")
 end
 
@@ -32,7 +32,7 @@ function Game:loadLevel()
   
   for k, object in pairs(self.map.objects) do
     if object.name == "player_spawn" then
-      self.player = Player(object.x, object.y, 28, 49, self.charImage, self.world, 200, 64, 250)
+      self.player = Player(object.x, object.y, 16, 24, self.charImage, self.world, 200, 64, 250)
       table.insert(self.entities, self.player)      
     --[[elseif object.name == "box" then
       local box = DynamicEntity(object.x, object.y, 32, 32, self.crate, self.world, 200, 64, "ent_crate", 10);

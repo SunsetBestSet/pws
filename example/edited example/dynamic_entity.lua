@@ -5,17 +5,6 @@ DynamicEntity = Entity:extend()
 
 local physicsMult = 65;
 
-function DynamicEntity:new(x, y, width, height, image, world, maxVelX, maxVelY)
-  DynamicEntity.super.new(self, x, y, width, height, image, world, "dynamic_entity")
-  self.maxVelX = maxVelX;
-  self.maxVelY = maxVelY;
-  self.xVel = 0;
-  self.yVel = 0;
-  self.direction = 1;
-  self.grounded = false;
-  
-  GRAVITY = world.gravity or 9.8
-end
 
 function DynamicEntity:new(x, y, width, height, image, world, maxVelX, maxVelY, ent_name, mass)
   DynamicEntity.super.new(self, x, y, width, height, image, world, ent_name)

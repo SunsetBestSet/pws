@@ -11,56 +11,52 @@ function Player:new(x, y, width, height, image, world, maxVelX, maxVelY, speed)
   self.isGripping = false;
   self.grippedEntity = nil;
   self.origMaxVel = maxVelX;
+  self.facing = "S";
   
   self.tempDistance = ""
   
-  local g = anim8.newGrid(28, 49, image:getWidth(), image:getHeight())
-  self.animation = anim8.newAnimation(g('1-9',1), 0.1)
-  self.animationFliped = anim8.newAnimation(g('1-9',1), 0.1):flipH()
+  local g = anim8.newGrid(16, 24, image:getWidth(), image:getHeight())
+  self.animationNorth = anim8.newAnimation(g('1-9',1), 0.1)
+  self.animationEast = anim8.newAnimation(g('1-9',2), 0.1)
+  self.animationSouth = anim8.newAnimation(g('1-9',3), 0.1)
+  self.animationWest = anim8.newAnimation(g('1-9',2), 0.1):flipH()
 end
 
 function Player:update(dt)
-  if self.xVel == 0 then
-    self.animation:gotoFrame(3)
-    self.animationFliped:gotoFrame(3)
-  end
-  
-  if self.grounded == false then
-    self.isGripping = false;
-    self.grippedEntity = nil;
-  end
-  if self.isGripping then
-    self.maxVelX = self.origMaxVel/1.7
-  else 
-    self.maxVelX = self.origMaxVel
-  end
-  
-  
+  self.animationNorth:update(dt)
+  self.animationEast:update(dt)
+  self.animationSouth:update(dt)
+  self.animationWest:update(dt)
 end
 
 function Player:draw()
-  if self.direction == 1 then
-    self.animation:draw(self.image, self.x, self.y)
-  elseif self.direction == -1 then
-    self.animationFliped:draw(self.image, self.x, self.y)
+  if self.facing == "N" then
+    self.animationNorth:draw(self.image, self.x, self.y)
+  elseif self.facing == "E" then
+    self.animationEast:draw(self.image, self.x, self.y)
+  elseif self.facing == "S" then
+    self.animationSouth:draw(self.image, self.x, self.y)
+  elseif self.facing == "W" then
+    self.animationWest:draw(self.image, self.x, self.y)
   end
+  love.graphics.print(self.facing, 100, 100)
 end
 
 function Player:checkCols(cols)
   Player.super:checkCols(cols)
   self.grounded = false
-	for i,v in ipairs (cols) do
-    
-		if cols[i].normal.y == -1 then
-			self.yVel = 0
-			self.grounded = true
-		elseif cols[i].normal.y == 1 then
-			self.yVel = -self.yVel/4
-		end
-		if cols[i].normal.x ~= 0 and cols[i].other.xVel == nil then
-			self.xVel = 0
-		end
-	end
+  for i,v in ipairs (cols) do
+
+    if cols[i].normal.y == -1 then
+     self.yVel = 0
+     self.grounded = true
+   elseif cols[i].normal.y == 1 then
+     self.yVel = -self.yVel/4
+   end
+   if cols[i].normal.x ~= 0 and cols[i].other.xVel == nil then
+     self.xVel = 0
+   end
+ end
 end
 
 function Player:isEntityGrippable(entity)
@@ -68,30 +64,45 @@ function Player:isEntityGrippable(entity)
   local xReq = math.abs(entity.w / 2 + self.w / 2) + 5
   local xDiff = entity.x - self.x;
   local yDiff = entity.y - self.y;
-  
+
   if entity.name == "ent_crate" then  
     if ((self.direction > 0 and xDiff < 0) or (self.direction < 0 and xDiff > 0)) then
       return false
     end
   end
-  
+
   if entity.name == "ent_crate" and math.abs(yDiff) <= yReq and math.abs(xDiff) <= xReq and self.grounded then
     return true;
   end
 end
 
+function Player:updateAnimations(dt)
+  --[[self.animationNorth:update(dt)
+  self.animationEast:update(dt)
+  self.animationSouth:update(dt)
+  self.animationWest:update(dt)]]
+end
+
 function Player:moveRight(dt)
   self.x = self.x + self.speed * dt
+  direction = "E"
+  self.updateAnimations(dt)
 end
 
 function Player:moveLeft(dt)
   self.x = self.x - self.speed * dt
+  direction = "W"
+  self.updateAnimations(dt)
 end
 
 function Player:moveDown(dt)
   self.y = self.y + self.speed * dt
+  direction = "S"
+  self.updateAnimations(dt)
 end
 
 function Player:moveUp(dt)
   self.y = self.y - self.speed * dt
+  direction = "N"
+  self.updateAnimations(dt)
 end
