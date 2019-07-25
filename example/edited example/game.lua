@@ -32,19 +32,20 @@ function Game:loadLevel()
   
   for k, object in pairs(self.map.objects) do
     if object.name == "player_spawn" then
-      self.player = Player(object.x, object.y, 28, 49, self.charImage, self.world, 200, 64, 100)
+      self.player = Player(object.x, object.y, 28, 49, self.charImage, self.world, 200, 64, 250)
       table.insert(self.entities, self.player)      
-    elseif object.name == "box" then
+    --[[elseif object.name == "box" then
       local box = DynamicEntity(object.x, object.y, 32, 32, self.crate, self.world, 200, 64, "ent_crate", 10);
       table.insert(self.entities, box)
     elseif object.name == "spike" then
       local spike = Entity(object.x, object.y, object.width, object.height, nil, self.world, "ent_spike")
-      table.insert(self.entities, spike)
+      table.insert(self.entities, spike)]]
     elseif object.name == "level_end" then
       local level_end = Entity(object.x, object.y, 35, 50, nil, self.world, "ent_level_end")
       level_end.nextMap = object.properties.next_map;
       table.insert(self.entities, level_end)
     end
+    
   end
   
   self.map:removeLayer("Objects")

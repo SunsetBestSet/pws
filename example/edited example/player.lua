@@ -50,11 +50,6 @@ function Player:checkCols(cols)
   Player.super:checkCols(cols)
   self.grounded = false
 	for i,v in ipairs (cols) do
-    local otherName = cols[i].other.name 
-    if otherName == "ent_crate" and cols[i].normal.y ~= -1 then
-      cols[i].other.direction = self.direction
-      cols[i].other.xVel = (self.xVel);
-    end
     
 		if cols[i].normal.y == -1 then
 			self.yVel = 0
@@ -86,49 +81,17 @@ function Player:isEntityGrippable(entity)
 end
 
 function Player:moveRight(dt)
-  self.xVel = self.xVel + self.speed
-  self.animationFliped:update(dt)
-  self.animation:update(dt)  
-  self.direction = 1
-  if self.direction == -1 then
-    self.xVel = 0
-  end
+  self.x = self.x + self.speed * dt
 end
 
 function Player:moveLeft(dt)
-  self.xVel = self.xVel + self.speed
-  self.direction = -1
-  self.animationFliped:update(dt)
-  self.animation:update(dt)
-  if self.direction == 1 then
-    self.xVel = 0
-  end
-end
-
-function Player:jump(dt)
-  if self.grounded == true then
-    self.yVel = self.yVel - 400;
-    self.isGripping = false;
-    self.grippedEntity = nil;
-  end
+  self.x = self.x - self.speed * dt
 end
 
 function Player:moveDown(dt)
-  self.yVel = self.yVel - self.speed
-  self.direction = -1
-  self.animationFliped:update(dt)
-  self.animation:update(dt)
-  if self.direction == 1 then
-    self.xVel = 0
-  end
+  self.y = self.y + self.speed * dt
 end
 
 function Player:moveUp(dt)
-  self.yVel = self.yVel - self.speed
-  self.animationFliped:update(dt)
-  self.animation:update(dt)  
-  self.direction = 1
-  if self.direction == -1 then
-    self.xVel = 0
-  end
+  self.y = self.y - self.speed * dt
 end
