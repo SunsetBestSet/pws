@@ -49,7 +49,8 @@ function DynamicEntity:updatePhysics(dt)
   if self.grounded == true then
     self.xVel = self.xVel - 50 * dt * physicsMult
   else
-    self.xVel = self.xVel - (8 * self.mass) * dt * physicsMult
+    --self.xVel = self.xVel - (8 * self.mass) * dt * physicsMult
+    self.xVel = self.xVel
   end
 	
 	--self.yVel = self.yVel + (GRAVITY) * dt * physicsMult
@@ -59,7 +60,9 @@ function DynamicEntity:updatePhysics(dt)
 	if self.xVel < 0 then self.xVel = 0 end
 
 	self.x = self.x + self.direction*self.xVel*dt
-	self.y = self.y + (self.yVel)*dt
+	self.y = self.y + self.direction*self.yVel*dt
   
+  self.x = self.x + self.direction*self.xVel*dt
+  self.y = self.y + self.direction*self.yVel*dt
   
 end

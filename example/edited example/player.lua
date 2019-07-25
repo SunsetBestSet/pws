@@ -114,7 +114,7 @@ function Player:jump(dt)
 end
 
 function Player:moveDown(dt)
-  self.yVel = self.yVel + self.speed
+  self.yVel = self.yVel - self.speed
   self.direction = -1
   self.animationFliped:update(dt)
   self.animation:update(dt)

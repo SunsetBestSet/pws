@@ -53,13 +53,13 @@ function love.update(dt) -- game updates
 end
 
 function love.keypressed(key) -- detect key presses
-	if key == 'right' then -- move selection to the right
+	if key == 'right'  and screen ~= 3 then -- move selection to the right
 		if (screen == 2 and selection < 2) or (screen == 1 and selection < 3) then
 			selection = selection + 1
 		end
 	end
 
-	if key == 'left' and selection > 1 then -- move selection to the left
+	if key == 'left' and selection > 1 and screen ~= 3 then -- move selection to the left
 		selection = selection - 1
 	end
 
