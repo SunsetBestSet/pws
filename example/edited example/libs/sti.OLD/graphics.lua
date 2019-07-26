@@ -1,6 +1,6 @@
-local lg       = _G.love.graphics
+local lg       = love.graphics
 local graphics = { isCreated = lg and true or false }
- 
+
 function graphics.newSpriteBatch(...)
 	if graphics.isCreated then
 		return lg.newSpriteBatch(...)
@@ -106,12 +106,6 @@ end
 function graphics.polygon(...)
 	if graphics.isCreated then
 		return lg.polygon(...)
-	end
-end
-
-function graphics.points(...)
-	if graphics.isCreated then
-		return lg.points(...)
 	end
 end
 

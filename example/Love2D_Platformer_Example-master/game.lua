@@ -15,7 +15,7 @@ function Game:new()
 end
 
 function Game:loadAssets()
-  self.charImage = love.graphics.newImage('sprites/link_down.png')
+  self.charImage = love.graphics.newImage('sprites/main_char.png')
   self.crate = love.graphics.newImage("sprites/crate.png")
 end
 

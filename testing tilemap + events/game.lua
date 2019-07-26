@@ -4,7 +4,7 @@ local GRAVITY = 14.8;
 
 
 function Game:new()
-  self.level = "maps/test.lua"
+  self.level = "maps/dungeon_1.lua"
   self.entities = {}
   self.debug = {}
   self.player = {}
@@ -15,7 +15,7 @@ function Game:new()
 end
 
 function Game:loadAssets()
-  self.charImage = love.graphics.newImage('sprites/link_down.png')
+  self.charImage = love.graphics.newImage('assets/sprites/link.png')
 end
 
 function Game:setupPhysics()
@@ -103,12 +103,12 @@ end
 
 function Game:draw()
 
-  love.graphics.setColor( 255,255,255,255 )
+  --love.graphics.setColor( 255,255,255,255 )
 	--map:setDrawRange(0, 0, 800, 600)
 	self.map:draw()
-  love.graphics.setColor( 255, 93, 0,255 )
+  --love.graphics.setColor( 255, 93, 0,255 )
 	--love.graphics.rectangle( "fill",player.x,player.y,player.w,player.h )
-	love.graphics.setColor(255, 255, 0, 255)
+	--love.graphics.setColor(255, 255, 0, 255)
 	self.map:bump_draw(self.world)
 	--love.graphics.print(self.player.yVel..self.debug..tostring(self.player.grounded))
 	love.graphics.print(self.player.x,0,12)

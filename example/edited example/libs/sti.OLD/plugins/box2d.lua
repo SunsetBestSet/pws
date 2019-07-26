@@ -1,17 +1,16 @@
 --- Box2D plugin for STI
 -- @module box2d
 -- @author Landon Manning
--- @copyright 2019
+-- @copyright 2017
 -- @license MIT/X11
 
-local love  = _G.love
 local utils = require((...):gsub('plugins.box2d', 'utils'))
 local lg    = require((...):gsub('plugins.box2d', 'graphics'))
 
 return {
 	box2d_LICENSE     = "MIT/X11",
 	box2d_URL         = "https://github.com/karai17/Simple-Tiled-Implementation",
-	box2d_VERSION     = "2.3.2.7",
+	box2d_VERSION     = "2.3.2.6",
 	box2d_DESCRIPTION = "Box2D hooks for STI.",
 
 	--- Initialize Box2D physics world.
@@ -37,28 +36,16 @@ return {
 				shape = love.physics.newPolygonShape(unpack(vertices))
 			end
 
-			local currentBody = body
+			local fixture = love.physics.newFixture(body, shape)
 
-			if userdata.properties.dynamic == true then
-				currentBody = love.physics.newBody(world, map.offsetx, map.offsety, 'dynamic')
-			end
-
-			local fixture = love.physics.newFixture(currentBody, shape)
 			fixture:setUserData(userdata)
 
-			-- Set some custom properties from userdata (or use default set by box2d)
-			fixture:setFriction(userdata.properties.friction       or 0.2)
-			fixture:setRestitution(userdata.properties.restitution or 0.0)
-			fixture:setSensor(userdata.properties.sensor           or false)
-			fixture:setFilterData(
-				userdata.properties.categories or 1,
-				userdata.properties.mask       or 65535,
-				userdata.properties.group      or 0
-			)
+			if userdata.properties.sensor == true then
+				fixture:setSensor(true)
+			end
 
 			local obj = {
 				object  = object,
-				body    = currentBody,
 				shape   = shape,
 				fixture = fixture,
 			}
@@ -104,7 +91,7 @@ return {
 
 					-- This fixes a height issue
 					 o.y = o.y + map.tiles[object.gid].offset.y
-					 oy  = o.h
+					 oy  = tileset.tileheight
 
 					for _, tt in ipairs(tileset.tiles) do
 						if tt.id == lid then
@@ -150,17 +137,6 @@ return {
 					addObjectToWorld(o.shape, triangle, userdata, tile or object)
 				end
 			elseif o.shape == "polygon" then
-				-- Recalculate collision polygons inside tiles
-				if tile then
-					local cos = math.cos(math.rad(o.r))
-					local sin = math.sin(math.rad(o.r))
-					for _, vertex in ipairs(o.polygon) do
-						vertex.x = vertex.x + o.x
-						vertex.y = vertex.y + o.y
-						vertex.x, vertex.y = utils.rotate_vertex(map, vertex, o.x, o.y, cos, sin)
-					end
-				end
-
 				local vertices  = getPolygonVertices(o)
 				local triangles = love.math.triangulate(vertices)
 
@@ -288,7 +264,7 @@ return {
 		lg.translate(math.floor(tx or 0), math.floor(ty or 0))
 
 		for _, obj in ipairs(collision) do
-			local points = {obj.body:getWorldPoints(obj.shape:getPoints())}
+			local points = {collision.body:getWorldPoints(obj.shape:getPoints())}
 			local shape_type = obj.shape:getType()
 
 			if shape_type == "edge" or shape_type == "chain" then
@@ -301,16 +277,10 @@ return {
 		end
 
 		lg.pop()
-	end
+	end,
 }
 
 --- Custom Properties in Tiled are used to tell this plugin what to do.
 -- @table Properties
 -- @field collidable set to true, can be used on any Layer, Tile, or Object
 -- @field sensor set to true, can be used on any Tile or Object that is also collidable
--- @field dynamic set to true, can be used on any Tile or Object
--- @field friction can be used to define the friction of any Object
--- @field restitution can be used to define the restitution of any Object
--- @field categories can be used to set the filter Category of any Object
--- @field mask can be used to set the filter Mask of any Object
--- @field group can be used to set the filter Group of any Object

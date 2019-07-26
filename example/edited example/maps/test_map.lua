@@ -8,6 +8,7 @@ return {
   height = 23,
   tilewidth = 32,
   tileheight = 32,
+  nextlayerid = 7,
   nextobjectid = 25,
   properties = {},
   tilesets = {
@@ -18,7 +19,7 @@ return {
       tileheight = 32,
       spacing = 1,
       margin = 1,
-      image = "platformer_32_full.png",
+      image = "tilemap.png",
       imagewidth = 288,
       imageheight = 480,
       tileoffset = {
@@ -175,20 +176,6 @@ return {
           width = 32,
           height = 32,
           rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 22,
-          name = "box",
-          type = "",
-          shape = "rectangle",
-          x = 832,
-          y = 512,
-          width = 32,
-          height = 32,
-          rotation = 0,
-          gid = 308,
           visible = true,
           properties = {}
         },
