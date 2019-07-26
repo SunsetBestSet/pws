@@ -47,7 +47,6 @@ function Player:draw()
   elseif self.facing == "W" then
     self.animationWest:draw(self.image, self.x, self.y)
   end
-  love.graphics.print(self.facing, 100, 100)
 end
 
 function Player:checkCols(cols)

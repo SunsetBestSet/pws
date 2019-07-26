@@ -1,13 +1,12 @@
 Game = Object:extend();
-
-local GRAVITY = 14.8;
-
+Talkies = require("libs/talkies")
 
 function Game:new()
   self.level = "maps/dungeon_1.lua"
   self.entities = {}
   self.debug = {}
   self.player = {}
+  self.interact = false
   
   self:loadAssets()
   self:loadLevel()
@@ -33,14 +32,17 @@ function Game:loadLevel()
       self.player = Player(object.x, object.y, 16, 24, self.charImage, self.world, 200, 64, 250)
       table.insert(self.entities, self.player)
     elseif object.name == "level_end" then
-      local level_end = Entity(object.x, object.y, 35, 50, nil, self.world, "ent_level_end")
+      local level_end = Entity(object.x, object.y, 16, 16, nil, self.world, "ent_level_end")
       level_end.nextMap = object.properties.next_map;
       table.insert(self.entities, level_end)
+    elseif object.name == "character" then
+      local character = Entity(object.x, object.y, 16, 16, nil, self.world, "ent_character")
+      table.insert(self.entities, character)
     end
-    
   end
   
   self.map:removeLayer("Objects")
+  self.map:removeLayer("custom_colliders")
 end
 
 
@@ -53,11 +55,21 @@ function Game:checkCols(entity, cols)
     if thisName == "ent_player" and otherName == "ent_level_end" then
       self.level = cols[i].other.nextMap
       self:loadLevel();
+    elseif thisName == "ent_player" and otherName == "ent_character" then
+      self.interact = true
     end
     
 	end
 end
 
+function Game:manageKeypresses(key)
+  if key == 'return' and self.interact then 
+    print('hi!')
+    Talkies.onAction()
+  elseif key == "up" then Talkies.prevOption()
+  elseif key == "down" then Talkies.nextOption() 
+  elseif key == "space" then Talkies.onAction() end
+end
 
 function Game:update(dt)
   self.map:update(dt)
@@ -69,6 +81,7 @@ function Game:update(dt)
   end
   
   self.player:update(dt)
+  Talkies.update(dt)
 end
  
 function Game:manageKeyboard(dt)
@@ -95,7 +108,7 @@ function Game:manageKeyboard(dt)
   
   if not (love.keyboard.isDown( "w" ) or love.keyboard.isDown( "a" ) or love.keyboard.isDown( "s" ) or love.keyboard.isDown( "d" )) then
     self.player.isMoving = false
-  end  
+  end 
 
 end
 
@@ -113,11 +126,12 @@ function Game:draw()
 	--love.graphics.print(self.player.yVel..self.debug..tostring(self.player.grounded))
 	love.graphics.print(self.player.x,0,12)
 	love.graphics.print(self.player.y,0,24)
-    love.graphics.print(self.player.direction .. tostring(self.player.isGripping), 0, 36)
+  love.graphics.print(self.player.facing, 0, 36)
   
 	debug = " "
   
   for i=1,#self.entities do
     self.entities[i]:draw()
   end
+  Talkies.draw()
 end

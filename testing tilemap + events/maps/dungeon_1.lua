@@ -1,15 +1,15 @@
 return {
   version = "1.2",
   luaversion = "5.1",
-  tiledversion = "1.2.4",
+  tiledversion = "1.2.3",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 20,
   height = 20,
   tilewidth = 16,
   tileheight = 16,
-  nextlayerid = 5,
-  nextobjectid = 4,
+  nextlayerid = 7,
+  nextobjectid = 11,
   properties = {},
   tilesets = {
     {
@@ -90,7 +90,7 @@ return {
       offsetx = 0,
       offsety = 0,
       properties = {
-        ["collidable"] = true,
+        ["collidable"] = true
       },
       encoding = "lua",
       data = {
@@ -129,7 +129,7 @@ return {
       offsetx = 0,
       offsety = 0,
       properties = {
-        ["collidable"] = true
+        ["collidable"] = false
       },
       encoding = "lua",
       data = {
@@ -156,6 +156,84 @@ return {
       }
     },
     {
+      type = "tilelayer",
+      id = 5,
+      name = "character",
+      x = 0,
+      y = 0,
+      width = 20,
+      height = 20,
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      properties = {},
+      encoding = "lua",
+      data = {
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 247, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+      }
+    },
+    {
+      type = "objectgroup",
+      id = 6,
+      name = "custom_colliders",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {
+        ["collidable"] = true
+      },
+      objects = {
+        {
+          id = 9,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 208.091,
+          y = 224.364,
+          width = 15.7273,
+          height = 31.7273,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 10,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 208,
+          y = 235.455,
+          width = 32,
+          height = 20.5455,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
       type = "objectgroup",
       id = 4,
       name = "Objects",
@@ -164,7 +242,9 @@ return {
       offsetx = 0,
       offsety = 0,
       draworder = "topdown",
-      properties = {},
+      properties = {
+        ["collidable"] = false
+      },
       objects = {
         {
           id = 1,
@@ -201,6 +281,19 @@ return {
           y = 123,
           width = 0.5,
           height = 0,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 4,
+          name = "character",
+          type = "",
+          shape = "rectangle",
+          x = 226,
+          y = 96.2174,
+          width = 13.0435,
+          height = 15.8696,
           rotation = 0,
           visible = true,
           properties = {}
