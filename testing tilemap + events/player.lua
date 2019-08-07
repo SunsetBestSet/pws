@@ -10,6 +10,7 @@ function Player:new(x, y, width, height, image, world, maxVelX, maxVelY, speed)
   self.image = image
   self.facing = "S"
   self.isMoving = false
+  self.canMove = true
   
   self.tempDistance = ""
   
@@ -61,25 +62,25 @@ function Player:updateAnimations(dt)
 end
 
 function Player:moveRight(dt)
-  self.x = self.x + self.speed * dt
+  self.x = math.floor(self.x + self.speed * dt)
   self.facing = "E"
   self:updateAnimations(dt)
 end
 
 function Player:moveLeft(dt)
-  self.x = self.x - self.speed * dt
+  self.x = math.floor(self.x - self.speed * dt)
   self.facing = "W"
   self:updateAnimations(dt)
 end
 
 function Player:moveDown(dt)
-  self.y = self.y + self.speed * dt
+  self.y = math.floor(self.y + self.speed * dt)
   self.facing = "S"
   self:updateAnimations(dt)
 end
 
 function Player:moveUp(dt)
-  self.y = self.y - self.speed * dt
+  self.y = math.floor(self.y - self.speed * dt)
   self.facing = "N"
   self:updateAnimations(dt)
 end
