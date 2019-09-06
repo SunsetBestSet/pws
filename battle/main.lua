@@ -18,6 +18,8 @@ items = require 'items/item_info'
 active_characters = require 'character-info/active-characters'
 active_enemies = require 'character-info/active-enemies'
 require 'battle-system/turns'
+Object = require 'libs/classic'
+
 
 -- Declare variables/tables that require the libraries
 
