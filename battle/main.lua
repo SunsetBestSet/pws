@@ -19,6 +19,9 @@ active_characters = require 'character-info/active-characters'
 active_enemies = require 'character-info/active-enemies'
 require 'battle-system/turns'
 Object = require 'libs/classic'
+require 'game'
+
+game = Game()
 
 
 -- Declare variables/tables that require the libraries
@@ -34,17 +37,11 @@ enemy_list = {enemy1, enemy2}
 screen = 1
 canSwitchScreen = true
 
+
 end
 
 function love.draw() -- graphics
-	display_stats(enemy_list[1], enemy_list[2], player)
-	if screen == 1 then
-		select_move(player)
-	elseif screen == 2 then
-		select_target:draw(enemy_list[1], enemy_list[2])
-	elseif screen == 3 then
-		attack:draw(enemy_list[selection], player, selected_move)
-	end
+	game:draw()
 end
 
 function love.update(dt) -- game updates
