@@ -28,11 +28,11 @@ function select_move(player)
 	local move2 = player.move[2]
 	local move3 = player.move[3]
 	text = ""
-	if selection == 1 then
+	if game.selection == 1 then
 		text = "> ".. move1.name .. "    " .. move2.name .. "    " .. move3.name
-	elseif selection == 2 then
+	elseif game.selection == 2 then
 		text = move1.name .. "  > " .. move2.name .. "    " .. move3.name
-	elseif selection == 3 then
+	elseif game.selection == 3 then
 		text = move1.name .. "    " .. move2.name .. "  > " .. move3.name
 	end
 	love.graphics.print("Select a move:", 0, 0)

@@ -20,8 +20,7 @@ active_enemies = require 'character-info/active-enemies'
 require 'battle-system/turns'
 Object = require 'libs/classic'
 require 'game'
-
-game = Game()
+require 'battle'
 
 
 -- Declare variables/tables that require the libraries
@@ -34,9 +33,11 @@ enemy_list = {enemy1, enemy2}
 
 -- Declare other variables
 
-screen = 1
-canSwitchScreen = true
+--screen = 1
+--canSwitchScreen = true
 
+-- Start game
+game = Game()
 
 end
 
@@ -45,33 +46,9 @@ function love.draw() -- graphics
 end
 
 function love.update(dt) -- game updates
-	if not canSwitchScreen then
-		canSwitchScreen = true
-	end
-	timer:update()
+	game:update(dt)
 end
 
 function love.keypressed(key) -- detect key presses
-	if key == 'right'  and screen ~= 3 then -- move selection to the right
-		if (screen == 2 and selection < 2) or (screen == 1 and selection < 3) then
-			selection = selection + 1
-		end
-	end
-
-	if key == 'left' and selection > 1 and screen ~= 3 then -- move selection to the left
-		selection = selection - 1
-	end
-
-	if key == 'return' and screen == 1 then
-		selected_move = player.move[selection]
-		screen = 2
-		select_target:execute()
-		canSwitchScreen = false
-	end
-
-	if key == 'return' and screen == 2 and canSwitchScreen then
-		screen = 3
-		attack:execute(enemy_list[selection], player, selected_move)
-	end
-
+	game:keypressed(key)
 end
