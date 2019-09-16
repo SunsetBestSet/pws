@@ -1,13 +1,6 @@
 function love.load() -- Run while loading up the game, declare variables and load libraries
 
--- Declare some global variables/tables needed to load libraries--
-
-selection = 1
-select_target = {}
-attack = {}
-timer = {}
-
--- Load libraries
+-- Load database
 
 move_info = require 'battle-info/move_info'
 attack = require 'battle-info/subattacks'
@@ -17,8 +10,11 @@ characters = require 'character-info/characters'
 items = require 'items/item_info'
 active_characters = require 'character-info/active-characters'
 active_enemies = require 'character-info/active-enemies'
-require 'battle-system/turns'
+
+-- Load plugins
 Object = require 'libs/classic'
+
+-- Load classes
 require 'game'
 require 'battle'
 

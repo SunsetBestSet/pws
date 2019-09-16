@@ -2,6 +2,55 @@ Battle = Object:extend()
 
 function Battle:new()
 	self.selection = 1
+	self.screen = 1
+	self.selected_move = {}
+	self.canSwitchScreen = true
+end
+
+function Battle:draw(dt)
+	self:display_stats(enemy_list[1], enemy_list[2], player)
+	if self.screen == 1 then
+		self:draw_moveselection(player)
+	elseif self.screen == 2 then
+		self:drawSelectTarget(enemy_list[1], enemy_list[2])
+	elseif self.screen == 3 then
+		self:draw_textbox(enemy_list[self.selection], player, self.selected_move)
+	end
+
+	love.graphics.print("screen = " .. self.screen, 0, 50)
+	love.graphics.print("selection = " .. self.selection, 0, 70)
+end
+
+function Battle:update(dt)
+	if not self.canSwitchScreen then
+		self.canSwitchScreen = true
+	end
+end
+
+function Battle:keypressed(key)
+
+	if key == 'right'  and self.screen ~= 3 then -- move self.selection to the right
+		if (self.screen == 2 and self.selection < 2) or (self.screen == 1 and self.selection < 3) then
+			self.selection = self.selection + 1
+		end
+	end
+
+	if key == 'left' and self.selection > 1 and self.screen ~= 3 then -- move self.selection to the left
+		self.selection = self.selection - 1
+	end
+
+	if key == 'return' and self.screen == 1 then
+		self.selected_move = player.move[self.selection]
+		self.screen = 2
+		self:doSelectTarget()
+		self.canSwitchScreen = false
+	end
+
+	if key == 'return' and self.screen == 2 and self.canSwitchScreen then
+		self.screen = 3
+		self:execute_attack(enemy_list[self.selection], player, self.selected_move)
+	end
+
 end
 
 function Battle:start_battle(enemy, player)
