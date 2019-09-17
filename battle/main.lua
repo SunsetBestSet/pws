@@ -17,6 +17,7 @@ Object = require 'libs/classic'
 -- Load classes
 require 'game'
 require 'battle'
+require 'startscreen'
 
 
 -- Declare variables/tables that require the libraries
