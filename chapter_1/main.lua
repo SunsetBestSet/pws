@@ -4,6 +4,7 @@ Object = require "libs/classic"
 maid64 = require "libs/maid64"
 anim8 = require "libs/anim8"
 Talkies = require "libs/talkies"
+Camera = require "libs/Camera"
 
 require "player"
 require "game"
@@ -22,6 +23,9 @@ function love.load()
   
 	game = Game()
 
+	camera = Camera()
+	camera:setFollowStyle('TOPDOWN')
+
 	Talkies.font = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 40)
 
 end
@@ -29,14 +33,19 @@ end
 
 function love.update(dt)
 	game:update(dt)
+	camera:update(dt)
+	camera:follow(game.player.x, game.player.y)
 	Talkies.update(dt)
 end
 
 
 function love.draw()
+	camera:attach()
 	maid64.start()
 	game:draw(dt)
 	maid64.finish()
+	camera:detach()
+	camera:draw()
 	Talkies.draw()
 end
 

@@ -8,6 +8,7 @@ function Game:new()
 	self.interact = false
 	self.debugFont = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 20)
 	self.blop = love.audio.newSource("assets/talk.wav", "static")
+	self.stop = false
 	
 	self:loadAssets()
 	self:loadLevel()
@@ -37,12 +38,17 @@ function Game:loadLevel()
 		elseif object.name == "irene_spawn" then
 			self.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, self.npcImage, self.world, 200, 64, 200)
 			table.insert(self.entities, self.npc)
+		elseif object.name == "door" then
+			local door = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, self.world, "ent_door")
+			door.nextMap = object.properties.nextMap;
+			table.insert(self.entities, door)
 		end
 	end
 	
 	self.map:removeLayer("Objects")
 	--self.map:removeLayer("custom_colliders")
-
+	print(self.level .. ": ".. #self.entities)
+	self.stop = true
 end
 
 
@@ -55,14 +61,11 @@ function Game:checkCols(entity, cols)
 
 		local otherName = cols[i].other.name;
 		
-		--[[if thisName == "ent_player" and otherName == "ent_level_end" then
-			print(cols[i].other.nextMap)
-			self.level = cols[i].other.nextMap
-			self:loadLevel()
-		end]]
-
 		if thisName == "ent_player" and otherName == "ent_npc" then
 			self.interact = true
+		elseif thisName == "ent_player" and otherName == "ent_door" then
+			self.level = cols[i].other.nextMap
+			self:loadLevel()
 		end
 		
 	end
@@ -79,7 +82,7 @@ function Game:manageKeypresses(key)
 		Talkies.say("Hiko", "But,--Irene!!! It looks evil and scary! What if something bad is going on?!", {image=self.player.avatar, talkSound=self.blop,})
 		Talkies.say("Irene", "Hiko! Don't you see I'm busy?? Go play outside or something.", {image=self.npc.avatar, talkSound=self.blop,})
 		self.interact = false
-	elseif key == "space" then 
+	elseif key == "space" then
 		Talkies.onAction() 
 	elseif key == "return" then
 		for i, entity in pairs(self.map.objects) do
@@ -92,13 +95,20 @@ end
 
 function Game:update(dt)
 
+
 	self.map:update(dt)
 	self:manageKeyboard(dt)
-
-	for i=1,#self.entities do
-		self.entities[i].x, self.entities[i].y, cols = self.world:move( self.entities[i], self.entities[i].x, self.entities[i].y )
-		self:checkCols(self.entities[i], cols)
-	end
+	local a = #self.entities
+	print("a = " .. a)
+	
+		for i=1, a do
+			self.entities[i].x, self.entities[i].y, cols = self.world:move( self.entities[i], self.entities[i].x, self.entities[i].y )
+			self:checkCols(self.entities[i], cols)
+			if self.stop then 
+				self.stop = false
+				return
+			end
+		end
 
 	self.player:update(dt)
 	if Talkies.isOpen() then
@@ -106,6 +116,7 @@ function Game:update(dt)
 	else
 		self.player.canMove = true
 	end
+
 
 end
 
