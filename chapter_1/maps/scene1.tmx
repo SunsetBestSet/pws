@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="7" nextobjectid="4">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="16" height="14" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="8">
+ <properties>
+  <property name="collidable" type="bool" value="false"/>
+ </properties>
  <tileset firstgid="1" source="indoor.tsx.tmx"/>
  <layer id="1" name="floor" width="16" height="14">
   <data encoding="csv">
@@ -21,7 +24,7 @@
  </layer>
  <layer id="3" name="beds" width="16" height="14">
   <properties>
-   <property name="collidable" type="bool" value="true"/>
+   <property name="collidable" type="bool" value="false"/>
   </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -104,10 +107,13 @@
     <property name="collidable" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="3" name="door" x="96.6667" y="32" width="15" height="16.6667">
+  <object id="3" name="door" x="96.9622" y="32.5227" width="15" height="16.2122">
    <properties>
-    <property name="nextMap" value="town"/>
+    <property name="nextMap" value="maps/town.lua"/>
    </properties>
   </object>
+  <object id="4" name="bed_hiko" x="16" y="48" width="16" height="45"/>
+  <object id="7" name="bed_irene" x="64" y="47.875" width="15.5" height="44.75"/>
  </objectgroup>
+ <objectgroup id="7" name="custom_collisions"/>
 </map>

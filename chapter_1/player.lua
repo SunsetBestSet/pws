@@ -6,7 +6,8 @@ function Player:new(x, y, width, height, image, world, maxVelX, maxVelY, speed)
   Player.super.new(self, x, y, width, height, image, world, maxVelX, maxVelY, "ent_player", 2)
   self.origX = x
   self.origY = 15
-  self.speed = speed
+  self.vertical_speed = speed * 0.85
+  self.horizontal_speed = speed
   self.image = image
   self.facing = "S"
   self.isMoving = false
@@ -63,7 +64,7 @@ function Player:updateAnimations(dt)
 end
 
 function Player:moveRight(dt)
-  self.x = math.floor(self.x + self.speed * dt)
+  self.x = math.floor(self.x + self.horizontal_speed * dt)
   self.facing = "E"
   self:updateAnimations(dt)
   if game.interact then 
@@ -72,7 +73,7 @@ function Player:moveRight(dt)
 end
 
 function Player:moveLeft(dt)
-  self.x = math.floor(self.x - self.speed * dt)
+  self.x = math.floor(self.x - self.horizontal_speed * dt)
   self.facing = "W"
   self:updateAnimations(dt)
   if game.interact then 
@@ -81,7 +82,7 @@ function Player:moveLeft(dt)
 end
 
 function Player:moveDown(dt)
-  self.y = math.floor(self.y + self.speed * dt)
+  self.y = math.floor(self.y + self.vertical_speed * 1.25 * dt)
   self.facing = "S"
   self:updateAnimations(dt)
   if game.interact then 
@@ -90,8 +91,7 @@ function Player:moveDown(dt)
 end
 
 function Player:moveUp(dt)
-  local y = self.y
-  self.y = math.floor(self.y - self.speed * dt)
+  self.y = math.floor(self.y - self.vertical_speed * dt)
   self.facing = "N"
   self:updateAnimations(dt)
   if game.interact then 

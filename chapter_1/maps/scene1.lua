@@ -8,9 +8,11 @@ return {
   height = 14,
   tilewidth = 16,
   tileheight = 16,
-  nextlayerid = 7,
-  nextobjectid = 4,
-  properties = {},
+  nextlayerid = 8,
+  nextobjectid = 8,
+  properties = {
+    ["collidable"] = false
+  },
   tilesets = {
     {
       name = "indoor",
@@ -84,7 +86,7 @@ return {
       offsetx = 0,
       offsety = 0,
       properties = {
-        ["collidable"] = true
+        ["collidable"] = false
       },
       encoding = "lua",
       data = {
@@ -243,17 +245,55 @@ return {
           name = "door",
           type = "",
           shape = "rectangle",
-          x = 96.6667,
-          y = 32,
+          x = 96.9622,
+          y = 32.5227,
           width = 15,
-          height = 16.6667,
+          height = 16.2122,
           rotation = 0,
           visible = true,
           properties = {
             ["nextMap"] = "maps/town.lua"
           }
+        },
+        {
+          id = 4,
+          name = "bed_hiko",
+          type = "",
+          shape = "rectangle",
+          x = 16,
+          y = 48,
+          width = 16,
+          height = 45,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 7,
+          name = "bed_irene",
+          type = "",
+          shape = "rectangle",
+          x = 64,
+          y = 47.875,
+          width = 15.5,
+          height = 44.75,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
+    },
+    {
+      type = "objectgroup",
+      id = 7,
+      name = "custom_collisions",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {},
+      objects = {}
     }
   }
 }
