@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 11,
-  nextobjectid = 38,
+  nextobjectid = 40,
   properties = {},
   tilesets = {
     {
@@ -529,6 +529,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 39,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 391.043,
+          y = 224,
+          width = 17.8696,
+          height = 9,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -572,6 +585,19 @@ return {
           properties = {
             ["nextMap"] = "maps/scene1.lua"
           }
+        },
+        {
+          id = 38,
+          name = "statue",
+          type = "",
+          shape = "rectangle",
+          x = 383.818,
+          y = 232.909,
+          width = 32.1818,
+          height = 35.7576,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     }

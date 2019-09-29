@@ -11,9 +11,18 @@ function Game:new()
 	self.stop = false
 	self.camera = Camera()
 	self.camera:setFollowStyle('TOPDOWN_TIGHT')
+	self.interact_bed_hiko = false
+	self.interact_bed_irene = false
+
+	-- Load Chapters
+	self.chapter1 = Chapter1()
+	self.chapter2 = Chapter2()
+	self.chapter3 = Chapter3()
+	self.chapter4 = Chapter4()
 	
 	self:loadAssets()
 	self:loadLevel()
+
 end
 
 function Game:loadAssets()
@@ -33,26 +42,18 @@ function Game:loadLevel()
 	self.map:bump_init(self.world)
 	
 	for k, object in pairs(self.map.objects) do
-		if object.name == "player_spawn" then
-			self.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, self.charImage, self.world, 200, 64, 200)
-			table.insert(self.entities, self.player)
-		elseif object.name == "irene_spawn" then
-			self.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, self.npcImage, self.world, 200, 64, 200)
-			table.insert(self.entities, self.npc)
-		elseif object.name == "door" then
-			local door = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, self.world, "ent_door")
-			door.nextMap = object.properties.nextMap;
-			table.insert(self.entities, door)
-		elseif object.name == "bed_hiko" then
-			local bed_hiko = Entity(math.floor(object.x), math.floor(object.y), 16, math.floor(object.height), nil, self.world, "ent_bed_hiko")
-			table.insert(self.entities, bed_hiko)
-		elseif object.name == "bed_irene" then
-			local bed_hiko = Entity(math.floor(object.x), math.floor(object.y), 16, 32, nil, self.world, "ent_bed_irene")
-			table.insert(self.entities, bed_irene)
+		if self.chapter == 1 then 
+			self.chapter1:loadEntities()
+		elseif self.chapter == 2 then 
+			self.chapter2:loadEntities()
+		elseif self.chapter == 3 then 
+			self.chapter3:loadEntities()
+		elseif self.chapter == 4 then 
+			self.chapter4:loadEntities()
 		end
 	end
 	
-	--self.map:removeLayer("Objects")
+	self.map:removeLayer("Objects")
 	self.map:removeLayer("custom_collisions")
 	self.stop = true
 end
@@ -77,9 +78,9 @@ function Game:checkCols(entity, cols)
 				Talkies.say("Hiko", "I should tell her about the cloud...", {image=self.player.avatar, talkSound=self.blop,})
 			end
 		elseif thisName == "ent_player" and otherName == "ent_bed_hiko" then
-			Talkies.say("Hiko", "I'm not tired right now.", {image=self.player.avatar, talkSound=self.blop,})
+			self.interact_bed_hiko = true
 		elseif thisName == "ent_player" and otherName == "ent_bed_irene" then
-			Talkies.say("Hiko", "That's not my bed.", {image=self.player.avatar, talkSound=self.blop,})
+			self.interact_bed_irene = true
 		end
 		
 	end
@@ -97,13 +98,14 @@ function Game:manageKeypresses(key)
 		Talkies.say("Irene", "Hiko! Don't you see I'm busy?? Go play outside or something.", {image=self.npc.avatar, talkSound=self.blop,})
 		self.interact = false
 		self.scene1Unlocked = true
+	elseif key == "space" and self.interact_bed_hiko then
+		Talkies.say("Hiko", "I'm not tired right now.", {image=self.player.avatar, talkSound=self.blop,})
+		self.interact_bed_hiko = false
+	elseif key == "space" and self.interact_bed_irene then
+		Talkies.say("Hiko", "That's not my bed.", {image=self.player.avatar, talkSound=self.blop,})
+		self.interact_bed_irene = false
 	elseif key == "space" then
 		Talkies.onAction() 
-	elseif key == "return" then
-		for i, entity in pairs(self.map.objects) do
-			print(entity.name)
-			print("hello!")
-		end
 	end
 
 end

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="38">
+<map version="1.2" tiledversion="1.2.4" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="40">
  <tileset firstgid="1" source="outdoor.tsx.tmx"/>
  <layer id="1" name="grass" width="30" height="20">
   <data encoding="csv">
@@ -132,6 +132,7 @@
   <object id="34" x="135.5" y="226.625" width="18.625" height="2.25"/>
   <object id="35" x="139.125" y="224.25" width="11.875" height="2"/>
   <object id="36" x="131.625" y="246.875" width="26.4076" height="6.875"/>
+  <object id="39" x="391.043" y="224" width="17.8696" height="9"/>
  </objectgroup>
  <objectgroup id="8" name="Objects">
   <object id="1" name="player_spawn" x="99" y="268" width="16" height="24">
@@ -144,5 +145,6 @@
     <property name="nextMap" value="maps/scene1.lua"/>
    </properties>
   </object>
+  <object id="38" name="statue" x="383.818" y="232.909" width="32.1818" height="35.7576"/>
  </objectgroup>
 </map>

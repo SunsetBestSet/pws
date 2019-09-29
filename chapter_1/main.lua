@@ -9,6 +9,7 @@ Camera = require "libs/Camera"
 require "player"
 require "game"
 require "npc"
+require "chapters"
 
 
 
