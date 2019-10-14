@@ -48,6 +48,8 @@ function Game:loadLevel()
   end
   
   self.map:removeLayer("Objects")
+  print(self.level .. " has " .. #self.entities .. "entities")
+
 end
 
 
@@ -94,6 +96,8 @@ function Game:update(dt)
     self.player.grippedEntity.xVel = self.player.xVel
   end
   
+  print("no of entities is " ..  #self.entities)
+
   for i=1,#self.entities do
     if self.entities[i]:is(DynamicEntity) then
       self.entities[i]:updatePhysics(dt)
