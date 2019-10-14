@@ -145,6 +145,10 @@
     <property name="nextMap" value="maps/scene1.lua"/>
    </properties>
   </object>
-  <object id="38" name="statue" x="383.818" y="232.909" width="32.1818" height="35.7576"/>
+  <object id="38" name="statue" x="383.818" y="232.909" width="32.1818" height="35.7576">
+   <properties>
+    <property name="collidable" type="bool" value="true"/>
+   </properties>
+  </object>
  </objectgroup>
 </map>

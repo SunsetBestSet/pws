@@ -573,7 +573,7 @@ return {
         },
         {
           id = 3,
-          name = "door",
+          name = "door_house",
           type = "",
           shape = "rectangle",
           x = 80,

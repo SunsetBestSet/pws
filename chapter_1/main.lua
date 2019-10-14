@@ -9,8 +9,7 @@ Camera = require "libs/Camera"
 require "player"
 require "game"
 require "npc"
-require "chapters"
-
+require "chapters/chapter-1/chapter1"
 
 
 local cols,GRAVITY,map,world
