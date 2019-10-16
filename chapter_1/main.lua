@@ -5,12 +5,12 @@ maid64 = require "libs/maid64"
 anim8 = require "libs/anim8"
 Talkies = require "libs/talkies"
 Camera = require "libs/Camera"
+tween = require "libs/tween"
 
 require "player"
 require "game"
 require "npc"
-require "chapters"
-
+require "chapters/chapter-1/chapter1"
 
 
 local cols,GRAVITY,map,world

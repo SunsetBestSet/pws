@@ -13,21 +13,15 @@ function Game:new()
 	self.camera:setFollowStyle('TOPDOWN_TIGHT')
 	self.interact_bed_hiko = false
 	self.interact_bed_irene = false
-
-	-- Load Chapters
+	self.characters = require 'characters'
 	self.chapter1 = Chapter1()
-	self.chapter2 = Chapter2()
-	self.chapter3 = Chapter3()
-	self.chapter4 = Chapter4()
+	self.chapter = 1
+	self.black = {colour={0,0,0,0}, width=love.graphics.getWidth(), height=love.graphics.getHeight()}
+	self.fadeInBlack = tween.new(1, self.black, {colour={0, 0, 0, 1}}, 'inQuad')
+	self.fadeOutBlack = tween.new(1, self.black, {colour={0, 0, 0, 0}}, 'outQuad')
 	
-	self:loadAssets()
 	self:loadLevel()
 
-end
-
-function Game:loadAssets()
-	self.charImage = love.graphics.newImage('assets/sprites/link.png')
-	self.npcImage = love.graphics.newImage('assets/sprites/npc.png')
 end
 
 function Game:setupPhysics()
@@ -40,19 +34,11 @@ function Game:loadLevel()
 	self:setupPhysics()
 	self.map = sti(self.level, { "bump" })
 	self.map:bump_init(self.world)
-	
+	self = self.chapter1:loadAssets(self)
 	for k, object in pairs(self.map.objects) do
-		if self.chapter == 1 then 
-			self.chapter1:loadEntities()
-		elseif self.chapter == 2 then 
-			self.chapter2:loadEntities()
-		elseif self.chapter == 3 then 
-			self.chapter3:loadEntities()
-		elseif self.chapter == 4 then 
-			self.chapter4:loadEntities()
-		end
+		self = self.chapter1:loadEntities(object, self)
 	end
-	
+
 	self.map:removeLayer("Objects")
 	self.map:removeLayer("custom_collisions")
 	self.stop = true
@@ -67,45 +53,21 @@ function Game:checkCols(entity, cols)
 	for i,v in ipairs (cols) do
 
 		local otherName = cols[i].other.name;
-		
-		if thisName == "ent_player" and otherName == "ent_npc" then
-			self.interact = true
-		elseif thisName == "ent_player" and otherName == "ent_door" and self.player.facing == "N" then
-			if self.scene1Unlocked or self.level == "maps/town.lua" then
-				self.level = cols[i].other.nextMap
-				self:loadLevel()
-			elseif self.level == "maps/scene1.lua" then
-				Talkies.say("Hiko", "I should tell her about the cloud...", {image=self.player.avatar, talkSound=self.blop,})
-			end
-		elseif thisName == "ent_player" and otherName == "ent_bed_hiko" then
-			self.interact_bed_hiko = true
-		elseif thisName == "ent_player" and otherName == "ent_bed_irene" then
-			self.interact_bed_irene = true
+		if self.chapter == 1 then
+		self = self.chapter1:manageCollisions(thisName, otherName, cols, i, self)
 		end
-		
 	end
 
 end
 
+function Game:tween(dt)
+	
+end
+
 function Game:manageKeypresses(key)
 
-	if (key == 'space') and self.interact and self.level == "maps/scene1.lua" and not self.scene1Unlocked then
-		Talkies.say("Hiko", "Irene!!!! What's that cloud??!! What's that cloud??!!", {image=self.player.avatar, talkSound=self.blop,})
-		Talkies.say("Irene", "...be silent Hiko.", {image=self.npc.avatar, talkSound=self.blop,})
-		Talkies.say("Hiko", "But Irene, it's so weird! And purple, and dark, and... and it looks evil!!", {image=self.player.avatar, talkSound=self.blop,})
-		Talkies.say("Irene", "Hiko... *sighs* I told you already- I'm working on some important spells. I need to concentrate...", {image=self.npc.avatar, talkSound=self.blop,})
-		Talkies.say("Hiko", "But,--Irene!!! It looks evil and scary! What if something bad is going on?!", {image=self.player.avatar, talkSound=self.blop,})
-		Talkies.say("Irene", "Hiko! Don't you see I'm busy?? Go play outside or something.", {image=self.npc.avatar, talkSound=self.blop,})
-		self.interact = false
-		self.scene1Unlocked = true
-	elseif key == "space" and self.interact_bed_hiko then
-		Talkies.say("Hiko", "I'm not tired right now.", {image=self.player.avatar, talkSound=self.blop,})
-		self.interact_bed_hiko = false
-	elseif key == "space" and self.interact_bed_irene then
-		Talkies.say("Hiko", "That's not my bed.", {image=self.player.avatar, talkSound=self.blop,})
-		self.interact_bed_irene = false
-	elseif key == "space" then
-		Talkies.onAction() 
+	if self.chapter == 1 then 
+		self = self.chapter1:manageKeypresses(key, self)
 	end
 
 end
@@ -192,3 +154,4 @@ function Game:draw()
 	love.graphics.print(tostring(self.interact), 0, 48)
 
 end
+
