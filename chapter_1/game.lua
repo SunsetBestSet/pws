@@ -16,6 +16,9 @@ function Game:new()
 	self.characters = require 'characters'
 	self.chapter1 = Chapter1()
 	self.chapter = 1
+	self.black = {colour={0,0,0,0}, width=love.graphics.getWidth(), height=love.graphics.getHeight()}
+	self.fadeInBlack = tween.new(1, self.black, {colour={0, 0, 0, 1}}, 'inQuad')
+	self.fadeOutBlack = tween.new(1, self.black, {colour={0, 0, 0, 0}}, 'outQuad')
 	
 	self:loadLevel()
 
@@ -55,6 +58,10 @@ function Game:checkCols(entity, cols)
 		end
 	end
 
+end
+
+function Game:tween(dt)
+	
 end
 
 function Game:manageKeypresses(key)
@@ -147,3 +154,4 @@ function Game:draw()
 	love.graphics.print(tostring(self.interact), 0, 48)
 
 end
+
