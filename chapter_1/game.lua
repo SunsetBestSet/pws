@@ -17,8 +17,6 @@ function Game:new()
 	self.chapter1 = Chapter1()
 	self.chapter = 1
 	self.black = {colour={0,0,0,0}, width=love.graphics.getWidth(), height=love.graphics.getHeight()}
-	self.fadeInBlack = tween.new(1, self.black, {colour={0, 0, 0, 1}}, 'inQuad')
-	self.fadeOutBlack = tween.new(1, self.black, {colour={0, 0, 0, 0}}, 'outQuad')
 	
 	self:loadLevel()
 
@@ -54,13 +52,30 @@ function Game:checkCols(entity, cols)
 
 		local otherName = cols[i].other.name;
 		if self.chapter == 1 then
-		self = self.chapter1:manageCollisions(thisName, otherName, cols, i, self)
+			self = self.chapter1:manageCollisions(thisName, otherName, cols, i, self)
 		end
 	end
 
 end
 
 function Game:tween(dt)
+	
+end
+
+function Game:doBlackScreen(direction, style, character, text)
+	if direction == "in" then
+		self.t1 = tween.new(1, self.black, {colour={0, 0, 0, 1}}, 'inQuad')
+		if style == "alert" then
+			
+			self.t2 == 
+		end
+	end
+	if direction == "out" then
+		self.fadeOutBlack = tween.new(1, self.black, {colour={0, 0, 0, 0}}, 'outQuad')
+	end
+end
+
+function Game:drawBlackScreen()
 	
 end
 
@@ -76,7 +91,7 @@ function Game:update(dt)
 
 	self.map:update(dt)
 	self:manageKeyboard(dt)
-	
+
 	for i=1, #self.entities do
 		self.entities[i].x, self.entities[i].y, cols = self.world:move( self.entities[i], self.entities[i].x, self.entities[i].y )
 		self:checkCols(self.entities[i], cols)
@@ -86,7 +101,7 @@ function Game:update(dt)
 		end
 	end
 
-	
+
 	self.player:update(dt)
 
 	self.camera:update(dt)
@@ -98,6 +113,7 @@ function Game:update(dt)
 		self.player.canMove = true
 	end
 
+	self:tween(dt)
 
 end
 
@@ -141,7 +157,7 @@ function Game:draw()
 	for i=1,#self.entities do
 		self.entities[i]:draw()
 	end
-	
+
 	-- debug information
 	--self.map:bump_draw(self.world, -tx, -ty)
 	self.camera:detach()
