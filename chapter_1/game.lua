@@ -16,8 +16,9 @@ function Game:new()
 	self.characters = require 'characters'
 	self.chapter1 = Chapter1()
 	self.chapter = 1
-	self.black = {colour={0,0,0,0}, width=love.graphics.getWidth(), height=love.graphics.getHeight()}
-	
+	self.objects = require 'objects'
+	self.tweens = {}
+
 	self:loadLevel()
 
 end
@@ -40,6 +41,7 @@ function Game:loadLevel()
 	self.map:removeLayer("Objects")
 	self.map:removeLayer("custom_collisions")
 	self.stop = true
+	self.complete = false
 end
 
 
@@ -58,25 +60,56 @@ function Game:checkCols(entity, cols)
 
 end
 
-function Game:tween(dt)
-	
+function Game:tweenupdate(dt)
+	local a = 0
+	for k, v in pairs(self.tweens) do 
+		if k == 1 and self.objects[1].colour[4] == 1 then
+			local complete = self.tweens[k]:update(dt)
+			if complete then 
+				local t2 = tween.new(0.05, self.objects[2], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inExpo')
+				table.insert(self.tweens, t2)
+			end
+		else
+			self.tweens[k]:update(dt)
+		end
+	end
 end
 
 function Game:doBlackScreen(direction, style, character, text)
+	for k, v in pairs(self.tweens) do self.tweens[k] = nil end
 	if direction == "in" then
-		self.t1 = tween.new(1, self.black, {colour={0, 0, 0, 1}}, 'inQuad')
+		local t1 = tween.new(1, self.objects[1], {colour={0, 0, 0, 1}}, 'inQuad')
+		table.insert(self.tweens, t1)
+		local alert = love.audio.newSource("assets/alert.mp3", "static")
+		love.audio.play(alert)
 		if style == "alert" then
-			
-			self.t2 == 
+			--local t2 = tween.new(1, self.objects[2], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
+			--table.insert(self.tweens, t2)
 		end
 	end
 	if direction == "out" then
-		self.fadeOutBlack = tween.new(1, self.black, {colour={0, 0, 0, 0}}, 'outQuad')
+		local t1 = tween.new(1, self.objects[1], {colour={0, 0, 0, 0}}, 'outQuad')
+		table.insert(self.tweens, t1)
+		if style == alert then 
+			local t2 = tween.new(0.05, self.objects[2], {colour = {1, 1, 1, 0}, y = love.graphics.getHeight() / 4 - 75}, 'outExpo')
+			table.insert(self.tweens, t2)
+		end
 	end
+
 end
 
-function Game:drawBlackScreen()
-	
+function Game:drawTweens()
+	for k, v in pairs(self.objects) do 
+		local object = self.objects[k]
+		love.graphics.setColor(object.colour)
+		if object.type == "rectangle" then 
+			love.graphics.rectangle('fill', 0, 0, object.width, object.height)
+		end
+		if object.type == "text" then
+			love.graphics.print(object.text, object.x, object.y)
+		end
+		love.graphics.setColor({1, 1, 1, 1})
+	end
 end
 
 function Game:manageKeypresses(key)
@@ -84,7 +117,12 @@ function Game:manageKeypresses(key)
 	if self.chapter == 1 then 
 		self = self.chapter1:manageKeypresses(key, self)
 	end
-
+	if key == 'i' then
+		self:doBlackScreen("in", "alert")
+	end
+	if key == 'o' then 
+		self:doBlackScreen("out")
+	end
 end
 
 function Game:update(dt)
@@ -113,7 +151,7 @@ function Game:update(dt)
 		self.player.canMove = true
 	end
 
-	self:tween(dt)
+	self:tweenupdate(dt)
 
 end
 
@@ -168,6 +206,8 @@ function Game:draw()
 	love.graphics.print(self.player.y,0,24)
 	love.graphics.print(self.player.facing, 0, 36)
 	love.graphics.print(tostring(self.interact), 0, 48)
+
+	self:drawTweens()
 
 end
 
