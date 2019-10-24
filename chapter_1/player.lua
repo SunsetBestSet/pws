@@ -16,11 +16,11 @@ function Player:new(x, y, width, height, image, world, maxVelX, maxVelY, speed)
   
   self.tempDistance = ""
   
-  local g = anim8.newGrid(16, 24, image:getWidth(), image:getHeight())
-  self.animationNorth = anim8.newAnimation(g('1-9',1), 0.1)
-  self.animationEast = anim8.newAnimation(g('1-9',2), 0.1)
-  self.animationSouth = anim8.newAnimation(g('1-9',3), 0.1)
-  self.animationWest = anim8.newAnimation(g('1-9',2), 0.1):flipH()
+  local g = anim8.newGrid(14, 22, image:getWidth(), image:getHeight())
+  self.animationNorth = anim8.newAnimation(g('1-4',3), 0.1)
+  self.animationEast = anim8.newAnimation(g('1-4',2), 0.1)
+  self.animationSouth = anim8.newAnimation(g('1-4',1), 0.1)
+  self.animationWest = anim8.newAnimation(g('1-4',2), 0.1):flipH()
 end
 
 function Player:update(dt)

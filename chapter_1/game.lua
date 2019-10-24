@@ -42,6 +42,8 @@ function Game:loadLevel()
 	self.map:removeLayer("custom_collisions")
 	self.stop = true
 	self.complete = false
+
+	self = self.chapter1:loadLevel(self)
 end
 
 

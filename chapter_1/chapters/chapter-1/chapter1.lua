@@ -8,7 +8,7 @@ function Chapter1:new()
 	self.scene2 = Scene2()
 	self.scene3 = Scene3()
 	self.scene = 1
-	self.character = love.graphics.newImage('assets/sprites/link.png')
+	self.character = love.graphics.newImage('assets/sprites/hiko.png')
 	self.irene = love.graphics.newImage('assets/sprites/npc.png')
 end
 
@@ -51,4 +51,10 @@ function Chapter1:manageKeypresses(key, GAME)
 		self.scene3:manageKeypresses(key, GAME)
 	end
 	return GAME
+end
+
+function Chapter1:loadLevel(GAME)
+	if self.scene == 3 then 
+		self.scene3:loadLevel(GAME)
+	end
 end
