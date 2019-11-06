@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 15,
-  nextobjectid = 8,
+  nextobjectid = 12,
   properties = {
     ["collidable"] = true
   },
@@ -174,6 +174,36 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 8,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 160.5,
+          y = 0.25,
+          width = 19,
+          height = 159.5,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["collidable"] = true
+          }
+        },
+        {
+          id = 11,
+          name = "door",
+          type = "",
+          shape = "rectangle",
+          x = -0.25,
+          y = 143.75,
+          width = 16,
+          height = 15.5,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["nextMap"] = "maps/leikoroom.lua"
+          }
         }
       }
     },

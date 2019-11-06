@@ -11,6 +11,7 @@ require "player"
 require "game"
 require "npc"
 require "chapters/chapter-1/chapter1"
+require "chapters/chapter-2/chapter2"
 
 
 local cols,GRAVITY,map,world

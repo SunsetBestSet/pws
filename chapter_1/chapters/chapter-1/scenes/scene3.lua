@@ -18,11 +18,23 @@ function Scene3:loadEntities(object, GAME, map)
 	elseif object.name == "satoru_spawn" then 
 		GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, self.satoru_img, GAME.world, 200, 64, 200)
 		table.insert(GAME.entities, GAME.npc)
+	elseif object.name == "door" then 
+		local door = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_door")
+		door.nextMap = object.properties.nextMap;
+		table.insert(GAME.entities, door)
 	end
 end
 
 function Scene3:manageCollisions(thisName, otherName, cols, i, GAME)
-
+	if thisName == "ent_player" and otherName == "ent_door" and GAME.player.facing == "N" then
+		if GAME.scene1Unlocked or GAME.level == "maps/town.lua" then
+			GAME.level = cols[i].other.nextMap
+			GAME.chapter = 2
+			GAME.chapter2.scene = 1
+			self.scene = 0
+			GAME:loadLevel()
+		end
+	end
 end
 
 function Scene3:manageKeypresses(key, GAME)

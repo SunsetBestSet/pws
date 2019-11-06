@@ -19,6 +19,7 @@ function Chapter1:loadEntities(object, GAME)
 	elseif self.scene == 2 then 
 		self.scene2:loadEntities(object, GAME)
 	elseif self.scene == 3 then 
+		if GAME.chapter == 2 then print('a') end
 		self.scene3:loadEntities(object, GAME)
 	end
 

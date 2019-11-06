@@ -15,6 +15,7 @@ function Game:new()
 	self.interact_bed_irene = false
 	self.characters = require 'characters'
 	self.chapter1 = Chapter1()
+	self.chapter2 = Chapter2()
 	self.chapter = 1
 	self.objects = require 'objects'
 	self.tweens = {}
@@ -35,15 +36,23 @@ function Game:loadLevel()
 	self.map:bump_init(self.world)
 	self = self.chapter1:loadAssets(self)
 	for k, object in pairs(self.map.objects) do
-		self = self.chapter1:loadEntities(object, self)
+		if self.chapter == 1 then 
+			self = self.chapter1:loadEntities(object, self)
+		elseif self.chapter == 2 then 
+			self = self.chapter2:loadEntities(object, self)
+		end
+
 	end
 
 	self.map:removeLayer("Objects")
 	self.map:removeLayer("custom_collisions")
 	self.stop = true
 	self.complete = false
-
-	self = self.chapter1:loadLevel(self)
+	if self.chapter == 1 then 
+		self = self.chapter1:loadLevel(self)
+	elseif self.chapter == 2 then 
+		self = self.chapter2:loadLevel(self)
+	end
 end
 
 
