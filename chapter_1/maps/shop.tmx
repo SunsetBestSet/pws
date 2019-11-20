@@ -60,7 +60,7 @@
   </object>
   <object id="11" name="door" x="-0.25" y="143.75" width="16" height="15.5">
    <properties>
-    <property name="nextMap" value="maps/leikoroom.lua"/>
+    <property name="nextMap" value="maps/town.lua"/>
    </properties>
   </object>
  </objectgroup>
