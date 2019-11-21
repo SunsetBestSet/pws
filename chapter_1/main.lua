@@ -7,11 +7,19 @@ Talkies = require "libs/talkies"
 Camera = require "libs/Camera"
 tween = require "libs/tween"
 
+-- load entities
 require "player"
 require "game"
 require "npc"
+
+-- load chapters
 require "chapters/chapter-1/chapter1"
 require "chapters/chapter-2/chapter2"
+
+-- load maps unlocked
+require "mapsU/townU"
+require "mapsU/houseireneU"
+require "mapsU/shopU"
 
 
 local cols,GRAVITY,map,world

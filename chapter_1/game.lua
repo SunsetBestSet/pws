@@ -20,6 +20,11 @@ function Game:new()
 	self.objects = require 'objects'
 	self.tweens = {}
 
+	-- load maps
+	self.town = Town()
+	self.houseirene = HouseIrene()
+	self.shop = Shop()
+
 	self:loadLevel()
 
 end

@@ -1,7 +1,7 @@
 return {
   version = "1.2",
   luaversion = "5.1",
-  tiledversion = "1.2.4",
+  tiledversion = "1.2.5",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 30,
@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 11,
-  nextobjectid = 82,
+  nextobjectid = 85,
   properties = {},
   tilesets = {
     {
@@ -466,71 +466,6 @@ return {
           properties = {}
         },
         {
-          id = 32,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 130,
-          y = 233.5,
-          width = 29.625,
-          height = 13,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 33,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 131.875,
-          y = 229.5,
-          width = 24.75,
-          height = 3.75,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 34,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 135.5,
-          y = 226.625,
-          width = 18.625,
-          height = 2.25,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 35,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 139.125,
-          y = 224.25,
-          width = 11.875,
-          height = 2,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 36,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 131.625,
-          y = 246.875,
-          width = 26.4076,
-          height = 6.875,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
           id = 39,
           name = "",
           type = "",
@@ -554,15 +489,17 @@ return {
       offsetx = 0,
       offsety = 0,
       draworder = "topdown",
-      properties = {},
+      properties = {
+        ["collidable"] = true
+      },
       objects = {
         {
           id = 1,
           name = "player_spawn",
           type = "",
           shape = "rectangle",
-          x = 99,
-          y = 268,
+          x = 128,
+          y = 265.5,
           width = 16,
           height = 24,
           rotation = 0,
@@ -1149,6 +1086,34 @@ return {
           visible = true,
           properties = {
             ["nextMap"] = "maps/scene1.lua"
+          }
+        },
+        {
+          id = 82,
+          name = "treehouse",
+          type = "",
+          shape = "rectangle",
+          x = 127.5,
+          y = 224.5,
+          width = 31.5,
+          height = 30,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 84,
+          name = "player_spawn_shop",
+          type = "",
+          shape = "rectangle",
+          x = 332,
+          y = 123.5,
+          width = 16,
+          height = 24,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["collidable"] = false
           }
         }
       }
