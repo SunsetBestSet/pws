@@ -6,7 +6,7 @@ function Scene2:new()
 end
 
 function Scene2:loadEntities(object, GAME, map)
-	if GAME.level == "maps/town.lua" then 
+	if GAME.level == "maps/town.lua" then
 		if object.name == "player_spawn" then
 			GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 			table.insert(GAME.entities, GAME.player)
@@ -19,7 +19,7 @@ function Scene2:loadEntities(object, GAME, map)
 			door_shop.nextMap = object.properties.nextMap;
 			table.insert(GAME.entities, door_shop)
 		end
-	elseif GAME.level == "maps/scene1.lua" then 
+	elseif GAME.level == "maps/scene1.lua" then
 		if object.name == "player_spawn" then
 			GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 			table.insert(GAME.entities, GAME.player)
@@ -50,7 +50,7 @@ function Scene2:manageCollisions(thisName, otherName, cols, i, GAME)
 			GAME.level = cols[i].other.nextMap
 			GAME:loadLevel()
 		end
-	elseif GAME.level == "maps/scene1.lua" then 
+	elseif GAME.level == "maps/scene1.lua" then
 		if thisName == "ent_player" and otherName == "ent_npc" then
 			GAME.interact = true
 		elseif thisName == "ent_player" and otherName == "ent_door" and GAME.player.facing == "N" then
@@ -66,9 +66,9 @@ end
 
 function Scene2:manageKeypresses(key, GAME)
 	if key == "space" then
-		Talkies.onAction() 
+		Talkies.onAction()
 	end
-	if GAME.level == "maps/scene1.lua" then 
+	if GAME.level == "maps/scene1.lua" then
 		 	if key == "space" and self.interact_bed_hiko then
 			Talkies.say("Hiko", "I'm not tired right now.", {image=GAME.player.avatar, talkSound=GAME.blop,})
 			self.interact_bed_hiko = false
@@ -76,7 +76,7 @@ function Scene2:manageKeypresses(key, GAME)
 			Talkies.say("Hiko", "That's not my bed.", {image=GAME.player.avatar, talkSound=GAME.blop,})
 			self.interact_bed_irene = false
 		elseif key == "space" then
-			Talkies.onAction() 
+			Talkies.onAction()
 		end
 	end
 end

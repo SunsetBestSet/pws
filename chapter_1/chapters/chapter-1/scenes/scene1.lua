@@ -60,6 +60,6 @@ function Scene1:manageKeypresses(key, GAME)
 		Talkies.say("Hiko", "That's not my bed.", {image=GAME.player.avatar, talkSound=GAME.blop,})
 		self.interact_bed_irene = false
 	elseif key == "space" then
-		Talkies.onAction() 
+		Talkies.onAction()
 	end
 end

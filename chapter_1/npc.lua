@@ -1,6 +1,6 @@
 Nonplayable = DynamicEntity:extend()
 
-function Nonplayable:new(x, y, width, height, image, world, maxVelX, maxVelY, speed) 
+function Nonplayable:new(x, y, width, height, image, world, maxVelX, maxVelY, speed)
 Nonplayable.super.new(self, x, y, width, height, image, world, maxVelX, maxVelY, "ent_npc", 2)
   self.origX = x
   self.origY = 15
@@ -10,7 +10,8 @@ Nonplayable.super.new(self, x, y, width, height, image, world, maxVelX, maxVelY,
   self.isMoving = false
   self.canMove = true
   self.avatar = love.graphics.newImage("assets/irene.png")
-  
+  self.avatarkana = love.graphics.newImage("assets/kana.png")
+
   self.tempDistance = ""
 
   local g = anim8.newGrid(14, 22, image:getWidth(), image:getHeight())
