@@ -28,7 +28,8 @@ end
 function Shop:manageCollisions(thisName, otherName, cols, i, GAME)
 	if thisName == "ent_player" and otherName == "ent_door" then
 		GAME.level = cols[i].other.nextMap
-		self.scene = 4
+		if GAME.chapter1.scene == 3 then GAME.chapter1.scene = 4 end
+		GAME.exitThrough = "shop_town"
 		GAME:loadLevel()
 	end
 end

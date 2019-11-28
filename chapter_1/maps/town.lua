@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 11,
-  nextobjectid = 85,
+  nextobjectid = 88,
   properties = {},
   tilesets = {
     {
@@ -477,6 +477,19 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
+        },
+        {
+          id = 87,
+          name = "treehouse_collider",
+          type = "",
+          shape = "rectangle",
+          x = 128.5,
+          y = 224,
+          width = 30,
+          height = 29.5,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },
@@ -489,9 +502,7 @@ return {
       offsetx = 0,
       offsety = 0,
       draworder = "topdown",
-      properties = {
-        ["collidable"] = true
-      },
+      properties = {},
       objects = {
         {
           id = 1,
@@ -504,9 +515,7 @@ return {
           height = 24,
           rotation = 0,
           visible = true,
-          properties = {
-            ["collidable"] = false
-          }
+          properties = {}
         },
         {
           id = 3,
@@ -1093,10 +1102,10 @@ return {
           name = "treehouse",
           type = "",
           shape = "rectangle",
-          x = 127.5,
-          y = 224.5,
-          width = 31.5,
-          height = 30,
+          x = 126,
+          y = 222,
+          width = 34.5,
+          height = 33,
           rotation = 0,
           visible = true,
           properties = {}

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="85">
+<map version="1.2" tiledversion="1.2.5" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="88">
  <tileset firstgid="1" source="outdoor.tsx.tmx"/>
  <layer id="1" name="grass" width="30" height="20">
   <data encoding="csv">
@@ -128,16 +128,10 @@
   <object id="30" x="97.875" y="195.625" width="1.875" height="1"/>
   <object id="31" x="85.875" y="192" width="4.125" height="2.75"/>
   <object id="39" x="391.043" y="224" width="17.8696" height="9"/>
+  <object id="87" name="treehouse_collider" x="128.5" y="224" width="30" height="29.5"/>
  </objectgroup>
  <objectgroup id="8" name="Objects">
-  <properties>
-   <property name="collidable" type="bool" value="true"/>
-  </properties>
-  <object id="1" name="player_spawn" x="128" y="265.5" width="16" height="24">
-   <properties>
-    <property name="collidable" type="bool" value="false"/>
-   </properties>
-  </object>
+  <object id="1" name="player_spawn" x="128" y="265.5" width="16" height="24"/>
   <object id="3" name="door_house" x="80" y="248.375" width="15" height="19.25">
    <properties>
     <property name="nextMap" value="maps/scene1.lua"/>
@@ -198,7 +192,7 @@
     <property name="nextMap" value="maps/scene1.lua"/>
    </properties>
   </object>
-  <object id="82" name="treehouse" x="127.5" y="224.5" width="31.5" height="30"/>
+  <object id="82" name="treehouse" x="126" y="222" width="34.5" height="33"/>
   <object id="84" name="player_spawn_shop" x="332" y="123.5" width="16" height="24">
    <properties>
     <property name="collidable" type="bool" value="false"/>

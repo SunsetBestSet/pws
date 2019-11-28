@@ -1,13 +1,15 @@
 Town = Object:extend()
 
 function Town:new()
-	self.interact_binoculars =
+	self.interact_binoculars = false
 end
 
-function Town:loadEntities(object, GAME, map)
-	if object.name == "player_spawn" then
+function Town:loadEntities(object, GAME, map, scene4)
+	print(GAME.exitThrough)
+	if object.name == "player_spawn_shop" and GAME.exitThrough == "shop_town" then
 		GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 		table.insert(GAME.entities, GAME.player)
+		print("sup")
 	elseif object.name == "player_spawn" then
 		GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 		table.insert(GAME.entities, GAME.player)
