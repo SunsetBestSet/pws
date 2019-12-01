@@ -2,7 +2,7 @@ Scene1 = Object:extend()
 
 function Scene1:new()
 	self.interact_bed_hiko = false
-    self.interact_bed_irene = false
+	self.interact_bed_irene = false
 end
 
 function Scene1:loadEntities(object, GAME)
@@ -32,6 +32,7 @@ function Scene1:manageCollisions(thisName, otherName, cols, i, GAME)
 		if GAME.scene1Unlocked or GAME.level == "maps/town.lua" then
 			GAME.level = cols[i].other.nextMap
 			GAME.chapter1.scene = 2
+			GAME.exitThrough = "irene_house_town"
 			GAME:loadLevel()
 		elseif GAME.level == "maps/scene1.lua" then
 			Talkies.say("Hiko", "I should tell her about the cloud...", {image=GAME.player.avatar, talkSound=GAME.blop,})

@@ -19,7 +19,6 @@ function Game:new()
 	self.chapter = 1
 	self.objects = require 'objects'
 	self.tweens = {}
-	self.exitThrough = "irene_house_town"
 
 	-- load maps
 	self.town = Town()

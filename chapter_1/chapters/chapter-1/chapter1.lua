@@ -2,11 +2,13 @@ Chapter1 = Object:extend()
 require "chapters/chapter-1/scenes/scene1"
 require "chapters/chapter-1/scenes/scene2"
 require "chapters/chapter-1/scenes/scene3"
+require "chapters/chapter-1/scenes/scene4"
 
 function Chapter1:new()
 	self.scene1 = Scene1()
 	self.scene2 = Scene2()
 	self.scene3 = Scene3()
+	self.scene4 = Scene4()
 	self.scene = 1
 	self.character = love.graphics.newImage('assets/sprites/hiko.png')
 	self.irene = love.graphics.newImage('assets/sprites/npc.png')
@@ -19,8 +21,9 @@ function Chapter1:loadEntities(object, GAME)
 	elseif self.scene == 2 then 
 		self.scene2:loadEntities(object, GAME)
 	elseif self.scene == 3 then 
-		if GAME.chapter == 2 then print('a') end
 		self.scene3:loadEntities(object, GAME)
+	elseif self.scene == 4 then 
+		self.scene4:loadEntities(object, GAME)
 	end
 
 	return GAME

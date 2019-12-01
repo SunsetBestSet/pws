@@ -8,7 +8,7 @@ function Town:loadEntities(object, GAME, map, scene4)
 	if object.name == "player_spawn_shop" and GAME.exitThrough == "shop_town" then
 		GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 		table.insert(GAME.entities, GAME.player)
-	elseif object.name == "player_spawn" then
+	elseif object.name == "player_spawn" and GAME.exitThrough == "irene_house_town" then
 		GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 		table.insert(GAME.entities, GAME.player)
 	elseif object.name == "door_house" then
