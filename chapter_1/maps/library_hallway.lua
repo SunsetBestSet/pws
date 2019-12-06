@@ -8,7 +8,7 @@ return {
   height = 20,
   tilewidth = 16,
   tileheight = 16,
-  nextlayerid = 11,
+  nextlayerid = 7,
   nextobjectid = 7,
   properties = {},
   tilesets = {
@@ -37,38 +37,12 @@ return {
       terrains = {},
       tilecount = 1000,
       tiles = {}
-    },
-    {
-      name = "overworld0",
-      firstgid = 1001,
-      filename = "overworld0.tsx.tmx",
-      tilewidth = 16,
-      tileheight = 16,
-      spacing = 0,
-      margin = 0,
-      columns = 40,
-      image = "overworld0.png",
-      imagewidth = 640,
-      imageheight = 576,
-      tileoffset = {
-        x = 0,
-        y = 0
-      },
-      grid = {
-        orientation = "orthogonal",
-        width = 16,
-        height = 16
-      },
-      properties = {},
-      terrains = {},
-      tilecount = 1440,
-      tiles = {}
     }
   },
   layers = {
     {
       type = "tilelayer",
-      id = 7,
+      id = 3,
       name = "floor",
       x = 0,
       y = 0,
@@ -85,8 +59,8 @@ return {
         0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0,
         0, 1, 1, 1, 1, 0,
-        0, 1, 1, 1, 1, 1,
-        0, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1,
+        1, 1, 1, 1, 1, 1,
         0, 1, 1, 1, 1, 0,
         0, 1, 1, 1, 1, 0,
         0, 1, 1, 1, 1, 0,
@@ -96,8 +70,8 @@ return {
         0, 1, 1, 1, 1, 0,
         0, 1, 1, 1, 1, 0,
         0, 1, 1, 1, 1, 0,
-        0, 1, 1, 1, 1, 1,
-        0, 1, 1, 1, 1, 1,
+        0, 1, 1, 1, 1, 0,
+        0, 1, 1, 1, 1, 0,
         0, 1, 1, 1, 1, 0,
         0, 1, 1, 1, 1, 0,
         0, 0, 1, 1, 0, 0
@@ -105,7 +79,7 @@ return {
     },
     {
       type = "tilelayer",
-      id = 9,
+      id = 4,
       name = "carpet",
       x = 0,
       y = 0,
@@ -133,8 +107,8 @@ return {
         0, 0, 611, 613, 0, 0,
         0, 0, 611, 613, 0, 0,
         0, 0, 611, 613, 0, 0,
-        0, 0, 611, 1610613428, 572, 572,
-        0, 0, 611, 692, 652, 652,
+        572, 572, 611, 613, 0, 0,
+        652, 652, 611, 613, 0, 0,
         0, 0, 611, 613, 0, 0,
         0, 0, 611, 613, 0, 0,
         0, 0, 611, 613, 0, 0
@@ -142,7 +116,7 @@ return {
     },
     {
       type = "tilelayer",
-      id = 8,
+      id = 1,
       name = "wall",
       x = 0,
       y = 0,
@@ -172,50 +146,11 @@ return {
         588, 0, 0, 0, 0, 588,
         588, 0, 0, 0, 0, 588,
         588, 0, 0, 0, 0, 588,
-        588, 0, 0, 0, 0, 0,
-        588, 0, 0, 0, 0, 0,
+        0, 0, 2684355251, 0, 0, 588,
+        0, 0, 691, 0, 0, 588,
         588, 0, 0, 0, 0, 588,
         588, 0, 0, 0, 0, 588,
         588, 588, 0, 0, 588, 588
-      }
-    },
-    {
-      type = "tilelayer",
-      id = 10,
-      name = "deco",
-      x = 0,
-      y = 0,
-      width = 6,
-      height = 20,
-      visible = true,
-      opacity = 1,
-      offsetx = 0,
-      offsety = 0,
-      properties = {
-        ["collidable"] = true
-      },
-      encoding = "lua",
-      data = {
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 490, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 452, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 452, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0
       }
     },
     {
@@ -231,56 +166,43 @@ return {
       objects = {
         {
           id = 1,
-          name = "player_spawn",
+          name = "leiko_hallway",
           type = "",
           shape = "rectangle",
-          x = 42.0121,
-          y = 98.0731,
-          width = 11.4767,
-          height = 11.4767,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 2,
-          name = "kana_hallway",
-          type = "",
-          shape = "rectangle",
-          x = 3.08706e-07,
-          y = 63.3516,
-          width = 5.9679,
-          height = 32.1348,
+          x = 90.125,
+          y = 63.875,
+          width = 5.75,
+          height = 32,
           rotation = 0,
           visible = true,
           properties = {
-            ["nextMap"] = "maps/kana_hallway.lua"
-          }
-        },
-        {
-          id = 3,
-          name = "infirmary_door",
-          type = "",
-          shape = "rectangle",
-          x = 89.8584,
-          y = 240.043,
-          width = 6.3439,
-          height = 32.0741,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["nextMap"] = "maps/infirmary.lua"
+            ["nextMap"] = "maps/leiko_hallway.lua"
           }
         },
         {
           id = 4,
+          name = "library_door",
+          type = "",
+          shape = "rectangle",
+          x = 0,
+          y = 63.75,
+          width = 6,
+          height = 32,
+          rotation = 0,
+          visible = true,
+          properties = {
+            ["nextMap"] = "maps/library.lua"
+          }
+        },
+        {
+          id = 5,
           name = "main_hallway",
           type = "",
           shape = "rectangle",
-          x = 31.875,
-          y = 314.75,
-          width = 32.125,
-          height = 5.25,
+          x = 31.75,
+          y = 315,
+          width = 32.5,
+          height = 4.75,
           rotation = 0,
           visible = true,
           properties = {
@@ -288,25 +210,23 @@ return {
           }
         },
         {
-          id = 5,
-          name = "maid_door",
+          id = 6,
+          name = "player_spawn",
           type = "",
           shape = "rectangle",
-          x = 90.75,
-          y = 64,
-          width = 5.125,
-          height = 31.75,
+          x = 42.6667,
+          y = 99,
+          width = 13.6667,
+          height = 13,
           rotation = 0,
           visible = true,
-          properties = {
-            ["nextMap"] = "maps/maidroom.lua"
-          }
+          properties = {}
         }
       }
     },
     {
       type = "objectgroup",
-      id = 6,
+      id = 2,
       name = "custom_collisions",
       visible = true,
       opacity = 1,

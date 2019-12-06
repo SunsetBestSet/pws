@@ -22,6 +22,8 @@ function Game:new()
 	self.ch2scene3Unlocked = false
 	self.ch2scene4Unlocked = false
 	self.ch2scene5Unlocked = false
+	self.ch2scene6Unlocked = false
+	self.kana_appear = false
 	self.objects = require 'objects'
 	self.tweens = {}
 
@@ -101,8 +103,8 @@ function Game:doBlackScreen(direction, style, character, text)
 	if direction == "in" then
 		local t1 = tween.new(1, self.objects[1], {colour={0, 0, 0, 1}}, 'inQuad')
 		table.insert(self.tweens, t1)
-		local alert = love.audio.newSource("assets/alert.mp3", "static")
-		love.audio.play(alert)
+		--local alert = love.audio.newSource("assets/alert.mp3", "static")
+		--love.audio.play(alert)
 		if style == "alert" then
 			--local t2 = tween.new(1, self.objects[2], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
 			--table.insert(self.tweens, t2)
@@ -229,6 +231,7 @@ function Game:draw()
 	love.graphics.print(self.player.y,0,24)
 	love.graphics.print(self.player.facing, 0, 36)
 	love.graphics.print(tostring(self.interact), 0, 48)
+	love.graphics.print(self.level,0,300)
 
 	self:drawTweens()
 

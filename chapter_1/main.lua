@@ -12,6 +12,8 @@ require "game"
 require "npc"
 require "chapters/chapter-1/chapter1"
 require "chapters/chapter-2/chapter2"
+require "chapters/chapter-2/scenes/scene6"
+require "chapters/chapter-2/scenes/scene2"
 
 
 local cols,GRAVITY,map,world
@@ -22,7 +24,7 @@ function love.load()
 	love.window.setMode(640, 640)
 
 	maid64.setup(320)
-  
+
 	game = Game()
 
 	Talkies.font = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 40)

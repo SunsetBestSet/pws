@@ -1,4 +1,5 @@
 require "dynamic_entity"
+require "game"
 
 Player = DynamicEntity:extend();
 
@@ -13,9 +14,8 @@ function Player:new(x, y, width, height, image, world, maxVelX, maxVelY, speed)
   self.isMoving = false
   self.canMove = true
   self.avatar = love.graphics.newImage("assets/hiko.png")
-  
   self.tempDistance = ""
-  
+
   local g = anim8.newGrid(14, 22, image:getWidth(), image:getHeight())
   self.animationNorth = anim8.newAnimation(g('1-4',3), 0.1)
   self.animationEast = anim8.newAnimation(g('1-4',2), 0.1)
@@ -67,7 +67,7 @@ function Player:moveRight(dt)
   self.x = math.floor(self.x + self.horizontal_speed * dt)
   self.facing = "E"
   self:updateAnimations(dt)
-  if game.interact then 
+  if game.interact then
     game.interact = false
   end
 end
@@ -76,7 +76,7 @@ function Player:moveLeft(dt)
   self.x = math.floor(self.x - self.horizontal_speed * dt)
   self.facing = "W"
   self:updateAnimations(dt)
-  if game.interact then 
+  if game.interact then
     game.interact = false
   end
 end
@@ -85,7 +85,7 @@ function Player:moveDown(dt)
   self.y = math.floor(self.y + self.vertical_speed * 1.25 * dt)
   self.facing = "S"
   self:updateAnimations(dt)
-  if game.interact then 
+  if game.interact then
     game.interact = false
   end
 end
@@ -94,7 +94,7 @@ function Player:moveUp(dt)
   self.y = math.floor(self.y - self.vertical_speed * dt)
   self.facing = "N"
   self:updateAnimations(dt)
-  if game.interact then 
+  if game.interact then
     game.interact = false
   end
 end
