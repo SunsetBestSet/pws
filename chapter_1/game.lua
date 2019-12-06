@@ -96,7 +96,7 @@ function Game:doBlackScreen(direction, style, character, text)
 	if direction == "in" then
 		local t1 = tween.new(1, self.objects[1], {colour={0, 0, 0, 1}}, 'inQuad')
 		table.insert(self.tweens, t1)
-		local alert = love.audio.newSource("assets/alert.mp3", "static")
+		local alert = love.audio.newSource("assets/alert.wav", "static")
 		love.audio.play(alert)
 		if style == "alert" then
 			--local t2 = tween.new(1, self.objects[2], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
@@ -109,6 +109,7 @@ function Game:doBlackScreen(direction, style, character, text)
 		if style == alert then 
 			local t2 = tween.new(0.05, self.objects[2], {colour = {1, 1, 1, 0}, y = love.graphics.getHeight() / 4 - 75}, 'outExpo')
 			table.insert(self.tweens, t2)
+			print("h")
 		end
 	end
 
@@ -139,6 +140,8 @@ function Game:manageKeypresses(key)
 	if key == 'o' then 
 		self:doBlackScreen("out")
 	end
+
+	if key == 'space' then Talkies.onAction() end
 end
 
 function Game:update(dt)

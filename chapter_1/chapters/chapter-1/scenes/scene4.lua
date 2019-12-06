@@ -34,5 +34,5 @@ function Scene4:manageKeypresses(key, GAME)
 end
 
 function Scene4:loadLevel(GAME)
-
+	Talkies.say("Hiko (thinking)", "Now I can use my binoculars to look at the mountain from my treehouse!", {image=GAME.player.avatar, talkSound=GAME.blop,})
 end

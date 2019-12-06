@@ -19,6 +19,9 @@ function Town:loadEntities(object, GAME, map, scene4)
 		local door_shop = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_shopdoor")
 		door_shop.nextMap = object.properties.nextMap;
 		table.insert(GAME.entities, door_shop)
+	elseif object.name == "treehouse" then
+		local treehouse = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_treehouse")
+		table.insert(GAME.entities, treehouse)
 	end
 end
 
@@ -30,8 +33,17 @@ function Town:manageCollisions(thisName, otherName, cols, i, GAME)
 	elseif thisName == "ent_player" and otherName == "ent_housedoor" and GAME.player.facing == "N" then
 		GAME.level = cols[i].other.nextMap
 		GAME:loadLevel()
+	elseif thisName == "ent_player" and otherName == "ent_treehouse" then 
+		print("ok")
+		Talkies.say("Hiko", "Satoru!-- Satoru!-- I need your help!", {image=GAME.player.avatar, talkSound=GAME.blop,})
 	end
 end
 
 function Town:manageKeypresses(key, GAME)
+	if key == 'b' then 
+		GAME:doBlackScreen("in")
+	end
+	if key == 'o' then 
+		GAME:doBlackScreen("out")
+	end
 end

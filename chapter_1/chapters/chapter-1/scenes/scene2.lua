@@ -28,4 +28,7 @@ function Scene2:manageKeypresses(key, GAME)
 	if GAME.level == "maps/scene1.lua" then 
 		self.houseirene:manageKeypresses(key, GAME)
 	end
+	if GAME.level == "maps/town.lua" then 
+		self.town:manageKeypresses(key, GAME)
+	end
 end
