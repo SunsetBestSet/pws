@@ -5,7 +5,6 @@ require "chapters/chapter-2/scenes/scene3"
 require "chapters/chapter-2/scenes/scene4"
 require "chapters/chapter-2/scenes/scene5"
 require "chapters/chapter-2/scenes/scene6"
-require "chapters/chapter-2/scenes/scene7"
 
 function Chapter2:new()
 	self.scene1 = Scene2_1()
@@ -14,7 +13,6 @@ function Chapter2:new()
 	self.scene4 = Scene2_4()
 	self.scene5 = Scene2_5()
 	self.scene6 = Scene2_6()
-	self.scene7 = Scene2_7()
 	self.scene = 1
 	self.character = love.graphics.newImage('assets/sprites/hiko.png')
 	self.kana = love.graphics.newImage('assets/sprites/npc.png')
@@ -35,8 +33,6 @@ function Chapter2:loadEntities(object, GAME)
 		self.scene5:loadEntities(object, GAME)
 	elseif self.scene == 6 then
 		self.scene6:loadEntities(object, GAME)
-	elseif self.scene == 7 then
-		self.scene7:loadEntities(object, GAME)
 	end
 
 	return GAME
@@ -60,8 +56,6 @@ function Chapter2:manageCollisions(thisName, otherName, cols, i, GAME)
 		self.scene5:manageCollisions(thisName, otherName, cols, i, GAME)
 	elseif self.scene == 6 then
 		self.scene6:manageCollisions(thisName, otherName, cols, i, GAME)
-	elseif self.scene == 7 then
-		self.scene7:manageCollisions(thisName, otherName, cols, i, GAME)
 	end
 	return GAME
 end
@@ -79,8 +73,6 @@ function Chapter2:manageKeypresses(key, GAME)
 		self.scene5:manageKeypresses(key, GAME)
 	elseif self.scene == 6 then
 		self.scene6:manageKeypresses(key, GAME)
-	elseif self.scene == 7 then
-		self.scene7:manageKeypresses(key, GAME)
 	end
 	return GAME
 end
@@ -98,12 +90,33 @@ function Chapter2:loadLevel(GAME)
 		self.scene5:loadLevel(GAME)
 	elseif self.scene == 6 then
 		self.scene6:loadLevel(GAME)
-	elseif self.scene == 7 then
-		self.scene7:loadLevel(GAME)
 	end
 end
 
-function Chapter2:addKana(object, GAME)
-	self.scene6:addKana(object, GAME)
+function Chapter2:moreMessages(object, GAME)
+	if self.scene == 2 then
+		self.scene2:moreMessages(object, GAME)
+	elseif self.scene == 6 then
+		self.scene6:moreMessages(object, GAME)
+	end
+	return GAME
+end
+
+function Chapter2:spy(GAME)
+	if self.scene == 2 then
+		self.scene2:spy(GAME)
+	end
+	return GAME
+end
+function Chapter2:sorry(GAME)
+	if self.scene == 2 then
+		self.scene2:sorry(GAME)
+	end
+	return GAME
+end
+function Chapter2:fault(GAME)
+	if self.scene == 2 then
+		self.scene2:fault(GAME)
+	end
 	return GAME
 end

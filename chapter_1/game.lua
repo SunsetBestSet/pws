@@ -23,7 +23,6 @@ function Game:new()
 	self.ch2scene4Unlocked = false
 	self.ch2scene5Unlocked = false
 	self.ch2scene6Unlocked = false
-	self.kana_appear = false
 	self.objects = require 'objects'
 	self.tweens = {}
 

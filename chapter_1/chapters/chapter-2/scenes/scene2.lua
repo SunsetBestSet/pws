@@ -169,9 +169,9 @@ function Scene2_2:manageKeypresses(key, GAME)
 		Talkies.say("Leiko", "You...--Are you kidding me right now? One of YOUR maids ratted me out.", {image=self.player.avatar, talkSound=GAME.blop})
 		Talkies.say("Kana", "With reason. It is considered treason, Leiko.", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
 		Talkies.say("Leiko", "", { options= {
-			{"You told her to spy on me.", function() spy() end},
-			{"I'm sorry.", function() sorry() end},
-			{"It's your fault.", function() fault() end}
+			{"You told her to spy on me.", function() Scene2_2:spy(GAME) end},
+			{"I'm sorry.", function() Scene2_2:sorry(GAME) end},
+			{"It's your fault.", function() Scene2_2:fault(GAME) end}
 		}
 	}
 )
@@ -183,68 +183,66 @@ elseif key == "up" then Talkies.prevOption()
 elseif key == "down" then Talkies.nextOption()
 end
 
+-- options and rest of dialogue check
+if key == "g" then Scene2_2:moreMessages(GAME)
+elseif key == "h" then Scene2_2:spy(GAME)
+elseif key == "j" then Scene2_2:sorry(GAME)
+elseif key == "k" then Scene2_2:fault(GAME)
+end
+
 end
 
 function Scene2_2:loadLevel(GAME)
 end
 
 -- continuation of scene
-function Scene2_2:moreMessages()
+function Scene2_2:moreMessages(GAME)
 	local	player_avatar = love.graphics.newImage("assets/leiko.png")
-	local kana_avatar = love.graphics.newImage("assets/kana.png")
-	local blop = love.audio.newSource("assets/talk.wav", "static")
-	Talkies.say("Leiko", "Whatever...--the reason why I came here is because I think the legend of the disk might be true. --And someone might have found it.", {image=player_avatar, talkSound=blop})
-	Talkies.say("Kana", "Cough Cough Cough ", {image=kana_avatar, talkSound=blop})
+	Talkies.say("Leiko", "Whatever...--the reason why I came here is because I think the legend of the disk might be true. --And someone might have found it.", {image=player_avatar, talkSound=GAME.blop})
+	Talkies.say("Kana", "Cough Cough Cough ", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
 	Talkies.say("Maid", "Your Highness! Please be careful!")
-	Talkies.say("Kana", "Just what are you o-on about?", {image=kana_avatar, talkSound=blop})
-	Talkies.say("Kana", "Even if it might be true, the disk was said to be sealed away c-centuries ago.", {image=kana_avatar, talkSound=blop})
-	Talkies.say("Leiko", "The kid has seen it, Kana. The disk. Think about it, the clouds- ", {image=player_avatar, talkSound=blop})
-	Talkies.say("Leiko", "Cough Cough Cough ", {image=kana_avatar, talkSound=blop})
-	Talkies.say("Leiko", "What is going on with you? I've never seen you this sick... ", {image=player_avatar, talkSound=blop})
+	Talkies.say("Kana", "Just what are you o-on about?", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
+	Talkies.say("Kana", "Even if it might be true, the disk was said to be sealed away c-centuries ago.", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
+	Talkies.say("Leiko", "The kid has seen it, Kana. The disk. Think about it, the clouds- ", {image=player_avatar, talkSound=GAME.blop})
+	Talkies.say("Leiko", "Cough Cough Cough ", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
+	Talkies.say("Leiko", "What is going on with you? I've never seen you this sick... ", {image=player_avatar, talkSound=GAME.blop})
 	Talkies.say("Maid", "Your Highness...")
-	Talkies.say("Kana", "Don't... worry Leiko...--I'm just facing some complications as of late...", {image=kana_avatar, talkSound=blop})
-	Talkies.say("Leiko", "Sounds more than that...", {image=player_avatar, talkSound=blop})
-	Talkies.say("Leiko", "* Kana has always had problems with her health but it has definitely gotten worse the last few weeks... --maybe...? *", {image=player_avatar, talkSound=blop})
-	Talkies.say("Kana", "I am sorry sister, but I will have to ask a favor of you...", {image=kana_avatar, talkSound=blop})
-	Talkies.say("Leiko", "What?", {image=player_avatar, talkSound=blop})
-	Talkies.say("Kana", "The royal physician... will have to pay me a visit once again.--Get him for me... will you? I promise we will finish our talk after.", {image=kana_avatar, talkSound=blop})
-	Talkies.say("Kana", "I promise we will finish our talk after.", {image=kana_avatar, talkSound=blop})
-	Talkies.say("Kana", "Ugh... You better keep your word.", {image=player_avatar, talkSound=blop})
-	Talkies.say("Kana", "Thank you, sister.", {image=kana_avatar, talkSound=blop})
+	Talkies.say("Kana", "Don't... worry Leiko...--I'm just facing some complications as of late...", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
+	Talkies.say("Leiko", "Sounds more than that...", {image=player_avatar, talkSound=GAME.blop})
+	Talkies.say("Leiko", "* Kana has always had problems with her health but it has definitely gotten worse the last few weeks... --maybe...? *", {image=player_avatar, talkSound=GAME.blop})
+	Talkies.say("Kana", "I am sorry sister, but I will have to ask a favor of you...", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
+	Talkies.say("Leiko", "What?", {image=player_avatar, talkSound=GAME.blop})
+	Talkies.say("Kana", "The royal physician... will have to pay me a visit once again.--Get him for me... will you? I promise we will finish our talk after.", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
+	Talkies.say("Kana", "I promise we will finish our talk after.", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
+	Talkies.say("Kana", "Ugh... You better keep your word.", {image=player_avatar, talkSound=GAME.blop})
+	Talkies.say("Kana", "Thank you, sister.", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
 end
-
 
 -- Kana and Leiko options
-function spy()
+function Scene2_2:spy(GAME)
 	local	player_avatar = love.graphics.newImage("assets/leiko.png")
-	local kana_avatar = love.graphics.newImage("assets/kana.png")
-	local blop = love.audio.newSource("assets/talk.wav", "static")
 	Talkies.say("GAME", "* YOU CHOSE THE OPTION 'You told her to spy on me.'")
-	Talkies.say("Leiko", "Ugh... I bet you even told her to spy on me or something.", {image=player_avatar, talkSound=blop})
-	Talkies.say("Kana", "What?--How could you accuse me of such?", {image=kana_avatar, talkSound=blop})
-	Talkies.say("Kana", "I'm not that wary of you. She told the queen on her own account.", {image=kana_avatar, talkSound=blop})
-	Talkies.say("Leiko", "Sure...", {image=player_avatar, talkSound=blop})
-	Scene2_2:moreMessages()
+	Talkies.say("Leiko", "Ugh... I bet you even told her to spy on me or something.", {image=player_avatar, talkSound=GAME.blop})
+	Talkies.say("Kana", "What?--How could you accuse me of such?", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
+	Talkies.say("Kana", "I'm not that wary of you. She told the queen on her own account.", {image=GAME.npc.avatar, talkSound=GAME.blop})
+	Talkies.say("Leiko", "Sure...", {image=player_avatar, talkSound=GAME.blop})
+	Scene2_2:moreMessages(GAME)
 end
-function sorry()
+function Scene2_2:sorry(GAME)
 	local	player_avatar = love.graphics.newImage("assets/leiko.png")
-	local kana_avatar = love.graphics.newImage("assets/kana.png")
-	local blop = love.audio.newSource("assets/talk.wav", "static")
 	Talkies.say("GAME", "* YOU CHOSE THE OPTION 'I'm sorry'")
-	Talkies.say("Leiko", "I know, I'm sorry. I'll try not to...", {image=player_avatar, talkSound=blop})
-	Talkies.say("Kana", "I'm glad you have realised your mistake. I am simply taking care of you, Leiko.", {image=kana_avatar, talkSound=blop})
-	Talkies.say("Leiko", "...I'll try not to with you around that is...", {image=player_avatar, talkSound=blop})
-	Talkies.say("Kana", "... What?", {image=kana_avatar, talkSound=blop})
-	Scene2_2:moreMessages()
+	Talkies.say("Leiko", "I know, I'm sorry. I'll try not to...", {image=player_avatar, talkSound=GAME.blop})
+	Talkies.say("Kana", "I'm glad you have realised your mistake. I am simply taking care of you, Leiko.", {image=GAME.npc.avatar, talkSound=GAME.blop})
+	Talkies.say("Leiko", "...I'll try not to with you around that is...", {image=player_avatar, talkSound=GAME.blop})
+	Talkies.say("Kana", "... What?", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
+	Scene2_2:moreMessages(GAME)
 end
-function fault()
+function Scene2_2:fault(GAME)
 	local	player_avatar = love.graphics.newImage("assets/leiko.png")
-	local kana_avatar = love.graphics.newImage("assets/kana.png")
-	local blop = love.audio.newSource("assets/talk.wav", "static")
 	Talkies.say("GAME", "* YOU CHOSE THE OPTION 'It's your fault.'")
-	Talkies.say("Leiko", "Well, with you around I can't do anything, so it's your fault, although indirectly. ", {image=player_avatar, talkSound=blop})
-		Talkies.say("Kana", "What?", {image=kana_avatar, talkSound=blop})
-		Talkies.say("Leiko", "Mother favors you. Of course I can't get around anything.", {image=player_avatar, talkSound=blop})
-		Talkies.say("Kana", "That is not true, Leiko...", {image=kana_avatar, talkSound=blop})
-		Scene2_2:moreMessages()
+	Talkies.say("Leiko", "Well, with you around I can't do anything, so it's your fault, although indirectly. ", {image=player_avatar, talkSound=GAME.blop})
+		Talkies.say("Kana", "What?", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
+		Talkies.say("Leiko", "Mother favors you. Of course I can't get around anything.", {image=player_avatar, talkSound=GAME.blop})
+		Talkies.say("Kana", "That is not true, Leiko...", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
+		Scene2_2:moreMessages(GAME)
 	end
