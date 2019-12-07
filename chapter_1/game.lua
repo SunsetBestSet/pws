@@ -79,7 +79,7 @@ end
 function Game:tweenupdate(dt)
 	local a = 0
 	for k, v in pairs(self.tweens) do 
-		if k == 1 and self.objects[1].colour[4] == 1 then
+		if self.objects[1].colour[4] == 1 then
 			local complete = self.tweens[k]:update(dt)
 			if complete then 
 				local t2 = tween.new(0.05, self.objects[2], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inExpo')
@@ -89,6 +89,10 @@ function Game:tweenupdate(dt)
 			self.tweens[k]:update(dt)
 		end
 	end
+
+	if self.objects[2].colour[4] == 1 then 
+		self:doBlackScreen("out", "alert")
+	end
 end
 
 function Game:doBlackScreen(direction, style, character, text)
@@ -96,20 +100,18 @@ function Game:doBlackScreen(direction, style, character, text)
 	if direction == "in" then
 		local t1 = tween.new(1, self.objects[1], {colour={0, 0, 0, 1}}, 'inQuad')
 		table.insert(self.tweens, t1)
-		local alert = love.audio.newSource("assets/alert.wav", "static")
+		local alert = love.audio.newSource("assets/alert.mp3", "static")
 		love.audio.play(alert)
 		if style == "alert" then
-			--local t2 = tween.new(1, self.objects[2], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
-			--table.insert(self.tweens, t2)
+			self.alert = true
 		end
 	end
 	if direction == "out" then
 		local t1 = tween.new(1, self.objects[1], {colour={0, 0, 0, 0}}, 'outQuad')
 		table.insert(self.tweens, t1)
-		if style == alert then 
+		if style == "alert" then 
 			local t2 = tween.new(0.05, self.objects[2], {colour = {1, 1, 1, 0}, y = love.graphics.getHeight() / 4 - 75}, 'outExpo')
 			table.insert(self.tweens, t2)
-			print("h")
 		end
 	end
 

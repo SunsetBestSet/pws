@@ -775,15 +775,6 @@
   <object id="113" x="-32" y="0" width="30.6667" height="653.333"/>
   <object id="114" x="225.273" y="337.455" width="61.0909" height="19.6364"/>
   <object id="115" x="292.182" y="336.545" width="23.2727" height="27.0909"/>
-  <object id="117" x="858" y="369.636" width="13.1818" height="51.6364"/>
-  <object id="118" x="871.182" y="371.182" width="10.9091" height="50.3636"/>
-  <object id="119" x="881.818" y="377.818" width="8.27273" height="41.8182"/>
-  <object id="120" x="889.273" y="386" width="4.27273" height="28.4545"/>
-  <object id="121" x="849.818" y="371.727" width="8.45455" height="48.3636"/>
-  <object id="122" x="843.727" y="373.455" width="6.09091" height="46.2727"/>
-  <object id="123" x="838.091" y="378.182" width="5.63636" height="38.0909"/>
-  <object id="124" x="835.545" y="380.545" width="3.18182" height="34.0909"/>
-  <object id="125" x="832" y="396.455" width="3.90909" height="14.6364"/>
  </objectgroup>
  <objectgroup id="8" name="Objects">
   <object id="1" name="player_spawn" x="1056.18" y="399.818" width="16" height="24"/>
@@ -802,6 +793,6 @@
     <property name="collidable" type="bool" value="false"/>
    </properties>
   </object>
-  <object id="116" name="treehouse" x="831.227" y="368.409" width="65.1364" height="53.8182"/>
+  <object id="116" name="treehouse" x="831.773" y="370.591" width="63.6818" height="50.9091"/>
  </objectgroup>
 </map>

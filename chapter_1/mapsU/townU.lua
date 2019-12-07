@@ -34,8 +34,7 @@ function Town:manageCollisions(thisName, otherName, cols, i, GAME)
 		GAME.level = cols[i].other.nextMap
 		GAME:loadLevel()
 	elseif thisName == "ent_player" and otherName == "ent_treehouse" then 
-		print("ok")
-		Talkies.say("Hiko", "Satoru!-- Satoru!-- I need your help!", {image=GAME.player.avatar, talkSound=GAME.blop,})
+		self.interact_binoculars = true
 	end
 end
 
@@ -45,5 +44,19 @@ function Town:manageKeypresses(key, GAME)
 	end
 	if key == 'o' then 
 		GAME:doBlackScreen("out")
+	end
+	if key == 'space' and self.interact_binoculars then 
+		Talkies.say(
+			"Game", 
+			"Do you want to take a look?", 
+			{
+				options= 
+				{
+					{"Yes", function() GAME:doBlackScreen("in", "alert") end},
+					{"No"}
+				}
+			}
+		)
+		self.interact_binoculars = false
 	end
 end
