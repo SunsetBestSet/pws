@@ -1,15 +1,15 @@
 return {
   version = "1.2",
   luaversion = "5.1",
-  tiledversion = "1.2.5",
+  tiledversion = "1.3.1",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 10,
-  height = 10,
+  height = 11,
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 15,
-  nextobjectid = 12,
+  nextobjectid = 17,
   properties = {
     ["collidable"] = true
   },
@@ -49,7 +49,7 @@ return {
       x = 0,
       y = 0,
       width = 10,
-      height = 10,
+      height = 11,
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -66,7 +66,8 @@ return {
         41, 41, 41, 41, 41, 41, 41, 41, 41, 41,
         41, 41, 41, 41, 41, 41, 41, 41, 41, 41,
         41, 41, 41, 41, 41, 41, 41, 41, 41, 41,
-        41, 41, 41, 41, 41, 41, 41, 41, 41, 41
+        41, 41, 41, 41, 41, 41, 41, 41, 41, 41,
+        0, 0, 0, 0, 0, 0, 0, 0, 41, 41
       }
     },
     {
@@ -76,7 +77,7 @@ return {
       x = 0,
       y = 0,
       width = 10,
-      height = 10,
+      height = 11,
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -93,6 +94,7 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0
       }
     },
@@ -103,7 +105,7 @@ return {
       x = 0,
       y = 0,
       width = 10,
-      height = 10,
+      height = 11,
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -116,6 +118,7 @@ return {
         121, 121, 121, 121, 121, 121, 121, 121, 121, 121,
         161, 161, 161, 161, 161, 161, 161, 161, 161, 161,
         201, 201, 201, 201, 201, 201, 201, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -176,29 +179,14 @@ return {
           properties = {}
         },
         {
-          id = 8,
-          name = "",
-          type = "",
-          shape = "rectangle",
-          x = 160.5,
-          y = 0.25,
-          width = 19,
-          height = 159.5,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["collidable"] = true
-          }
-        },
-        {
           id = 11,
           name = "door",
           type = "",
           shape = "rectangle",
-          x = -0.25,
-          y = 143.75,
-          width = 16,
-          height = 15.5,
+          x = 127.75,
+          y = 170.5,
+          width = 32.5,
+          height = 5.5,
           rotation = 0,
           visible = true,
           properties = {
@@ -214,7 +202,7 @@ return {
       x = 0,
       y = 0,
       width = 10,
-      height = 10,
+      height = 11,
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -233,6 +221,7 @@ return {
         528, 0, 527, 0, 527, 0, 0, 0, 0, 0,
         568, 0, 567, 0, 567, 0, 0, 0, 0, 0,
         608, 0, 607, 0, 607, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0
       }
     },
@@ -243,7 +232,7 @@ return {
       x = 0,
       y = 0,
       width = 10,
-      height = 10,
+      height = 11,
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -260,6 +249,7 @@ return {
         451, 0, 329, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0
       }
     },
@@ -270,7 +260,7 @@ return {
       x = 0,
       y = 0,
       width = 10,
-      height = 10,
+      height = 11,
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -289,6 +279,7 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0
       }
     },
@@ -302,7 +293,60 @@ return {
       offsety = 0,
       draworder = "topdown",
       properties = {},
-      objects = {}
+      objects = {
+        {
+          id = 12,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 160.5,
+          y = -7,
+          width = 13,
+          height = 198.5,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 13,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = -5,
+          y = 160.5,
+          width = 132,
+          height = 20.5,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 15,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = -5.5,
+          y = -4.5,
+          width = 5.5,
+          height = 164.5,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 16,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = -2.5,
+          y = -10.5,
+          width = 165,
+          height = 10.5,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
     },
     {
       type = "tilelayer",
@@ -311,7 +355,7 @@ return {
       x = 0,
       y = 0,
       width = 10,
-      height = 10,
+      height = 11,
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -321,6 +365,7 @@ return {
       data = {
         0, 0, 170, 171, 0, 0, 170, 171, 0, 0,
         0, 0, 210, 211, 0, 0, 210, 211, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -338,7 +383,7 @@ return {
       x = 0,
       y = 0,
       width = 10,
-      height = 10,
+      height = 11,
       visible = true,
       opacity = 1,
       offsetx = 0,
@@ -348,6 +393,7 @@ return {
       data = {
         0, 605, 0, 0, 0, 0, 0, 0, 605, 0,
         0, 645, 0, 0, 0, 0, 0, 0, 645, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,

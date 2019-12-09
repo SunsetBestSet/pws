@@ -19,6 +19,7 @@ function Game:new()
 	self.chapter = 1
 	self.objects = require 'objects'
 	self.tweens = {}
+	self.doFadeOut = false
 
 	-- load maps
 	self.town = Town()
@@ -90,9 +91,13 @@ function Game:tweenupdate(dt)
 		end
 	end
 
-	if self.objects[2].colour[4] == 1 then 
-		self:doBlackScreen("out", "alert")
+	if self.doFadeOut and self.chapter1.scene == 5 and self.objects[1].colour[4] == 1 then 
+		self.doFadeOut = false
+		self.level = "maps/scene1.lua"
+		self:loadLevel()
+		self:doBlackScreen("out", alert)
 	end
+
 end
 
 function Game:doBlackScreen(direction, style, character, text)
@@ -107,10 +112,10 @@ function Game:doBlackScreen(direction, style, character, text)
 		end
 	end
 	if direction == "out" then
-		local t1 = tween.new(1, self.objects[1], {colour={0, 0, 0, 0}}, 'outQuad')
+		local t1 = tween.new(2, self.objects[1], {colour={0, 0, 0, 0}}, 'outQuad')
 		table.insert(self.tweens, t1)
 		if style == "alert" then 
-			local t2 = tween.new(0.05, self.objects[2], {colour = {1, 1, 1, 0}, y = love.graphics.getHeight() / 4 - 75}, 'outExpo')
+			local t2 = tween.new(0.1, self.objects[2], {colour = {1, 1, 1, 0}, y = love.graphics.getHeight() / 4 - 75}, 'outExpo')
 			table.insert(self.tweens, t2)
 		end
 	end
@@ -136,14 +141,6 @@ function Game:manageKeypresses(key)
 	if self.chapter == 1 then 
 		self = self.chapter1:manageKeypresses(key, self)
 	end
-	if key == 'i' then
-		self:doBlackScreen("in", "alert")
-	end
-	if key == 'o' then 
-		self:doBlackScreen("out")
-	end
-
-	if key == 'space' then Talkies.onAction() end
 end
 
 function Game:update(dt)
@@ -227,6 +224,8 @@ function Game:draw()
 	love.graphics.print(self.player.y,0,24)
 	love.graphics.print(self.player.facing, 0, 36)
 	love.graphics.print(tostring(self.interact), 0, 48)
+	love.graphics.print(self.level, 0, 60)
+	love.graphics.print("Scene: " .. self.chapter1.scene, 0, 72)
 
 	self:drawTweens()
 

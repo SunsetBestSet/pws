@@ -3,12 +3,14 @@ require "chapters/chapter-1/scenes/scene1"
 require "chapters/chapter-1/scenes/scene2"
 require "chapters/chapter-1/scenes/scene3"
 require "chapters/chapter-1/scenes/scene4"
+require "chapters/chapter-1/scenes/scene5"
 
 function Chapter1:new()
 	self.scene1 = Scene1()
 	self.scene2 = Scene2()
 	self.scene3 = Scene3()
 	self.scene4 = Scene4()
+	self.scene5 = Scene5()
 	self.scene = 1
 	self.character = love.graphics.newImage('assets/sprites/hiko.png')
 	self.irene = love.graphics.newImage('assets/sprites/npc.png')
@@ -24,6 +26,8 @@ function Chapter1:loadEntities(object, GAME)
 		self.scene3:loadEntities(object, GAME)
 	elseif self.scene == 4 then 
 		self.scene4:loadEntities(object, GAME)
+	elseif self.scene == 5 then 
+		self.scene5:loadEntities(object, GAME)
 	end
 
 	return GAME
@@ -42,6 +46,10 @@ function Chapter1:manageCollisions(thisName, otherName, cols, i, GAME)
 		self.scene2:manageCollisions(thisName, otherName, cols, i, GAME)
 	elseif self.scene == 3 then 
 		self.scene3:manageCollisions(thisName, otherName, cols, i, GAME)
+	elseif self.scene == 4 then 
+		self.scene4:manageCollisions(thisName, otherName, cols, i, GAME)
+	elseif self.scene == 5 then 
+		self.scene5:manageCollisions(thisName, otherName, cols, i, GAME)
 	end
 	return GAME
 end
@@ -53,8 +61,11 @@ function Chapter1:manageKeypresses(key, GAME)
 		self.scene2:manageKeypresses(key, GAME)
 	elseif self.scene == 3 then 
 		self.scene3:manageKeypresses(key, GAME)
+	elseif self.scene == 4 then 
+		self.scene4:manageKeypresses(key, GAME)
+	elseif self.scene == 5 then 
+		self.scene5:manageKeypresses(key, GAME)
 	end
-	if key == 'space' then Talkies.onAction() end
 	return GAME
 end
 

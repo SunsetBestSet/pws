@@ -15,21 +15,23 @@ end
 
 function Scene4:manageCollisions(thisName, otherName, cols, i, GAME)
 	if GAME.level == "maps/town.lua" then 
-		GAME.town:manageCollisions(object, GAME, map)
+		GAME.town:manageCollisions(thisName, otherName, cols, i, GAME)
 	elseif GAME.level == "maps/scene1.lua" then 
-		GAME.houseirene:manageCollisions(object, GAME, map)
+		GAME.houseirene:manageCollisions(thisName, otherName, cols, i, GAME)
 	elseif GAME.level == "maps/shop.lua" then 
-		GAME.shop:manageCollisions(object, GAME, map)
+		GAME.shop:manageCollisions(thisName, otherName, cols, i, GAME)
 	end
 end
 
 function Scene4:manageKeypresses(key, GAME)
 	if GAME.level == "maps/town.lua" then 
-		GAME.town:manageKeypresses(object, GAME, map)
+		GAME.town:manageKeypresses(key, GAME)
 	elseif GAME.level == "maps/scene1.lua" then 
-		GAME.houseirene:manageKeypresses(object, GAME, map)
+		GAME.houseirene:manageKeypresses(key, GAME)
 	elseif GAME.level == "maps/shop.lua" then 
-		GAME.shop:manageKeypresses(object, GAME, map)
+		GAME.shop:manageKeypresses(key, GAME)
+	elseif GAME.level == "maps/town.lua" then 
+		GAME.town:manageKeypresses(key, GAME)
 	end
 end
 

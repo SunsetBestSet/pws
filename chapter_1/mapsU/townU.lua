@@ -39,24 +39,32 @@ function Town:manageCollisions(thisName, otherName, cols, i, GAME)
 end
 
 function Town:manageKeypresses(key, GAME)
-	if key == 'b' then 
-		GAME:doBlackScreen("in")
-	end
-	if key == 'o' then 
-		GAME:doBlackScreen("out")
-	end
 	if key == 'space' and self.interact_binoculars then 
-		Talkies.say(
-			"Game", 
-			"Do you want to take a look?", 
-			{
-				options= 
+		if GAME.chapter1.scene == 2 then
+			Talkies.say(
+				"Game", 
+				"Do you want to take a look?", 
 				{
-					{"Yes", function() GAME:doBlackScreen("in", "alert") end},
-					{"No"}
+					options= 
+					{
+						{"Yes", function() self:startScene5(GAME) end},
+						{"No", function () end}
+					}
 				}
-			}
-		)
+				)
+		else 
+			Talkies.say("Game", "What a nice tree house!")
+		end
 		self.interact_binoculars = false
 	end
+	if key == "space" then Talkies.onAction()
+	elseif key == "up" then Talkies.prevOption()
+	elseif key == "down" then Talkies.nextOption()
+	end
+end
+
+function Town:startScene5(GAME)
+	GAME:doBlackScreen("in", "alert")
+	GAME.doFadeOut = true
+	GAME.chapter1.scene = 5
 end

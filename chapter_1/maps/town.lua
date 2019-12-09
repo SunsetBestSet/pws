@@ -1,7 +1,7 @@
 return {
   version = "1.2",
   luaversion = "5.1",
-  tiledversion = "1.2.5",
+  tiledversion = "1.3.1",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 70,
@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 60,
-  nextobjectid = 126,
+  nextobjectid = 128,
   properties = {},
   tilesets = {
     {
@@ -308,7 +308,7 @@ return {
       offsetx = 0,
       offsety = 0,
       properties = {
-        ["collidable"] = true
+        ["collidable"] = false
       },
       encoding = "lua",
       data = {
@@ -1695,6 +1695,32 @@ return {
           y = 370.591,
           width = 63.6818,
           height = 50.9091,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 126,
+          name = "sign_house",
+          type = "",
+          shape = "rectangle",
+          x = 1024.25,
+          y = 432.25,
+          width = 15.25,
+          height = 9.25,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 127,
+          name = "sign_treehouse",
+          type = "",
+          shape = "rectangle",
+          x = 96.25,
+          y = 432,
+          width = 15.75,
+          height = 9.75,
           rotation = 0,
           visible = true,
           properties = {}
