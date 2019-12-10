@@ -9,7 +9,7 @@ function HouseIrene:loadEntities(object, GAME, map)
 		GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 		table.insert(GAME.entities, GAME.player)
 	elseif object.name == "irene_spawn" then
-		GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, GAME.npcImage, GAME.world, 200, 64, 200)
+		GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, GAME.ireneImage, GAME.world, 200, 64, 200)
 		table.insert(GAME.entities, GAME.npc)
 	elseif object.name == "door" then
 		local door = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_door")
@@ -28,13 +28,11 @@ function HouseIrene:manageCollisions(thisName, otherName, cols, i, GAME)
 	if thisName == "ent_player" and otherName == "ent_npc" then
 		self.interact_irene = true
 	elseif thisName == "ent_player" and otherName == "ent_door" and GAME.player.facing == "N" then
-		if self.unlockScene5 then 
-			print("a")
+		if self.unlockScene5 then
 			GAME.chapter1.scene = 6
 			GAME.level = cols[i].other.nextMap
 			GAME:loadLevel()
 		elseif GAME.chapter1.scene ~= 5 then 
-			print("b")
 			GAME.level = cols[i].other.nextMap
 			GAME:loadLevel()
 		elseif GAME.chapter1.scene == 5 then 

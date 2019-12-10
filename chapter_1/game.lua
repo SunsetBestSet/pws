@@ -25,6 +25,7 @@ function Game:new()
 	self.town = Town()
 	self.houseirene = HouseIrene()
 	self.shop = Shop()
+	self.throne_room = ThroneRoom()
 
 	self:loadLevel()
 
@@ -95,7 +96,14 @@ function Game:tweenupdate(dt)
 		self.doFadeOut = false
 		self.level = "maps/scene1.lua"
 		self:loadLevel()
-		self:doBlackScreen("out", alert)
+		self:doBlackScreen("out", "alert")
+	end
+
+	if self.doFadeOut and self.chapter1.scene == 7 and self.objects[1].colour[4] == 1 then 
+		self.doFadeOut = false
+		self.level = "maps/throne_room.lua"
+		self:loadLevel()
+		self:doBlackScreen("out")
 	end
 
 end

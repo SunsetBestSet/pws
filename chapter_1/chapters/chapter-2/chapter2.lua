@@ -5,7 +5,7 @@ function Chapter2:new()
 	self.scene1 = Scene2_1()
 	self.scene = 1
 	self.character = love.graphics.newImage('assets/sprites/hiko.png')
-	self.irene = love.graphics.newImage('assets/sprites/npc.png')
+	self.irene = love.graphics.newImage('assets/sprites/irene.png')
 end
 
 function Chapter2:loadEntities(object, GAME)
@@ -19,7 +19,7 @@ end
 
 function Chapter2:loadAssets(GAME)
 	GAME.charImage = self.character
-	GAME.npcImage = self.irene
+	GAME.ireneImage = self.irene
 	return GAME
 end
 

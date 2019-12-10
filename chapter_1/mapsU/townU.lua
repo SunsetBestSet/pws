@@ -2,6 +2,8 @@ Town = Object:extend()
 
 function Town:new()
 	self.interact_binoculars = false
+	self.satoru_img = love.graphics.newImage('assets/sprites/satoru.png')
+	self.satoru_avatar = love.graphics.newImage('assets/satoru.png')
 end
 
 function Town:loadEntities(object, GAME, map, scene4)
@@ -22,6 +24,9 @@ function Town:loadEntities(object, GAME, map, scene4)
 	elseif object.name == "treehouse" then
 		local treehouse = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_treehouse")
 		table.insert(GAME.entities, treehouse)
+	elseif GAME.chapter1.scene == 6 and object.name == "satoru_spawn" then 
+		local satoru = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, self.satoru_img, GAME.world, 200, 64, 200, "S")
+		table.insert(GAME.entities, satoru)
 	end
 end
 

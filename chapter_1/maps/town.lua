@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 60,
-  nextobjectid = 128,
+  nextobjectid = 129,
   properties = {},
   tilesets = {
     {
@@ -1721,6 +1721,19 @@ return {
           y = 432,
           width = 15.75,
           height = 9.75,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 128,
+          name = "satoru_spawn",
+          type = "",
+          shape = "rectangle",
+          x = 1081.27,
+          y = 444.182,
+          width = 16,
+          height = 24,
           rotation = 0,
           visible = true,
           properties = {}

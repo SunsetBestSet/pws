@@ -20,6 +20,7 @@ require "chapters/chapter-2/chapter2"
 require "mapsU/townU"
 require "mapsU/houseireneU"
 require "mapsU/shopU"
+require "mapsU/throneroomU"
 
 
 local cols,GRAVITY,map,world
