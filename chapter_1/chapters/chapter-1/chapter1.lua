@@ -103,4 +103,5 @@ function Chapter1:loadLevel(GAME)
 	elseif self.scene == 7 then 
 		self.scene7:loadLevel(GAME)
 	end
+	return GAME
 end

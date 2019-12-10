@@ -12,12 +12,13 @@ function ThroneRoom:new()
 	self.leiko_avatar = love.graphics.newImage('assets/leiko.png')
 	self.kana_avatar = love.graphics.newImage('assets/kana.png')
 
-	self.part = 1
-	print("restart" .. self.part)
+	self.part1 = true
+	print("restart " .. tostring(self.part1))
 end
 
 function ThroneRoom:loadEntities(object, GAME, map)
-	if self.part == 1 then 
+	print("loading" .. tostring(self.part1))
+	if self.part1 then 
 		if object.name == "player_spawn" then
 			GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200, "N")
 			table.insert(GAME.entities, GAME.player)
@@ -35,7 +36,7 @@ function ThroneRoom:loadEntities(object, GAME, map)
 			GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, self.satoru_img, GAME.world, 200, 64, 200, "S")
 			table.insert(GAME.entities, GAME.npc)
 		end
-	elseif self.part == 2 then 
+	else
 		if object.name == "player_spawn" then
 			GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200, "N")
 			table.insert(GAME.entities, GAME.player)
@@ -65,7 +66,7 @@ function ThroneRoom:manageCollisions(thisName, otherName, cols, i, GAME)
 end
 
 function ThroneRoom:loadLevel(GAME)
-	if self.part == 1 then 
+	if self.part1 then 
 		Talkies.say("Chizue", "My meeting with the ministers has been interrupted. What is the reason of this?", {image=self.chizue_avatar, talkSound=GAME.blop})
 		Talkies.say("Hiko", "Well, I-", {image=GAME.player.avatar, talkSound=GAME.blop})
 		Talkies.say("Kana", "I have been informed that he has seen some concerning matters occurring on the mountain, Mother.", {image=self.kana_avatar, talkSound=GAME.blop})
@@ -77,7 +78,7 @@ function ThroneRoom:loadLevel(GAME)
 		Talkies.say("Chizue", "In what way is your story reliable enough to believe?", {image=self.chizue_avatar, talkSound=GAME.blop})
 		Talkies.say("Kana", "Dear, are you fully certain of your claims? It is an absurd story.", {image=self.kana_avatar, talkSound=GAME.blop})
 		Talkies.say("Kana", "What did you exactly see?", {image=self.kana_avatar, talkSound=GAME.blop, options={{"the clouds", function() self:clouds(GAME) end},{"the man", function() self:man(GAME) end},{"the disk", function() self:disk(GAME) end},}})
-	elseif self.part == 2 then 
+	else
 		Talkies.say("Kana", "Dear ...?", {image=self.kana_avatar, talkSound=GAME.blop})
 		Talkies.say("Hiko", "It's Hiko!!!", {image=GAME.player.avatar, talkSound=GAME.blop})
 		Talkies.say("Kana", "...Hiko, where are your parents? Are they aware you are here, in the palace?", {image=self.kana_avatar, talkSound=GAME.blop})
@@ -135,7 +136,8 @@ end
 function ThroneRoom:startPart2Scene7(GAME)
 	GAME:doBlackScreen("in")
 	GAME.doFadeOut = true
-	self.part = 2
+	self.part1 = false
+	print("changed " .. tostring(self.part1))
 end
 
 function ThroneRoom:startScene8(GAME)
