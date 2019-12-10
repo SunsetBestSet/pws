@@ -6,6 +6,7 @@ require "chapters/chapter-1/scenes/scene4"
 require "chapters/chapter-1/scenes/scene5"
 require "chapters/chapter-1/scenes/scene6"
 require "chapters/chapter-1/scenes/scene7"
+require "chapters/chapter-1/scenes/scene8"
 
 function Chapter1:new()
 	self.scene1 = Scene1()
@@ -15,6 +16,7 @@ function Chapter1:new()
 	self.scene5 = Scene5()
 	self.scene6 = Scene6()
 	self.scene7 = Scene7()
+	self.scene8 = Scene8()
 	self.scene = 1 
 	self.character = love.graphics.newImage('assets/sprites/hiko.png')
 	self.irene = love.graphics.newImage('assets/sprites/irene.png')
@@ -36,6 +38,8 @@ function Chapter1:loadEntities(object, GAME)
 		self.scene6:loadEntities(object, GAME)
 	elseif self.scene == 7 then 
 		self.scene7:loadEntities(object, GAME)
+	elseif self.scene == 8 then 
+		self.scene8:loadEntities(object, GAME)
 	end
 
 	return GAME
@@ -60,6 +64,10 @@ function Chapter1:manageCollisions(thisName, otherName, cols, i, GAME)
 		self.scene5:manageCollisions(thisName, otherName, cols, i, GAME)
 	elseif self.scene == 6 then 
 		self.scene6:manageCollisions(thisName, otherName, cols, i, GAME)
+	elseif self.scene == 7 then 
+		self.scene7:manageCollisions(thisName, otherName, cols, i, GAME)
+	elseif self.scene == 8 then 
+		self.scene8:manageCollisions(thisName, otherName, cols, i, GAME)
 	end
 	return GAME
 end
@@ -77,6 +85,10 @@ function Chapter1:manageKeypresses(key, GAME)
 		self.scene5:manageKeypresses(key, GAME)
 	elseif self.scene == 6 then 
 		self.scene6:manageKeypresses(key, GAME)
+	elseif self.scene == 7 then 
+		self.scene7:manageKeypresses(key, GAME)
+	elseif self.scene == 8 then 
+		self.scene8:manageKeypresses(key, GAME)
 	end
 	return GAME
 end
@@ -88,5 +100,7 @@ function Chapter1:loadLevel(GAME)
 		self.scene4:loadLevel(GAME)
 	elseif self.scene == 6 then 
 		self.scene6:loadLevel(GAME)
+	elseif self.scene == 7 then 
+		self.scene7:loadLevel(GAME)
 	end
 end

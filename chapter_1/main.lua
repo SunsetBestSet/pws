@@ -21,6 +21,7 @@ require "mapsU/townU"
 require "mapsU/houseireneU"
 require "mapsU/shopU"
 require "mapsU/throneroomU"
+require "mapsU/leikoroomU"
 
 
 local cols,GRAVITY,map,world

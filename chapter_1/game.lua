@@ -106,6 +106,13 @@ function Game:tweenupdate(dt)
 		self:doBlackScreen("out")
 	end
 
+	if self.doFadeOut and self.chapter1.scene == 8 and self.objects[1].colour[4] == 1 then 
+		self.doFadeOut = false
+		self.level = "maps/leiko_room1.lua"
+		self:loadLevel()
+		self:doBlackScreen("out")
+	end
+
 end
 
 function Game:doBlackScreen(direction, style, character, text)

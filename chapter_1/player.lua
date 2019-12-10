@@ -2,14 +2,14 @@ require "dynamic_entity"
 
 Player = DynamicEntity:extend();
 
-function Player:new(x, y, width, height, image, world, maxVelX, maxVelY, speed)
+function Player:new(x, y, width, height, image, world, maxVelX, maxVelY, speed, facing)
   Player.super.new(self, x, y, width, height, image, world, maxVelX, maxVelY, "ent_player", 2)
   self.origX = x
   self.origY = 15
   self.vertical_speed = speed * 0.85
   self.horizontal_speed = speed
   self.image = image
-  self.facing = "S"
+  self.facing = facing or "S"
   self.isMoving = false
   self.canMove = true
   self.avatar = love.graphics.newImage("assets/hiko.png")

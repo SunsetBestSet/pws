@@ -56,7 +56,7 @@ function HouseIrene:manageKeypresses(key, GAME)
 		if GAME.chapter1.scene < 5 then 
 			Talkies.say("Irene", "Go play outside! I'm busy.", {image=GAME.npc.avatar, talkSound=GAME.blop,})
 			self.interact_irene = false
-		elseif GAME.chapter1.scene == 5 then 
+		elseif GAME.chapter1.scene == 5 and not self.unlockScene5 then 
 			Talkies.say("Irene", "!!", {image=GAME.npc.avatar, talkSound=GAME.blop,})
 			Talkies.say("Irene", "Hiko, what have I said about opening the door like that?", {image=GAME.npc.avatar, talkSound=GAME.blop,})
 			Talkies.say("Hiko", "There's a man! Up in the mountain!", {image=GAME.player.avatar, talkSound=GAME.blop,})
