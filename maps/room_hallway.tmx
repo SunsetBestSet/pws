@@ -100,7 +100,7 @@
   <object id="1" name="player_spawn2" x="120.128" y="66.8251" width="15.3333" height="13"/>
   <object id="2" name="leiko_door" x="113.249" y="47.8139" width="29.4092" height="7.1444">
    <properties>
-    <property name="nextMap" value="maps/leikoroom.lua"/>
+    <property name="nextMap" value="maps/leiko_room1.lua"/>
    </properties>
   </object>
   <object id="6" name="infirmary_hallway" x="537.311" y="63.721" width="6.4299" height="31.6204">

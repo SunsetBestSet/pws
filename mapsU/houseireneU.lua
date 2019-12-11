@@ -33,10 +33,10 @@ function HouseIrene:manageCollisions(thisName, otherName, cols, i, GAME)
 			GAME.chapter1.scene = 6
 			GAME.level = cols[i].other.nextMap
 			GAME:loadLevel()
-		elseif GAME.chapter1.scene ~= 5 then 
+		elseif GAME.chapter1.scene ~= 5 then
 			GAME.level = cols[i].other.nextMap
 			GAME:loadLevel()
-		elseif GAME.chapter1.scene == 5 then 
+		elseif GAME.chapter1.scene == 5 then
 			Talkies.say("Hiko", "I should tell her about the man...", {image=GAME.player.avatar, talkSound=GAME.blop,})
 		end
 	elseif thisName == "ent_player" and otherName == "ent_bed_hiko" then
@@ -54,24 +54,24 @@ function HouseIrene:manageKeypresses(key, GAME)
 		Talkies.say("Hiko", "That's not my bed.", {image=GAME.player.avatar, talkSound=GAME.blop,})
 		self.interact_bed_irene = false
 	elseif (key == 'space') and self.interact_irene then
-		if GAME.chapter1.scene < 5 then 
-			Talkies.say("Irene", "Go play outside! I'm busy.", {image=GAME.npc.avatar, talkSound=GAME.blop,})
+		if GAME.chapter1.scene < 5 then
+			Talkies.say("Irene", "Go play outside! I'm busy.", {image=GAME.npc.avatarirene, talkSound=GAME.blop,})
 			self.interact_irene = false
 		elseif GAME.chapter1.scene == 5 and not self.unlockScene5 then 
-			Talkies.say("Irene", "!!", {image=GAME.npc.avatar, talkSound=GAME.blop,})
-			Talkies.say("Irene", "Hiko, what have I said about opening the door like that?", {image=GAME.npc.avatar, talkSound=GAME.blop,})
+			Talkies.say("Irene", "!!", {image=GAME.npc.avatarirene, talkSound=GAME.blop,})
+			Talkies.say("Irene", "Hiko, what have I said about opening the door like that?", {image=GAME.npc.avatarirene, talkSound=GAME.blop,})
 			Talkies.say("Hiko", "There's a man! Up in the mountain!", {image=GAME.player.avatar, talkSound=GAME.blop,})
-			Talkies.say("Irene", "...What?", {image=GAME.npc.avatar, talkSound=GAME.blop,})
+			Talkies.say("Irene", "...What?", {image=GAME.npc.avatarirene, talkSound=GAME.blop,})
 			Talkies.say("Hiko", "It's true!", {image=GAME.player.avatar, talkSound=GAME.blop,})
-			Talkies.say("Irene", "Hiko, please stop this nonsense. I know I usually go and play with you but today I really need to-", {image=GAME.npc.avatar, talkSound=GAME.blop,})
+			Talkies.say("Irene", "Hiko, please stop this nonsense. I know I usually go and play with you but today I really need to-", {image=GAME.npc.avatarirene, talkSound=GAME.blop,})
 			Talkies.say("Hiko", "It's not a game! It's true!!", {image=GAME.player.avatar, talkSound=GAME.blop,})
-			Talkies.say("Irene", "Then why don't you tell Shopkeeper Satoru and Nao about it? I'm sure they would love to hear about your discovery.", {image=GAME.npc.avatar, talkSound=GAME.blop,})
+			Talkies.say("Irene", "Then why don't you tell Shopkeeper Satoru and Nao about it? I'm sure they would love to hear about your discovery.", {image=GAME.npc.avatarirene, talkSound=GAME.blop,})
 			Talkies.say("Hiko", "...", {image=GAME.player.avatar, talkSound=GAME.blop,})
 			self.unlockScene5 = true
 			self.interact_irene = false
 		end
 	end
 	if key == "space" then
-		Talkies.onAction() 
+		Talkies.onAction()
 	end
 end

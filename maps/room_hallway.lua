@@ -307,7 +307,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["nextMap"] = "maps/leikoroom.lua"
+            ["nextMap"] = "maps/leiko_room1.lua"
           }
         },
         {

@@ -1,6 +1,6 @@
 Nonplayable = DynamicEntity:extend()
 
-function Nonplayable:new(x, y, width, height, image, world, maxVelX, maxVelY, speed, facing) 
+function Nonplayable:new(x, y, width, height, image, world, maxVelX, maxVelY, speed, facing)
 Nonplayable.super.new(self, x, y, width, height, image, world, maxVelX, maxVelY, "ent_npc", 2)
   self.origX = x
   self.origY = 15
@@ -13,6 +13,9 @@ Nonplayable.super.new(self, x, y, width, height, image, world, maxVelX, maxVelY,
   self.avatarkana = love.graphics.newImage("assets/kana.png")
   self.avatarirene = love.graphics.newImage("assets/irene.png")
   self.avatarhiko = love.graphics.newImage("assets/hiko.png")
+  self.avatarchizue = love.graphics.newImage('assets/chizue.png')
+  self.avatarleiko = love.graphics.newImage('assets/leiko.png')
+  self.avatarsatoru = love.graphics.newImage('assets/satoru.png')
 
   self.tempDistance = ""
 

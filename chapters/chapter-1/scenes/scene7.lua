@@ -6,7 +6,7 @@ function Scene7:new()
 	self.leiko_img = love.graphics.newImage('assets/sprites/leiko.png')
 	self.kana_img = love.graphics.newImage('assets/sprites/kana.png')
 	self.retainer_img = love.graphics.newImage('assets/sprites/link.png')
-	
+
 	self.satoru_avatar = love.graphics.newImage('assets/satoru.png')
 	self.chizue_avatar = love.graphics.newImage('assets/chizue.png')
 	self.leiko_avatar = love.graphics.newImage('assets/leiko.png')
@@ -18,16 +18,16 @@ function Scene7:loadEntities(object, GAME, map)
 			GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200, "N")
 			table.insert(GAME.entities, GAME.player)
 			GAME.player.canMove = false
-		elseif object.name == "chizue_spawn" then 
+		elseif object.name == "chizue_spawn" then
 			GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, self.chizue_img, GAME.world, 200, 64, 200)
 			table.insert(GAME.entities, GAME.npc)
-		elseif object.name == "kana_spawn" then 
+		elseif object.name == "kana_spawn" then
 			GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, self.kana_img, GAME.world, 200, 64, 200)
 			table.insert(GAME.entities, GAME.npc)
-		elseif object.name == "leiko_spawn" then 
+		elseif object.name == "leiko_spawn" then
 			GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, self.leiko_img, GAME.world, 200, 64, 200)
 			table.insert(GAME.entities, GAME.npc)
-		elseif object.name == "satoru_spawn" then 
+		elseif object.name == "satoru_spawn" then
 			GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, self.satoru_img, GAME.world, 200, 64, 200, "S")
 			table.insert(GAME.entities, GAME.npc)
 		end
@@ -74,7 +74,7 @@ function Scene7:man(GAME)
 end
 
 function Scene7:disk(GAME)
-	Talkies.say("Hiko", "I'm really not lying! I saw this big, big thing! This man was doing stuff with it. Making the clouds!", {image=GAME.player.avatar, talkSound=GAME.blop})
+	Talkies.say("Hiko", "I'm really not lying! I saw this big, big thing! This man was doing stuff with it!", {image=GAME.player.avatar, talkSound=GAME.blop})
 	Talkies.say("Leiko", "Thing..?", {image=self.leiko_avatar, talkSound=GAME.blop})
 	Talkies.say("Hiko", "Yes! A big circle thing! And it was making the clouds look weird! Look!", {image=GAME.player.avatar, talkSound=GAME.blop})
 	Talkies.say("Royals", "*turn around*", {talksound=GAME.blop})
@@ -82,17 +82,17 @@ function Scene7:disk(GAME)
 end
 
 function Scene7:moreMessages(GAME)
-	Talkies.say("Kana", "I do not understand... Are those not regular thunder clouds? Mother maybe we should-", {image=self.kana_avatar, talkSound=GAME.blop})
-	Talkies.say("Chizue", "Kana, call me one of your retainers, please.", {image=self.chizue_avatar, talkSound=GAME.blop})
-	Talkies.say("Kana (surprised)", "B-but Mother... Mustn't we commune first with the court?", {image=self.kana_avatar, talkSound=GAME.blop})
-	Talkies.say("Chizue", "Kana, dear, before we send the public into chaotic panic about a man on the mountain, we must make sure.", {image=self.chizue_avatar, talkSound=GAME.blop})
-	Talkies.say("Chizue", "Assembling the court for another meeting to see it be false would be all for naught. Now, one of your retainers, please.", {image=self.chizue_avatar, talkSound=GAME.blop})
-	Talkies.say("Leiko", "...", {image=self.leiko_avatar, talkSound=GAME.blop})
-	Talkies.say("Kana", "Retainer, would you be so kind to step forward?", {image=self.kana_avatar, talkSound=GAME.blop})
+	Talkies.say("Kana", "I do not understand... Are those not regular thunder clouds? Mother maybe we should-", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
+	Talkies.say("Chizue", "Kana, call me one of your retainers, please.", {image=GAME.npc.avatarchizue, talkSound=GAME.blop})
+	Talkies.say("Kana (surprised)", "B-but Mother... Mustn't we commune first with the court?", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
+	Talkies.say("Chizue", "Kana, dear, before we send the public into chaotic panic about a man on the mountain, we must make sure.", {image=GAME.npc.avatarchizue, talkSound=GAME.blop})
+	Talkies.say("Chizue", "Assembling the court for another meeting to see it be false would be all for naught. Now, one of your retainers, please.", {image=GAME.npc.avatarchizue, talkSound=GAME.blop})
+	Talkies.say("Leiko", "...", {image=GAME.npc.avatarleiko, talkSound=GAME.blop})
+	Talkies.say("Kana", "Retainer, would you be so kind to step forward?", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
 	Talkies.say("Retainer", "Yes, your majesty.", {talkSound=GAME.blop})
 	Talkies.say("Hiko", "But we have to do something now!", {image=GAME.player.avatar, talkSound=GAME.blop})
-	Talkies.say("Satoru", "Hiko...", {image=self.satoru_avatar, talkSound=GAME.blop})
-	Talkies.say("Chizue", "Dismissed.", {image=self.chizue_avatar, talkSound=GAME.blop, oncomplete = function() self:startPart2Scene7(GAME) end})
+	Talkies.say("Satoru", "Hiko...", {image=GAME.npc.avatarsatoru, talkSound=GAME.blop})
+	Talkies.say("Chizue", "Dismissed.", {image=GAME.npc.avatarchizue, talkSound=GAME.blop, oncomplete = function() self:startPart2Scene7(GAME) end})
 end
 
 function Scene7:startPart2Scene7(GAME)

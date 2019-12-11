@@ -47,11 +47,11 @@ end
 function Scene1:manageKeypresses(key, GAME)
 	if (key == 'space') and GAME.interact and GAME.level == "maps/scene1.lua" and not GAME.scene1Unlocked then
 		Talkies.say("Hiko", "Irene!!!! What's that cloud??!! What's that cloud??!!", {image=GAME.player.avatar, talkSound=GAME.blop,})
-		Talkies.say("Irene", "...be silent Hiko.", {image=GAME.npc.avatar, talkSound=GAME.blop,})
+		Talkies.say("Irene", "...be silent Hiko.", {image=GAME.npc.avatarirene, talkSound=GAME.blop,})
 		Talkies.say("Hiko", "But Irene, it's so weird! And purple, and dark, and... and it looks evil!!", {image=GAME.player.avatar, talkSound=GAME.blop,})
-		Talkies.say("Irene", "Hiko... *sighs* I told you already- I'm working on some important spells. I need to concentrate...", {image=GAME.npc.avatar, talkSound=GAME.blop,})
+		Talkies.say("Irene", "Hiko... *sighs* I told you already- I'm working on some important spells. I need to concentrate...", {image=GAME.npc.avatarirene, talkSound=GAME.blop,})
 		Talkies.say("Hiko", "But,--Irene!!! It looks evil and scary! What if something bad is going on?!", {image=GAME.player.avatar, talkSound=GAME.blop,})
-		Talkies.say("Irene", "Hiko! Don't you see I'm busy?? Go play outside or something.", {image=GAME.npc.avatar, talkSound=GAME.blop,})
+		Talkies.say("Irene", "Hiko! Don't you see I'm busy?? Go play outside or something.", {image=GAME.npc.avatarirene, talkSound=GAME.blop,})
 		GAME.interact = false
 		GAME.scene1Unlocked = true
 	elseif key == "space" and self.interact_bed_hiko then

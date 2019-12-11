@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 21,
-  nextobjectid = 4,
+  nextobjectid = 9,
   properties = {},
   tilesets = {
     {
@@ -176,9 +176,7 @@ return {
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      properties = {
-        ["collidable"] = true
-      },
+      properties = {},
       encoding = "lua",
       data = {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -324,7 +322,73 @@ return {
       offsety = 0,
       draworder = "topdown",
       properties = {},
-      objects = {}
+      objects = {
+        {
+          id = 4,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 209.25,
+          y = 45.75,
+          width = 13.5,
+          height = 23.25,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 5,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 17,
+          y = 47,
+          width = 13.75,
+          height = 5.75,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 6,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 48.75,
+          y = 47.5,
+          width = 14.5,
+          height = 5.5,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 7,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 81,
+          y = 47.25,
+          width = 14,
+          height = 5.75,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 8,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 112.75,
+          y = 47.25,
+          width = 14,
+          height = 5.75,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
     }
   }
 }

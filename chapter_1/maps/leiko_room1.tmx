@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.3" orientation="orthogonal" renderorder="right-down" width="16" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="13">
+<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="16" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="12" nextobjectid="12">
+ <editorsettings>
+  <export target="leikoroom.lua" format="lua"/>
+ </editorsettings>
  <tileset firstgid="1" source="inner1.tsx"/>
  <tileset firstgid="1001" source="overworld0.tsx.tmx"/>
  <layer id="1" name="floor" width="16" height="13">
@@ -161,7 +164,6 @@
   <object id="9" name="book2" x="192.278" y="160.188" width="15.531" height="16.237"/>
   <object id="10" name="book3" x="112.157" y="128.188" width="16.237" height="16.237"/>
   <object id="11" name="leiko_bed" x="31.884" y="46.9461" width="31.4151" height="48.005"/>
-  <object id="12" name="leiko_spawn" x="163.667" y="68" width="15.6667" height="16"/>
  </objectgroup>
  <objectgroup id="11" name="custom_collisions">
   <properties>

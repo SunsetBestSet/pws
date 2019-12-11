@@ -1,7 +1,7 @@
 return {
   version = "1.2",
   luaversion = "5.1",
-  tiledversion = "1.2.3",
+  tiledversion = "1.3.0",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 16,
@@ -9,11 +9,11 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 12,
-  nextobjectid = 13,
+  nextobjectid = 16,
   properties = {},
   tilesets = {
     {
-      name = "inner1",
+      name = "inner",
       firstgid = 1,
       filename = "inner1.tsx",
       tilewidth = 16,
@@ -21,7 +21,7 @@ return {
       spacing = 0,
       margin = 0,
       columns = 40,
-      image = "inner1.png",
+      image = "inner.png",
       imagewidth = 640,
       imageheight = 400,
       tileoffset = {
@@ -264,9 +264,7 @@ return {
       opacity = 1,
       offsetx = 0,
       offsety = 0,
-      properties = {
-        ["collidable"] = true
-      },
+      properties = {},
       encoding = "lua",
       data = {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -432,7 +430,47 @@ return {
       properties = {
         ["collidable"] = true
       },
-      objects = {}
+      objects = {
+        {
+          id = 13,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 145.636,
+          y = 46.7273,
+          width = 14,
+          height = 22.3636,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 14,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 96.3636,
+          y = 151.455,
+          width = 15.2727,
+          height = 29.8182,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 15,
+          name = "",
+          type = "",
+          shape = "rectangle",
+          x = 159.818,
+          y = 151.636,
+          width = 16,
+          height = 29.6364,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
     }
   }
 }

@@ -344,6 +344,28 @@ elseif GAME.level == "maps/queen_room.lua" then
  table.insert(GAME.entities, main_hallway )
 end
 
+--throne room
+elseif GAME.level == "maps/throne_room.lua" then
+	if object.name == "player_spawn1" and GAME.castleExit == "right_stairs" then
+	 GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
+	 table.insert(GAME.entities, GAME.player)
+ elseif object.name == "player_spawn2" and GAME.castleExit == "left_stairs" then
+ 	 GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
+ 	 table.insert(GAME.entities, GAME.player)
+ elseif object.name == "right_door" then
+ local right_door = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_rightdoor")
+ right_door.nextMap = object.properties.nextMap;
+ table.insert(GAME.entities, right_door )
+elseif object.name == "left_door" then
+local left_door = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_leftdoor")
+left_door.nextMap = object.properties.nextMap;
+table.insert(GAME.entities, left_door )
+elseif object.name == "outside_door" then
+local outside_door = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_outsidedoor")
+outside_door.nextMap = object.properties.nextMap;
+table.insert(GAME.entities, outside_door )
+end
+
 end
 end
 
@@ -512,7 +534,7 @@ function Scene2_1:manageCollisions(thisName, otherName, cols, i, GAME)
 				GAME.castleExit = "left_stairs"
 				GAME.level = cols[i].other.nextMap
 				GAME:loadLevel()
-			elseif thisName == "ent_player" and otherName == "ent_mainhallway" and GAME.player.facing == "E" then
+			elseif thisName == "ent_player" and otherName == "ent_thronedoor" and GAME.player.facing == "E" then
 				GAME.castleExit = "left_stairs"
 				GAME.level = cols[i].other.nextMap
 				GAME:loadLevel()
@@ -542,7 +564,18 @@ elseif GAME.level == "maps/queen_room.lua" then
 		GAME:loadLevel()
 	end
 
-
+elseif GAME.level == "maps/throne_room.lua" then
+	if thisName == "ent_player" and otherName == "ent_rightdoor" and GAME.player.facing == "E" then
+		GAME.castleExit = "throne_room"
+		GAME.level = cols[i].other.nextMap
+		GAME:loadLevel()
+	elseif thisName == "ent_player" and otherName == "ent_leftdoor" and GAME.player.facing == "W" then
+		GAME.castleExit = "throne_room"
+		GAME.level = cols[i].other.nextMap
+		GAME:loadLevel()
+	elseif thisName == "ent_player" and otherName == "ent_outsidedoor" and GAME.player.facing == "S" then
+		Talkies.say("Leiko", "* I can't just leave the castle... *",  {image=self.player.avatar, talkSound=GAME.blop})
+	end
 
 
 		end
@@ -583,7 +616,7 @@ function Scene2_1:loadLevel(GAME)
 		Talkies.say("Leiko", "* Ugh, and I can't believe I'm willingly inviting peasants into my room. *", {image=self.player.avatar, talkSound=GAME.blop })
 		Talkies.say("Leiko", "* I hope they don't leave a smell.-- Maybe I should call over one of the maids afterward... *", {image=self.player.avatar, talkSound=GAME.blop,oncomplete=function() GAME:doBlackScreen("out", "ch2") end})
 		Talkies.say("Leiko", "* Anyway, I should go talk about this to Kana. *", {image=self.player.avatar, talkSound=GAME.blop,})
-		Talkies.say("GAME", "* IT'S NOW POSSIBLE TO EXPLORE THE CASTLE GROUNDS! *", {image=self.player.avatar, talkSound=GAME.blop,})
+		Talkies.say("GAME", "* IT'S NOW POSSIBLE TO EXPLORE THE CASTLE GROUNDS! *")
 		GAME.interact = false
 		GAME.ch2scene1Unlocked = true
 	end

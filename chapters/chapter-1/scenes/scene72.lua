@@ -6,7 +6,7 @@ function Scene72:new()
 	self.leiko_img = love.graphics.newImage('assets/sprites/leiko.png')
 	self.kana_img = love.graphics.newImage('assets/sprites/kana.png')
 	self.retainer_img = love.graphics.newImage('assets/sprites/link.png')
-	
+
 	self.satoru_avatar = love.graphics.newImage('assets/satoru.png')
 	self.chizue_avatar = love.graphics.newImage('assets/chizue.png')
 	self.leiko_avatar = love.graphics.newImage('assets/leiko.png')
@@ -18,13 +18,13 @@ function Scene72:loadEntities(object, GAME, map)
 		GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200, "N")
 		table.insert(GAME.entities, GAME.player)
 		GAME.player.canMove = false
-	elseif object.name == "kana_spawn_2" then 
+	elseif object.name == "kana_spawn_2" then
 		GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, self.kana_img, GAME.world, 200, 64, 200)
 		table.insert(GAME.entities, GAME.npc)
-	elseif object.name == "leiko_spawn_2" then 
+	elseif object.name == "leiko_spawn_2" then
 		GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, self.leiko_img, GAME.world, 200, 64, 200)
 		table.insert(GAME.entities, GAME.npc)
-	elseif object.name == "satoru_spawn" then 
+	elseif object.name == "satoru_spawn" then
 		GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, self.satoru_img, GAME.world, 200, 64, 200, "S")
 		table.insert(GAME.entities, GAME.npc)
 	end
@@ -39,9 +39,9 @@ function Scene72:manageKeypresses(key, GAME)
 end
 
 function Scene72:loadLevel(GAME)
-	Talkies.say("Kana", "Dear ...?", {image=self.kana_avatar, talkSound=GAME.blop})
+	Talkies.say("Kana", "Dear-", {image=self.kana_avatar, talkSound=GAME.blop})
 	Talkies.say("Hiko", "It's Hiko!!!", {image=GAME.player.avatar, talkSound=GAME.blop})
-	Talkies.say("Kana", "...Hiko, where are your parents? Are they aware you are here, in the palace?", {image=self.kana_avatar, talkSound=GAME.blop})
+	Talkies.say("Kana", "-Hiko, where are your parents? Are they aware you are here, in the palace?", {image=self.kana_avatar, talkSound=GAME.blop})
 	Talkies.say("Satoru", "We were in too much of a hurry to tell his sister, your Highness.", {image=self.satoru_avatar, talkSound=GAME.blop})
 	Talkies.say("Kana", "Well, Shopkeeper, escort Hiko back to his home, will you? I'll send one of the royal guards with you-", {image=self.kana_avatar, talkSound=GAME.blop})
 	Talkies.say("Leiko", "Actually, I have some things to ask him, if you don't mind.", {image=self.leiko_avatar, talkSound=GAME.blop})
