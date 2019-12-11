@@ -21,12 +21,15 @@ function Game:new()
 	self.ch2scene2Unlocked = false
 	self.ch2scene3Unlocked = false
 	self.ch2scene4Unlocked = false
-	self.ch2scene5Unlocked = false
+	self.ch2scene5Unlocked1 = false
+	self.ch2scene5Unlocked2 = false
 	self.ch2scene6Unlocked = false
 	self.objects = require 'objects'
 	self.tweens = {}
 
 	self:loadLevel()
+
+	self.castleExit = "leikoroom"
 
 end
 
@@ -88,8 +91,18 @@ function Game:tweenupdate(dt)
 		if k == 1 and self.objects[1].colour[4] == 1 then
 			local complete = self.tweens[k]:update(dt)
 			if complete then
-				local t2 = tween.new(0.05, self.objects[2], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inExpo')
-				table.insert(self.tweens, t2)
+				if style == "alert" then
+					local t2 = tween.new(0.05, self.objects[2], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inExpo')
+					table.insert(self.tweens, t2)
+				end
+				if style == "ch2" then
+					local t3 = tween.new(1, self.objects[3], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
+					table.insert(self.tweens, t3)
+				end
+				if style == "morning" then
+					local t4 = tween.new(1, self.objects[4], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
+					table.insert(self.tweens, t4)
+				end
 			end
 		else
 			self.tweens[k]:update(dt)
@@ -108,6 +121,14 @@ function Game:doBlackScreen(direction, style, character, text)
 			--local t2 = tween.new(1, self.objects[2], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
 			--table.insert(self.tweens, t2)
 		end
+		if style == "ch2" then
+			local t3 = tween.new(1, self.objects[3], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
+			table.insert(self.tweens, t3)
+		end
+		if style == "morning" then
+			local t4 = tween.new(1, self.objects[4], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
+			table.insert(self.tweens, t4)
+		end
 	end
 	if direction == "out" then
 		local t1 = tween.new(1, self.objects[1], {colour={0, 0, 0, 0}}, 'outQuad')
@@ -115,6 +136,14 @@ function Game:doBlackScreen(direction, style, character, text)
 		if style == alert then
 			local t2 = tween.new(0.05, self.objects[2], {colour = {1, 1, 1, 0}, y = love.graphics.getHeight() / 4 - 75}, 'outExpo')
 			table.insert(self.tweens, t2)
+		end
+		if style == "ch2" then
+			local t3 = tween.new(0.05, self.objects[3], {colour = {1, 1, 1, 0}, y = love.graphics.getHeight() / 4 - 75}, 'outExpo')
+			table.insert(self.tweens, t3)
+		end
+		if style == "morning" then
+			local t4 = tween.new(0.05, self.objects[4], {colour = {1, 1, 1, 0}, y = love.graphics.getHeight() / 4 - 75}, 'outExpo')
+			table.insert(self.tweens, t4)
 		end
 	end
 
@@ -141,12 +170,12 @@ function Game:manageKeypresses(key)
 	elseif self.chapter == 2 then
 		self = self.chapter2:manageKeypresses(key, self)
 	end
-	if key == 'i' then
+--[[	if key == 'i' then
 		self:doBlackScreen("in", "alert")
 	end
 	if key == 'o' then
 		self:doBlackScreen("out")
-	end
+	end --]]
 end
 
 function Game:update(dt)

@@ -14,9 +14,12 @@ function Chapter2:new()
 	self.scene5 = Scene2_5()
 	self.scene6 = Scene2_6()
 	self.scene = 1
-	self.character = love.graphics.newImage('assets/sprites/hiko.png')
-	self.kana = love.graphics.newImage('assets/sprites/npc.png')
-	self.doc = love.graphics.newImage('assets/sprites/npc.png')
+	self.character = love.graphics.newImage('assets/sprites/leiko.png')
+	self.kana = love.graphics.newImage('assets/sprites/kana.png')
+	self.irene = love.graphics.newImage('assets/sprites/irene.png')
+	self.hiko = love.graphics.newImage('assets/sprites/hiko.png')
+	self.doc = love.graphics.newImage('assets/sprites/doc.png')
+	self.maid = love.graphics.newImage('assets/sprites/maid.png')
 end
 
 function Chapter2:loadEntities(object, GAME)
@@ -40,6 +43,11 @@ end
 
 function Chapter2:loadAssets(GAME)
 	GAME.charImage = self.character
+	GAME.npckanaImage = self.kana
+	GAME.npcireneImage = self.irene
+	GAME.npchikoImage = self.hiko
+	GAME.npcmaidImage = self.maid
+	GAME.npcdocImage = self.doc
 	return GAME
 end
 

@@ -11,10 +11,10 @@ function Scene2_6:loadEntities(object, GAME, map)
     GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
     table.insert(GAME.entities, GAME.player)
   elseif object.name == "hiko_spawn" then
-    GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, GAME.npcImage, GAME.world, 200, 64, 200)
+    GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, GAME.npchikoImage, GAME.world, 200, 64, 200)
     table.insert(GAME.entities, GAME.npc)
   elseif object.name == "irene_spawn" then
-    GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, GAME.npcImage, GAME.world, 200, 64, 200)
+    GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, GAME.npcireneImage, GAME.world, 200, 64, 200)
     table.insert(GAME.entities, GAME.npc)
   elseif object.name == "library_hallway" then
     local library_hallway = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_libraryhallway")
@@ -78,7 +78,7 @@ function Scene2_6:moreMessages(object, GAME, map)
 
     local	player_avatar = love.graphics.newImage("assets/leiko.png")
     -- spawn Kana
-    GAME.npc = Nonplayable(100, 55, 14, 22, GAME.npcImage, GAME.world, 200, 64, 200)
+    GAME.npc = Nonplayable(100, 55, 14, 22, GAME.npckanaImage, GAME.world, 200, 64, 200)
     table.insert(GAME.entities, GAME.npc)
 
     Talkies.say("Kana", "I do not rule the kingdom, as a matter of fact, but I do have a stance in the court.", {image=GAME.npc.avatarkana, talkSound=GAME.blop})

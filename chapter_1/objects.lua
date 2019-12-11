@@ -13,4 +13,20 @@ return {
 		y = love.graphics.getHeight() / 4 - 50,
 		font = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 100)
 	},
+	{
+		type = "text",
+		text = "CHAPTER 2: Leiko",
+		colour = {1, 1, 1, 0},
+		x = love.graphics.getWidth() / 4 - 75,
+		y = love.graphics.getHeight() / 4 - 50,
+		font = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 100)
+	},
+	{
+		type = "text",
+		text = "THE NEXT MORNING",
+		colour = {1, 1, 1, 0},
+		x = love.graphics.getWidth() / 4 - 70,
+		y = love.graphics.getHeight() / 4 - 50,
+		font = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 100)
+	}
 }

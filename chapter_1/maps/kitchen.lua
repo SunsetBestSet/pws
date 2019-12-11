@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 13,
-  nextobjectid = 4,
+  nextobjectid = 5,
   properties = {},
   tilesets = {
     {
@@ -230,7 +230,7 @@ return {
           name = "player_spawn",
           type = "",
           shape = "rectangle",
-          x = 211.167,
+          x = 217.167,
           y = 89.666,
           width = 15,
           height = 12.6667,
@@ -240,7 +240,7 @@ return {
         },
         {
           id = 2,
-          name = "dining_door",
+          name = "between_door",
           type = "",
           shape = "rectangle",
           x = 127,
@@ -267,6 +267,19 @@ return {
           properties = {
             ["nextMap"] = "maps/main_hallway.lua"
           }
+        },
+        {
+          id = 4,
+          name = "player_spawn1",
+          type = "",
+          shape = "rectangle",
+          x = 135.667,
+          y = 154.667,
+          width = 15.3333,
+          height = 15.3333,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },

@@ -548,7 +548,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="23" name="dark" width="31" height="30" visible="0">
+ <layer id="23" name="dark" width="31" height="30">
   <data encoding="csv">
 1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,
 1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,1021,
@@ -583,8 +583,8 @@
 </data>
  </layer>
  <objectgroup id="17" name="Objects">
-  <object id="3" name="player_spawn" x="240" y="408.333" width="16.6667" height="15.3333"/>
-  <object id="4" name="main_hallway" x="223.333" y="456.333" width="48.6667" height="7.66667">
+  <object id="3" name="player_spawn" x="240" y="404.833" width="16.6667" height="15.3333"/>
+  <object id="4" name="main_hallway" x="223.333" y="446.833" width="48.6667" height="17.1667">
    <properties>
     <property name="nextMap" value="maps/main_hallway.lua"/>
    </properties>

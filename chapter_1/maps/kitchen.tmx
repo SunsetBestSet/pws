@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="16" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="4">
+<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="16" height="12" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="5">
  <editorsettings>
   <export target="kitchen.lua" format="lua"/>
  </editorsettings>
@@ -80,8 +80,8 @@
 </data>
  </layer>
  <objectgroup id="6" name="Objects">
-  <object id="1" name="player_spawn" x="211.167" y="89.666" width="15" height="12.6667"/>
-  <object id="2" name="dining_door" x="127" y="184.875" width="33.5" height="7">
+  <object id="1" name="player_spawn" x="217.167" y="89.666" width="15" height="12.6667"/>
+  <object id="2" name="between_door" x="127" y="184.875" width="33.5" height="7">
    <properties>
     <property name="nextMap" value="maps/dining_room.lua"/>
    </properties>
@@ -91,6 +91,7 @@
     <property name="nextMap" value="maps/main_hallway.lua"/>
    </properties>
   </object>
+  <object id="4" name="player_spawn1" x="135.667" y="154.667" width="15.3333" height="15.3333"/>
  </objectgroup>
  <objectgroup id="12" name="custom_collisions"/>
 </map>

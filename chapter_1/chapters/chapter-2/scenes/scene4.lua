@@ -13,47 +13,46 @@ function Scene2_4:loadEntities(object, GAME, map)
 			GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 			table.insert(GAME.entities, GAME.player)
 		elseif object.name == "kana_spawn" then
-			GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, GAME.npcImage, GAME.world, 200, 64, 200)
+			GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, GAME.npckanaImage, GAME.world, 200, 64, 200)
 			table.insert(GAME.entities, GAME.npc)
+		elseif object.name == "maid_spawn" then
+				GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, GAME.npcmaidImage, GAME.world, 200, 64, 200)
+				table.insert(GAME.entities, GAME.npc)
 		elseif object.name == "hallway_door2" then
 			local hallway_door2 = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_hallwaydoor2")
 			hallway_door2.nextMap = object.properties.nextMap;
 			table.insert(GAME.entities, hallway_door2)
 		end
-	elseif GAME.level == "maps/kana_hallway.lua" then
-		if object.name == "player_spawn" then
-			GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
-			table.insert(GAME.entities, GAME.player)
-		elseif object.name == "leiko_hallway" then
-			local leiko_hallway = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_leikohallway")
-			leiko_hallway.nextMap = object.properties.nextMap;
-			table.insert(GAME.entities, leiko_hallway)
-		elseif object.name == "kana_door" then
-			local kana_door = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_kanadoor")
-			kana_door.nextMap = object.properties.nextMap;
-			table.insert(GAME.entities, kana_door)
-		elseif object.name == "infirmary_hallway" then
-			local infirmary_hallway = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_infirmaryhallway")
-			infirmary_hallway.nextMap = object.properties.nextMap;
-			table.insert(GAME.entities, infirmary_hallway)
-		end
-	elseif GAME.level == "maps/leiko_hallway.lua" then
-		if object.name == "player_spawn" then
-			GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
-			table.insert(GAME.entities, GAME.player)
-		elseif object.name == "kana_hallway" then
-			local kana_hallway = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_kanahallway")
-			kana_hallway.nextMap = object.properties.nextMap;
-			table.insert(GAME.entities, kana_hallway)
-		elseif object.name == "leiko_door" then
-			local leiko_door = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_leikodoor")
-			leiko_door.nextMap = object.properties.nextMap;
-			table.insert(GAME.entities, leiko_door)
-		elseif object.name == "library_hallway" then
-			local library_hallway = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_libraryhallway")
-			library_hallway.nextMap = object.properties.nextMap;
-			table.insert(GAME.entities, library_hallway)
-		end
+	elseif GAME.level == "maps/room_hallway.lua" then
+			if object.name == "player_spawn1" and GAME.castleExit == "library_hallway" then
+				GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
+				table.insert(GAME.entities, GAME.player)
+			elseif object.name == "player_spawn2" and GAME.castleExit == "leikoroom" then
+				GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
+				table.insert(GAME.entities, GAME.player)
+			elseif object.name == "player_spawn3" and GAME.castleExit == "kanaroom" then
+				GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
+				table.insert(GAME.entities, GAME.player)
+			elseif object.name == "player_spawn4" and GAME.castleExit == "infirmary_hallway" then
+				GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
+				table.insert(GAME.entities, GAME.player)
+			elseif object.name == "leiko_door" then
+				local leiko_door = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_leikodoor")
+				leiko_door.nextMap = object.properties.nextMap;
+				table.insert(GAME.entities, leiko_door )
+			elseif object.name == "kana_door" then
+				local kana_door = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_kanadoor")
+				kana_door.nextMap = object.properties.nextMap;
+				table.insert(GAME.entities, kana_door )
+			elseif object.name == "infirmary_hallway" then
+				local infirmary_hallway = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_infirmaryhallway")
+				infirmary_hallway.nextMap = object.properties.nextMap;
+				table.insert(GAME.entities, infirmary_hallway )
+			elseif object.name == "library_hallway" then
+				local library_hallway = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_libraryhallway")
+				library_hallway.nextMap = object.properties.nextMap;
+				table.insert(GAME.entities, library_hallway)
+			end
 	end
 
 end
@@ -65,6 +64,7 @@ function Scene2_4:manageCollisions(thisName, otherName, cols, i, GAME)
 			GAME.interact = true
 		elseif thisName == "ent_player" and otherName == "ent_hallwaydoor2" and GAME.player.facing == "S" then
 			if GAME.ch2scene4Unlocked then
+				GAME.castleExit = "kanaroom"
 				GAME.level = cols[i].other.nextMap
 				GAME:loadLevel()
 			elseif GAME.level == "maps/kanaroom.lua" then
@@ -72,30 +72,22 @@ function Scene2_4:manageCollisions(thisName, otherName, cols, i, GAME)
 			end
 		end
 
-	elseif GAME.level == "maps/kana_hallway.lua" then
-		if thisName == "ent_player" and otherName == "ent_leikohallway" and GAME.player.facing == "W" then
+	elseif GAME.level == "maps/room_hallway.lua" then
+		if thisName == "ent_player" and otherName == "ent_leikodoor" and GAME.player.facing == "N" then
 			GAME.level = cols[i].other.nextMap
+			GAME.chapter2.scene = 5
 			GAME:loadLevel()
+		elseif thisName == "ent_player" and otherName == "ent_libraryhallway" and GAME.player.facing == "W" then
+			Talkies.say("Leiko", "* Why should I go there? I need to get to my room. *", {image=self.player.avatar, talkSound=GAME.blop})
 		elseif thisName == "ent_player" and otherName == "ent_kanadoor" and GAME.player.facing == "N" then
 			Talkies.say("Leiko", "* Kana's taking a bath, I better leave her alone. *", {image=self.player.avatar, talkSound=GAME.blop})
-			-- from Kana's hallway to infirmary_hallway
 		elseif thisName == "ent_player" and otherName == "ent_infirmaryhallway" and GAME.player.facing == "E" then
-			Talkies.say("Leiko", "* I have nothing to do there... *", {image=self.player.avatar, talkSound=GAME.blop})
-			end
-
-		elseif GAME.level == "maps/leiko_hallway.lua" then
-			if thisName == "ent_player" and otherName == "ent_kanahallway" and GAME.player.facing == "E" then
-				Talkies.say("Leiko", "* Why should I go back?? I need to get to my room. *", {image=self.player.avatar, talkSound=GAME.blop})
-			elseif thisName == "ent_player" and otherName == "ent_libraryhallway" and GAME.player.facing == "W" then
-				Talkies.say("Leiko", "* Why should I go back?? I need to get to my room. *", {image=self.player.avatar, talkSound=GAME.blop})
-			elseif thisName == "ent_player" and otherName == "ent_leikodoor" and GAME.player.facing == "N" then
-				GAME.level = cols[i].other.nextMap
-				GAME.chapter2.scene = 5
-				GAME:loadLevel()
-			end
+				Talkies.say("Leiko", "* I have nothing to do there... *", {image=self.player.avatar, talkSound=GAME.blop})
 		end
 
-		if GAME.level == "maps/kana_hallway.lua" and GAME.ch2scene4Unlocked and GAME.selfdialogue then
+		end
+
+		if GAME.level == "maps/room_hallway.lua" and GAME.ch2scene4Unlocked and GAME.selfdialogue then
 			Talkies.say("Leiko", "Typical. She's always reaching places to say everything's fine. ", {image=self.player.avatar, talkSound=GAME.blop})
 			Talkies.say("Leiko", "She even lies about her own health. 'In the way'... --she can't even walk around for longer than 2 hours...", {image=self.player.avatar, talkSound=GAME.blop})
 			Talkies.say("Leiko", "...--I better get to my room.", {image=self.player.avatar, talkSound=GAME.blop})

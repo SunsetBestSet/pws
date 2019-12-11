@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 12,
-  nextobjectid = 4,
+  nextobjectid = 5,
   properties = {},
   tilesets = {
     {
@@ -374,7 +374,7 @@ return {
         },
         {
           id = 2,
-          name = "kitchen_door",
+          name = "between_door",
           type = "",
           shape = "rectangle",
           x = 33.625,
@@ -396,6 +396,19 @@ return {
           y = 69.6667,
           width = 11.6667,
           height = 11.3333,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 4,
+          name = "player_spawn1",
+          type = "",
+          shape = "rectangle",
+          x = 41,
+          y = 68,
+          width = 16.25,
+          height = 14.25,
           rotation = 0,
           visible = true,
           properties = {}

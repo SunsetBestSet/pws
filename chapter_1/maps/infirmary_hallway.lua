@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 11,
-  nextobjectid = 7,
+  nextobjectid = 10,
   properties = {},
   tilesets = {
     {
@@ -118,12 +118,12 @@ return {
       properties = {},
       encoding = "lua",
       data = {
+        0, 379, 0, 0, 379, 0,
+        0, 419, 0, 0, 419, 0,
+        0, 459, 0, 0, 459, 0,
         0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0,
-        572, 572, 572, 572, 572, 572,
-        652, 652, 691, 692, 652, 652,
+        571, 572, 572, 572, 572, 573,
+        651, 652, 691, 692, 652, 653,
         0, 0, 611, 613, 0, 0,
         0, 0, 611, 613, 0, 0,
         0, 0, 611, 613, 0, 0,
@@ -133,11 +133,11 @@ return {
         0, 0, 611, 613, 0, 0,
         0, 0, 611, 613, 0, 0,
         0, 0, 611, 613, 0, 0,
-        0, 0, 611, 1610613428, 572, 572,
-        0, 0, 611, 692, 652, 652,
+        0, 0, 611, 1610613428, 572, 573,
+        0, 0, 611, 692, 652, 653,
         0, 0, 611, 613, 0, 0,
         0, 0, 611, 613, 0, 0,
-        0, 0, 611, 613, 0, 0
+        0, 0, 651, 653, 0, 0
       }
     },
     {
@@ -157,9 +157,9 @@ return {
       },
       encoding = "lua",
       data = {
-        588, 378, 248, 246, 378, 588,
-        588, 418, 288, 286, 418, 588,
-        588, 458, 328, 326, 458, 588,
+        588, 379, 248, 246, 379, 588,
+        588, 419, 288, 286, 419, 588,
+        588, 459, 328, 326, 459, 588,
         588, 0, 0, 0, 0, 588,
         0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0,
@@ -234,8 +234,8 @@ return {
           name = "player_spawn",
           type = "",
           shape = "rectangle",
-          x = 42.0121,
-          y = 98.0731,
+          x = 20.3454,
+          y = 75.0731,
           width = 11.4767,
           height = 11.4767,
           rotation = 0,
@@ -244,7 +244,7 @@ return {
         },
         {
           id = 2,
-          name = "kana_hallway",
+          name = "room_hallway",
           type = "",
           shape = "rectangle",
           x = 3.08706e-07,
@@ -254,7 +254,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["nextMap"] = "maps/kana_hallway.lua"
+            ["nextMap"] = "maps/room_hallway.lua"
           }
         },
         {
@@ -301,6 +301,45 @@ return {
           properties = {
             ["nextMap"] = "maps/maidroom.lua"
           }
+        },
+        {
+          id = 7,
+          name = "player_spawn2",
+          type = "",
+          shape = "rectangle",
+          x = 60.3333,
+          y = 249.667,
+          width = 14,
+          height = 14.6667,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 8,
+          name = "player_spawn3",
+          type = "",
+          shape = "rectangle",
+          x = 40,
+          y = 283.666,
+          width = 14.6667,
+          height = 14.6667,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 9,
+          name = "player_spawn1",
+          type = "",
+          shape = "rectangle",
+          x = 63.6666,
+          y = 75.3333,
+          width = 12,
+          height = 12.3333,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },

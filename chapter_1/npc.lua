@@ -9,9 +9,9 @@ Nonplayable.super.new(self, x, y, width, height, image, world, maxVelX, maxVelY,
   self.facing = "N"
   self.isMoving = false
   self.canMove = true
-  self.avatar = love.graphics.newImage("assets/irene.png")
+  self.avatar = love.graphics.newImage("assets/irene1.png")
   self.avatarkana = love.graphics.newImage("assets/kana.png")
-  self.avatarirene = love.graphics.newImage("assets/irene1.png")
+  self.avatarirene = love.graphics.newImage("assets/irene.png")
   self.avatarhiko = love.graphics.newImage("assets/hiko.png")
 
   self.tempDistance = ""
