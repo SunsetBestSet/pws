@@ -61,7 +61,6 @@ function Game:loadLevel()
 		elseif self.chapter == 2 then
 			self = self.chapter2:loadEntities(object, self)
 		end
-
 	end
 
 	self.map:removeLayer("Objects")
@@ -94,23 +93,12 @@ function Game:checkCols(entity, cols)
 end
 
 function Game:tweenupdate(dt)
-	local a = 0
 	for k, v in pairs(self.tweens) do 
 		if self.objects[1].colour[4] == 1 and self.alert then
 			local complete = self.tweens[k]:update(dt)
-			if complete then
-				if style == "alert" then
-					local t2 = tween.new(0.05, self.objects[2], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inExpo')
-					table.insert(self.tweens, t2)
-				end
-				if style == "ch2" then
-					local t3 = tween.new(1, self.objects[3], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
-					table.insert(self.tweens, t3)
-				end
-				if style == "morning" then
-					local t4 = tween.new(1, self.objects[4], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
-					table.insert(self.tweens, t4)
-				end
+			if complete then 
+				local t2 = tween.new(0.05, self.objects[2], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inExpo')
+				table.insert(self.tweens, t2)
 			end
 		else
 			self.tweens[k]:update(dt)
@@ -138,11 +126,18 @@ function Game:tweenupdate(dt)
 		self:doBlackScreen("out")
 	end
 
-	if self.doFadeOut and self.chapter1.scene == 8 and self.objects[1].colour[4] == 1 then 
+	if self.doFadeOut and self.chapter1.scene == 8 and self.objects[1].colour[4] == 1 and self.chapter == 1 then 
 		self.doFadeOut = false
 		self.level = "maps/leiko_room1.lua"
 		self:loadLevel()
 		self:doBlackScreen("out")
+	end
+
+	if self.doFadeOut and self.chapter1.scene == 8 and self.objects[3].colour[4] == 1 and self.chapter == 2 then 
+		self.doFadeOut = false
+		self.level = "maps/leiko_room1.lua"
+		self:loadLevel()
+		self:doBlackScreen("out", "ch2")
 	end
 
 end
@@ -291,8 +286,10 @@ function Game:draw()
 	love.graphics.print(self.player.facing, 0, 36)
 	love.graphics.print(tostring(self.interact), 0, 48)
 	love.graphics.print(self.level, 0, 60)
-	love.graphics.print("Scene: " .. self.chapter1.scene, 0, 72)
-
+	love.graphics.print("chapter 1: scene: " .. self.chapter1.scene, 0, 72)
+	love.graphics.print("chapter 2: scene: " .. self.chapter2.scene, 0, 84)
+	love.graphics.print("Chapter: " .. self.chapter, 0, 96)
+	
 	self:drawTweens()
 
 end

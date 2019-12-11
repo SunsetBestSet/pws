@@ -43,7 +43,7 @@ function leiko_room:manageKeypresses(key, GAME)
 		Talkies.say("Hiko", "Maybe my sister could help! She's always reading and studying things!", {image=GAME.player.avatar, talkSound=GAME.blop})
 		Talkies.say("Leiko (skeptical)", "Do you think she knows about the legend? ", {image=self.leiko_avatar, talkSound=GAME.blop})
 		Talkies.say("Hiko", "Probably! She's reaaally smart. ", {image=GAME.player.avatar, talkSound=GAME.blop})
-		Talkies.say("Leiko", "Well then, bring her to the castle tomorrow morning. We cannot wait for the research team to finish their report. Now leave.", {image=self.leiko_avatar, talkSound=GAME.blop})
+		Talkies.say("Leiko", "Well then, bring her to the castle tomorrow morning. We cannot wait for the research team to finish their report. Now leave.", {image=self.leiko_avatar, talkSound=GAME.blop, oncomplete=function() self:startChapter2(GAME) end})
 		self.unlockScene8 = true
 		self.interact_leiko = false
 	end
@@ -51,4 +51,10 @@ function leiko_room:manageKeypresses(key, GAME)
 	elseif key == "up" then Talkies.prevOption()
 	elseif key == "down" then Talkies.nextOption()
 	end
+end
+
+function leiko_room:startChapter2(GAME)
+	GAME:doBlackScreen("in", "ch2")
+	GAME.doFadeOut = true
+	GAME.chapter = 2
 end

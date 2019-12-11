@@ -15,7 +15,7 @@ end
 function Scene2_5:loadEntities(object, GAME, map)
 
 -- Leiko's room
-if GAME.level == "maps/leikoroom.lua" then
+if GAME.level == "maps/leiko_room1.lua" then
 		if object.name == "player_spawn" then
 			GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 			table.insert(GAME.entities, GAME.player)
@@ -105,7 +105,7 @@ end
 function Scene2_5:manageCollisions(thisName, otherName, cols, i, GAME)
 
 	-- from Leiko's room to leiko_hallway
-	if GAME.level == "maps/leikoroom.lua" then
+	if GAME.level == "maps/leiko_room1.lua" then
 		if thisName == "ent_player" and otherName == "ent_hallwaydoor1" and GAME.player.facing == "S" and GAME.ch2scene5Unlocked1 and not GAME.ch2scene5Unlocked2 then
       Talkies.say("Leiko", " * It's better to stay in my room for now. * ")
 		elseif thisName == "ent_player" and otherName == "ent_leikobed" then
