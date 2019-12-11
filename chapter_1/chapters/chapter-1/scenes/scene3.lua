@@ -17,7 +17,7 @@ end
 
 function Scene3:manageKeypresses(key, GAME)
 	if key == "space" then
-		Talkies.onAction() 
+		Talkies.onAction()
 	end
 end
 
