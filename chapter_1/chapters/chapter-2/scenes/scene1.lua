@@ -574,15 +574,15 @@ end
 end
 
 function Scene2_1:loadLevel(GAME)
+	GAME:doBlackScreen("in", "ch2")
 	if GAME.level == "maps/leikoroom.lua" and GAME.ch2scene1Unlocked == false then
-		GAME:doBlackScreen("in", "ch2")
 		GAME.player.canMove = false
 		GAME.player.facing = "S"
 		Talkies.say("Leiko", "* This must be one of the weirdest days ever. Dark clouds? The disk? Peasants showing up at the castle? *", {image=self.player.avatar, talkSound=GAME.blop,})
 		Talkies.say("Leiko", "* I can't believe Mother didn't send them away immediately, with her patience.*", {image=self.player.avatar, talkSound=GAME.blop,})
 		Talkies.say("Leiko", "* Also me? Talking to them? Unheard of. *", {image=self.player.avatar, talkSound=GAME.blop,})
-		Talkies.say("Leiko", "* Ugh, and I can't believe I'm willingly inviting peasants into my room. *", {image=self.player.avatar, talkSound=GAME.blop, oncomplete=function() GAME:doBlackScreen("out", "ch2") end})
-		Talkies.say("Leiko", "* I hope they don't leave a smell.-- Maybe I should call over one of the maids afterward... *", {image=self.player.avatar, talkSound=GAME.blop,})
+		Talkies.say("Leiko", "* Ugh, and I can't believe I'm willingly inviting peasants into my room. *", {image=self.player.avatar, talkSound=GAME.blop })
+		Talkies.say("Leiko", "* I hope they don't leave a smell.-- Maybe I should call over one of the maids afterward... *", {image=self.player.avatar, talkSound=GAME.blop,oncomplete=function() GAME:doBlackScreen("out", "ch2") end})
 		Talkies.say("Leiko", "* Anyway, I should go talk about this to Kana. *", {image=self.player.avatar, talkSound=GAME.blop,})
 		Talkies.say("GAME", "* IT'S NOW POSSIBLE TO EXPLORE THE CASTLE GROUNDS! *", {image=self.player.avatar, talkSound=GAME.blop,})
 		GAME.interact = false

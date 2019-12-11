@@ -108,6 +108,7 @@ function Game:tweenupdate(dt)
 			self.tweens[k]:update(dt)
 		end
 	end
+
 end
 
 function Game:doBlackScreen(direction, style, character, text)
