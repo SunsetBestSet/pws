@@ -23,7 +23,7 @@ end
 
 function Scene2:manageKeypresses(key, GAME)
 	if key == "space" then
-		Talkies.onAction() 
+		Talkies.onAction()
 	end
 	if GAME.level == "maps/scene1.lua" then 
 		self.houseirene:manageKeypresses(key, GAME)

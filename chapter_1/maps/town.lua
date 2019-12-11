@@ -1,7 +1,7 @@
 return {
   version = "1.2",
   luaversion = "5.1",
-  tiledversion = "1.3.1",
+  tiledversion = "1.2.3",
   orientation = "orthogonal",
   renderorder = "right-down",
   width = 70,
@@ -13,7 +13,7 @@ return {
   properties = {},
   tilesets = {
     {
-      name = "outdoor",
+      name = "overworld0",
       firstgid = 1,
       filename = "outdoor.tsx.tmx",
       tilewidth = 16,
@@ -21,7 +21,7 @@ return {
       spacing = 0,
       margin = 0,
       columns = 40,
-      image = "overworld.png",
+      image = "overworld0.png",
       imagewidth = 640,
       imageheight = 576,
       tileoffset = {

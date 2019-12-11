@@ -17,6 +17,13 @@ function Game:new()
 	self.chapter1 = Chapter1()
 	self.chapter2 = Chapter2()
 	self.chapter = 1
+	self.ch2scene1Unlocked = false
+	self.ch2scene2Unlocked = false
+	self.ch2scene3Unlocked = false
+	self.ch2scene4Unlocked = false
+	self.ch2scene5Unlocked1 = false
+	self.ch2scene5Unlocked2 = false
+	self.ch2scene6Unlocked = false
 	self.objects = require 'objects'
 	self.tweens = {}
 	self.doFadeOut = false
@@ -29,6 +36,8 @@ function Game:new()
 	self.leiko_room = leiko_room()
 
 	self:loadLevel()
+
+	self.castleExit = "leikoroom"
 
 end
 
@@ -43,22 +52,24 @@ function Game:loadLevel()
 	self.map = sti(self.level, { "bump" })
 	self.map:bump_init(self.world)
 	self = self.chapter1:loadAssets(self)
+	if self.chapter == 2 then
+		self = self.chapter2:loadAssets(self)
+	end
 	for k, object in pairs(self.map.objects) do
-		if self.chapter == 1 then 
+		if self.chapter == 1 then
 			self = self.chapter1:loadEntities(object, self)
-		elseif self.chapter == 2 then 
+		elseif self.chapter == 2 then
 			self = self.chapter2:loadEntities(object, self)
 		end
-
 	end
 
 	self.map:removeLayer("Objects")
 	self.map:removeLayer("custom_collisions")
 	self.stop = true
 	self.complete = false
-	if self.chapter == 1 then 
+	if self.chapter == 1 then
 		self = self.chapter1:loadLevel(self)
-	elseif self.chapter == 2 then 
+	elseif self.chapter == 2 then
 		self = self.chapter2:loadLevel(self)
 	end
 end
@@ -68,19 +79,20 @@ end
 function Game:checkCols(entity, cols)
 
 	local thisName = entity.name;
-	
+
 	for i,v in ipairs (cols) do
 
 		local otherName = cols[i].other.name;
 		if self.chapter == 1 then
 			self = self.chapter1:manageCollisions(thisName, otherName, cols, i, self)
+		elseif self.chapter == 2 then
+			self = self.chapter2:manageCollisions(thisName, otherName, cols, i, self)
 		end
 	end
 
 end
 
 function Game:tweenupdate(dt)
-	local a = 0
 	for k, v in pairs(self.tweens) do 
 		if self.objects[1].colour[4] == 1 and self.alert then
 			local complete = self.tweens[k]:update(dt)
@@ -114,11 +126,18 @@ function Game:tweenupdate(dt)
 		self:doBlackScreen("out")
 	end
 
-	if self.doFadeOut and self.chapter1.scene == 8 and self.objects[1].colour[4] == 1 then 
+	if self.doFadeOut and self.chapter1.scene == 8 and self.objects[1].colour[4] == 1 and self.chapter == 1 then 
 		self.doFadeOut = false
 		self.level = "maps/leiko_room1.lua"
 		self:loadLevel()
 		self:doBlackScreen("out")
+	end
+
+	if self.doFadeOut and self.chapter1.scene == 8 and self.objects[3].colour[4] == 1 and self.chapter == 2 then 
+		self.doFadeOut = false
+		self.level = "maps/leiko_room1.lua"
+		self:loadLevel()
+		self:doBlackScreen("out", "ch2")
 	end
 
 end
@@ -134,6 +153,14 @@ function Game:doBlackScreen(direction, style, character, text)
 			local alert = love.audio.newSource("assets/alert.mp3", "static")
 			love.audio.play(alert)
 		end
+		if style == "ch2" then
+			local t3 = tween.new(1, self.objects[3], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
+			table.insert(self.tweens, t3)
+		end
+		if style == "morning" then
+			local t4 = tween.new(1, self.objects[4], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
+			table.insert(self.tweens, t4)
+		end
 	end
 	if direction == "out" then
 		local t1 = tween.new(2, self.objects[1], {colour={0, 0, 0, 0}}, 'outQuad')
@@ -142,15 +169,23 @@ function Game:doBlackScreen(direction, style, character, text)
 			local t2 = tween.new(0.1, self.objects[2], {colour = {1, 1, 1, 0}, y = love.graphics.getHeight() / 4 - 75}, 'outExpo')
 			table.insert(self.tweens, t2)
 		end
+		if style == "ch2" then
+			local t3 = tween.new(0.05, self.objects[3], {colour = {1, 1, 1, 0}, y = love.graphics.getHeight() / 4 - 75}, 'outExpo')
+			table.insert(self.tweens, t3)
+		end
+		if style == "morning" then
+			local t4 = tween.new(0.05, self.objects[4], {colour = {1, 1, 1, 0}, y = love.graphics.getHeight() / 4 - 75}, 'outExpo')
+			table.insert(self.tweens, t4)
+		end
 	end
 
 end
 
 function Game:drawTweens()
-	for k, v in pairs(self.objects) do 
+	for k, v in pairs(self.objects) do
 		local object = self.objects[k]
 		love.graphics.setColor(object.colour)
-		if object.type == "rectangle" then 
+		if object.type == "rectangle" then
 			love.graphics.rectangle('fill', 0, 0, object.width, object.height)
 		end
 		if object.type == "text" then
@@ -162,8 +197,10 @@ end
 
 function Game:manageKeypresses(key)
 
-	if self.chapter == 1 then 
+	if self.chapter == 1 then
 		self = self.chapter1:manageKeypresses(key, self)
+	elseif self.chapter == 2 then
+		self = self.chapter2:manageKeypresses(key, self)
 	end
 end
 
@@ -175,7 +212,7 @@ function Game:update(dt)
 	for i=1, #self.entities do
 		self.entities[i].x, self.entities[i].y, cols = self.world:move( self.entities[i], self.entities[i].x, self.entities[i].y )
 		self:checkCols(self.entities[i], cols)
-		if self.stop then 
+		if self.stop then
 			self.stop = false
 			return
 		end
@@ -249,9 +286,10 @@ function Game:draw()
 	love.graphics.print(self.player.facing, 0, 36)
 	love.graphics.print(tostring(self.interact), 0, 48)
 	love.graphics.print(self.level, 0, 60)
-	love.graphics.print("Scene: " .. self.chapter1.scene, 0, 72)
-
+	love.graphics.print("chapter 1: scene: " .. self.chapter1.scene, 0, 72)
+	love.graphics.print("chapter 2: scene: " .. self.chapter2.scene, 0, 84)
+	love.graphics.print("Chapter: " .. self.chapter, 0, 96)
+	
 	self:drawTweens()
 
 end
-
