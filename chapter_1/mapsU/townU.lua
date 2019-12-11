@@ -69,7 +69,7 @@ function Town:manageKeypresses(key, GAME)
 end
 
 function Town:startScene5(GAME)
+	GAME.chapter1.scene = 5
 	GAME:doBlackScreen("in", "alert")
 	GAME.doFadeOut = true
-	GAME.chapter1.scene = 5
 end

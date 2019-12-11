@@ -53,9 +53,6 @@ function love.draw()
 	Talkies.draw()
 end
 
-function love.mousepressed( x,y,button )
-	game:loadLevel()
-end
 
 function love.resize(w, h)
 	maid64.resize(w, h)

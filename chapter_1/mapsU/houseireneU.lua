@@ -29,6 +29,7 @@ function HouseIrene:manageCollisions(thisName, otherName, cols, i, GAME)
 		self.interact_irene = true
 	elseif thisName == "ent_player" and otherName == "ent_door" and GAME.player.facing == "N" then
 		if self.unlockScene5 then
+			GAME.exitThrough = "irene_house_town"
 			GAME.chapter1.scene = 6
 			GAME.level = cols[i].other.nextMap
 			GAME:loadLevel()

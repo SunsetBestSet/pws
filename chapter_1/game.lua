@@ -26,6 +26,7 @@ function Game:new()
 	self.houseirene = HouseIrene()
 	self.shop = Shop()
 	self.throne_room = ThroneRoom()
+	self.leiko_room = leiko_room()
 
 	self:loadLevel()
 
@@ -81,7 +82,7 @@ end
 function Game:tweenupdate(dt)
 	local a = 0
 	for k, v in pairs(self.tweens) do 
-		if self.objects[1].colour[4] == 1 then
+		if self.objects[1].colour[4] == 1 and self.alert then
 			local complete = self.tweens[k]:update(dt)
 			if complete then 
 				local t2 = tween.new(0.05, self.objects[2], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inExpo')
@@ -92,7 +93,7 @@ function Game:tweenupdate(dt)
 		end
 	end
 
-	if self.doFadeOut and self.chapter1.scene == 5 and self.objects[1].colour[4] == 1 then 
+	if self.doFadeOut and self.chapter1.scene == 5 and self.objects[2].colour[4] == 1 then 
 		self.doFadeOut = false
 		self.level = "maps/scene1.lua"
 		self:loadLevel()
@@ -100,6 +101,13 @@ function Game:tweenupdate(dt)
 	end
 
 	if self.doFadeOut and self.chapter1.scene == 7 and self.objects[1].colour[4] == 1 then 
+		self.doFadeOut = false
+		self.level = "maps/throne_room.lua"
+		self:loadLevel()
+		self:doBlackScreen("out")
+	end
+
+	if self.doFadeOut and self.chapter1.scene == 72 and self.objects[1].colour[4] == 1 then 
 		self.doFadeOut = false
 		self.level = "maps/throne_room.lua"
 		self:loadLevel()
@@ -116,14 +124,15 @@ function Game:tweenupdate(dt)
 end
 
 function Game:doBlackScreen(direction, style, character, text)
+	local style = style or "nothing"
 	for k, v in pairs(self.tweens) do self.tweens[k] = nil end
 	if direction == "in" then
 		local t1 = tween.new(1, self.objects[1], {colour={0, 0, 0, 1}}, 'inQuad')
 		table.insert(self.tweens, t1)
-		local alert = love.audio.newSource("assets/alert.mp3", "static")
-		love.audio.play(alert)
 		if style == "alert" then
 			self.alert = true
+			local alert = love.audio.newSource("assets/alert.mp3", "static")
+			love.audio.play(alert)
 		end
 	end
 	if direction == "out" then

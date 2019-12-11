@@ -6,6 +6,7 @@ require "chapters/chapter-1/scenes/scene4"
 require "chapters/chapter-1/scenes/scene5"
 require "chapters/chapter-1/scenes/scene6"
 require "chapters/chapter-1/scenes/scene7"
+require "chapters/chapter-1/scenes/scene72"
 require "chapters/chapter-1/scenes/scene8"
 
 function Chapter1:new()
@@ -16,6 +17,7 @@ function Chapter1:new()
 	self.scene5 = Scene5()
 	self.scene6 = Scene6()
 	self.scene7 = Scene7()
+	self.scene72 = Scene72()
 	self.scene8 = Scene8()
 	self.scene = 1 
 	self.character = love.graphics.newImage('assets/sprites/hiko.png')
@@ -38,6 +40,8 @@ function Chapter1:loadEntities(object, GAME)
 		self.scene6:loadEntities(object, GAME)
 	elseif self.scene == 7 then 
 		self.scene7:loadEntities(object, GAME)
+	elseif self.scene == 72 then 
+		self.scene72:loadEntities(object, GAME)
 	elseif self.scene == 8 then 
 		self.scene8:loadEntities(object, GAME)
 	end
@@ -87,6 +91,8 @@ function Chapter1:manageKeypresses(key, GAME)
 		self.scene6:manageKeypresses(key, GAME)
 	elseif self.scene == 7 then 
 		self.scene7:manageKeypresses(key, GAME)
+	elseif self.scene == 72 then 
+		self.scene72:manageKeypresses(key, GAME)
 	elseif self.scene == 8 then 
 		self.scene8:manageKeypresses(key, GAME)
 	end
@@ -102,6 +108,8 @@ function Chapter1:loadLevel(GAME)
 		self.scene6:loadLevel(GAME)
 	elseif self.scene == 7 then 
 		self.scene7:loadLevel(GAME)
+	elseif self.scene == 72 then 
+		self.scene72:loadLevel(GAME)
 	end
 	return GAME
 end

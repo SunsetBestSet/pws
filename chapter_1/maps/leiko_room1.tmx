@@ -50,9 +50,6 @@
 </data>
  </layer>
  <layer id="15" name="carpet" width="14" height="11">
-  <properties>
-   <property name="collidable" type="bool" value="true"/>
-  </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -68,9 +65,6 @@
 </data>
  </layer>
  <layer id="16" name="bed" width="14" height="11">
-  <properties>
-   <property name="collidable" type="bool" value="true"/>
-  </properties>
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -131,6 +125,9 @@
 </data>
  </layer>
  <objectgroup id="11" name="custom_collisions">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
   <object id="5" x="81.875" y="38.75" width="27.875" height="20.125"/>
   <object id="6" x="113.125" y="33.75" width="29.625" height="26"/>
   <object id="7" x="129.25" y="44.875" width="13.625" height="24"/>

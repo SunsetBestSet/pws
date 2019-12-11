@@ -22,7 +22,7 @@ function leiko_room:manageCollisions(thisName, otherName, cols, i, GAME)
 end
 
 function leiko_room:manageKeypresses(key, GAME)
-	if key == 'space' and self.interact_leiko then 
+	if key == 'space' and self.interact_leiko and not self.unlockScene8 then 
 		Talkies.say("Leiko", "Look, I might know what is going on.", {image=self.leiko_avatar, talkSound=GAME.blop})
 		Talkies.say("Hiko", "Really?", {image=GAME.player.avatar, talkSound=GAME.blop})
 		Talkies.say("Leiko", "Yes.", {image=self.leiko_avatar, talkSound=GAME.blop})
@@ -44,12 +44,11 @@ function leiko_room:manageKeypresses(key, GAME)
 		Talkies.say("Leiko (skeptical)", "Do you think she knows about the legend? ", {image=self.leiko_avatar, talkSound=GAME.blop})
 		Talkies.say("Hiko", "Probably! She's reaaally smart. ", {image=GAME.player.avatar, talkSound=GAME.blop})
 		Talkies.say("Leiko", "Well then, bring her to the castle tomorrow morning. We cannot wait for the research team to finish their report. Now leave.", {image=self.leiko_avatar, talkSound=GAME.blop})
-	elseif key == "space" then Talkies.onAction()
+		self.unlockScene8 = true
+		self.interact_leiko = false
+	end
+	if key == "space" then Talkies.onAction()
 	elseif key == "up" then Talkies.prevOption()
 	elseif key == "down" then Talkies.nextOption()
 	end
-end
-
-function leiko_room:loadLevel(GAME)
-
 end
