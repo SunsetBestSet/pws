@@ -1,12 +1,12 @@
 Nonplayable = DynamicEntity:extend()
 
-function Nonplayable:new(x, y, width, height, image, world, maxVelX, maxVelY, speed) 
+function Nonplayable:new(x, y, width, height, image, world, maxVelX, maxVelY, speed, facing) 
 Nonplayable.super.new(self, x, y, width, height, image, world, maxVelX, maxVelY, "ent_npc", 2)
   self.origX = x
   self.origY = 15
   self.speed = speed
   self.image = image
-  self.facing = "S"
+  self.facing = facing or "N"
   self.isMoving = false
   self.canMove = true
   self.avatar = love.graphics.newImage("assets/irene.png")
@@ -17,7 +17,7 @@ Nonplayable.super.new(self, x, y, width, height, image, world, maxVelX, maxVelY,
   self.animationNorth = anim8.newAnimation(g('1-4',1), 0.1)
   self.animationEast = anim8.newAnimation(g('1-4',2), 0.1)
   self.animationSouth = anim8.newAnimation(g('1-4',3), 0.1)
-  self.animationWest = anim8.newAnimation(g('1-4',4), 0.1)
+  self.animationWest = anim8.newAnimation(g('1-4',2), 0.1):flipH()
 end
 
 function Nonplayable:update(dt)

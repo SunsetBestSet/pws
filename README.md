@@ -26,3 +26,10 @@
 
 `$ git pull origin master` — pull master
 `$ git pull origin readme-md` — pull branch readme-md
+
+## helpful links
+https://github.com/tanema/talkies
+https://github.com/kikito/tween.lua
+
+## Things to add
+* Make super large doghouse easter egg thing
