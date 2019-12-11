@@ -1,12 +1,12 @@
 Nonplayable = DynamicEntity:extend()
 
-function Nonplayable:new(x, y, width, height, image, world, maxVelX, maxVelY, speed)
+function Nonplayable:new(x, y, width, height, image, world, maxVelX, maxVelY, speed, facing) 
 Nonplayable.super.new(self, x, y, width, height, image, world, maxVelX, maxVelY, "ent_npc", 2)
   self.origX = x
   self.origY = 15
   self.speed = speed
   self.image = image
-  self.facing = "N"
+  self.facing = facing or "N"
   self.isMoving = false
   self.canMove = true
   self.avatar = love.graphics.newImage("assets/irene1.png")

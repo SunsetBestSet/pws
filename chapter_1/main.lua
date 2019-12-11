@@ -7,13 +7,23 @@ Talkies = require "libs/talkies"
 Camera = require "libs/Camera"
 tween = require "libs/tween"
 
+-- load entities
 require "player"
 require "game"
 require "npc"
+
+-- load chapters
 require "chapters/chapter-1/chapter1"
 require "chapters/chapter-2/chapter2"
 require "chapters/chapter-2/scenes/scene6"
 require "chapters/chapter-2/scenes/scene2"
+
+-- load maps unlocked
+require "mapsU/townU"
+require "mapsU/houseireneU"
+require "mapsU/shopU"
+require "mapsU/throneroomU"
+require "mapsU/leikoroomU"
 
 
 local cols,GRAVITY,map,world
@@ -45,9 +55,6 @@ function love.draw()
 	Talkies.draw()
 end
 
-function love.mousepressed( x,y,button )
-	game:loadLevel()
-end
 
 function love.resize(w, h)
 	maid64.resize(w, h)

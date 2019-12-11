@@ -2,7 +2,7 @@ Scene1 = Object:extend()
 
 function Scene1:new()
 	self.interact_bed_hiko = false
-    self.interact_bed_irene = false
+	self.interact_bed_irene = false
 end
 
 function Scene1:loadEntities(object, GAME)
@@ -10,7 +10,7 @@ function Scene1:loadEntities(object, GAME)
 		GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 		table.insert(GAME.entities, GAME.player)
 	elseif object.name == "irene_spawn" then
-		GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, GAME.npcImage, GAME.world, 200, 64, 200)
+		GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, GAME.ireneImage, GAME.world, 200, 64, 200)
 		table.insert(GAME.entities, GAME.npc)
 	elseif object.name == "door" then
 		local door = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_door")
@@ -32,6 +32,7 @@ function Scene1:manageCollisions(thisName, otherName, cols, i, GAME)
 		if GAME.scene1Unlocked or GAME.level == "maps/town.lua" then
 			GAME.level = cols[i].other.nextMap
 			GAME.chapter1.scene = 2
+			GAME.exitThrough = "irene_house_town"
 			GAME:loadLevel()
 		elseif GAME.level == "maps/scene1.lua" then
 			Talkies.say("Hiko", "I should tell her about the cloud...", {image=GAME.player.avatar, talkSound=GAME.blop,})

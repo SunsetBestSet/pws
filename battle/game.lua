@@ -1,7 +1,7 @@
 Game = Object:extend()
 
 function Game:new()
-	self.world = "startscreen"
+	self.world = "battle"
 	battle = Battle()
 	startscreen = Startscreen()
 end
@@ -31,8 +31,8 @@ function Game:keypressed(key)
 		startscreen:keypressed(key)
 	end
 
-	if self.world == "startscreen" then 
-		startscreen:keypressed(key)
+	if self.world == "battle" then 
+		battle:keypressed(key)
 	end
 end
 
