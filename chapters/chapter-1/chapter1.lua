@@ -100,7 +100,9 @@ function Chapter1:manageKeypresses(key, GAME)
 end
 
 function Chapter1:loadLevel(GAME)
-	if self.scene == 3 then 
+	if self.scene == 1 then 
+		self.scene1:loadLevel(GAME)
+	elseif self.scene == 3 then 
 		self.scene3:loadLevel(GAME)
 	elseif self.scene == 4 then 
 		self.scene4:loadLevel(GAME)

@@ -237,6 +237,7 @@ end
 function Scene2_5:finishReading(GAME) 
 	GAME:doBlackScreen("in", "morning")
 	GAME.stayBlack = true
+	GAME.ch2scene5Unlocked2 = true
 	Talkies.say("Maid", "Your Highness, the morning bells have rung. You should wake up before Princess Kana will come in to do so herself.", {talkSound=GAME.blop})
 	Talkies.say("Leiko", " * Ugh I hate mornings... *", {image=self.player.avatar, talkSound=GAME.blop})
 	Talkies.say("Maid", "Your Highness, the peasants you summoned have arrived. Should I bring them in?", {talkSound=GAME.blop})

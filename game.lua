@@ -8,6 +8,14 @@ function Game:new()
 	self.interact = false
 	self.debugFont = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 20)
 	self.blop = love.audio.newSource("assets/talk.wav", "static")
+	self.music = {
+		prologue= love.audio.newSource("assets/prologue.mp3", "stream"),
+		town=love.audio.newSource("assets/townmusic.mp3", "stream"),
+		castle=love.audio.newSource("assets/castle.mp3", "stream"),}
+	self.music.prologue:setVolume(.3)
+	self.music.prologue:setLooping( true )
+	self.music.town:setLooping( true )
+	self.music.castle:setLooping( true )
 	self.stop = false
 	self.camera = Camera()
 	self.camera:setFollowStyle('TOPDOWN_TIGHT')
@@ -231,8 +239,12 @@ function Game:update(dt)
 
 	if Talkies.isOpen() then
 		self.player.canMove = false
+		self.music.town:setVolume(.2)
+		self.music.castle:setVolume(.2)
 	else
 		self.player.canMove = true
+		self.music.town:setVolume(.4)
+		self.music.castle:setVolume(.4)
 	end
 
 	self:tweenupdate(dt)

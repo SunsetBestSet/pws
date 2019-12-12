@@ -45,7 +45,7 @@ end
 
 function Town:manageKeypresses(key, GAME)
 	if key == 'space' and self.interact_binoculars then 
-		if GAME.chapter1.scene == 2 then
+		if GAME.chapter1.scene == 4 then
 			Talkies.say(
 				"Game", 
 				"Do you want to take a look?", 

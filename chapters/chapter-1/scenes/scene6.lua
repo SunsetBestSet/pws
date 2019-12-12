@@ -23,4 +23,6 @@ function Scene6:startScene7(GAME)
 	GAME:doBlackScreen("in")
 	GAME.doFadeOut = true
 	GAME.chapter1.scene = 7
+	GAME.music.town:stop()
+	GAME.music.castle:play()
 end

@@ -35,9 +35,9 @@ function love.load()
 
 	maid64.setup(320)
 
-	game = Game()
-
 	Talkies.font = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 40)
+	
+	game = Game()
 
 end
 

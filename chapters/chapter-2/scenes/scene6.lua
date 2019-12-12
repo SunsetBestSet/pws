@@ -151,10 +151,16 @@ function Scene2_6:moreMessages(object, GAME, map)
     Talkies.say("Leiko", "Y-You-!", {image=player_avatar, talkSound=GAME.blop})
     Talkies.say("Irene", "Let's meet at the North gates at dusk.", {image=GAME.npc.avatarirene, talkSound=GAME.blop,})
     Talkies.say("Leiko", "You unrespectful peasant!! Get out!!", {image=player_avatar, talkSound=GAME.blop})
-    Talkies.say("Irene", "Just don't be late, 'Your Highnesses'.", {image=GAME.npc.avatarirene, talkSound=GAME.blop,})
+    Talkies.say("Irene", "Just don't be late, 'Your Highnesses'.", {image=GAME.npc.avatarirene, talkSound=GAME.blop, oncomplete = function() self:endBeta(GAME) end})
     GAME.ch2scene6Unlocked = true
     GAME.interact = false
 end
 
 function Scene2_6:loadLevel(GAME)
+end
+
+function Scene2_6:endBeta(GAME)
+    GAME.objects[1].colour[4] = 1
+    GAME.objects[5].colour[4] = 1
+    GAME.player.canmove = false
 end
