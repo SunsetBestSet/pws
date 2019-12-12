@@ -226,20 +226,23 @@ function Scene2_5:manageKeypresses(key, GAME)
 	end
 
 	if self.bookcount == 3 then
-			Talkies.say("Leiko", " * I'm getting tired. I'm going to bed. *", {image=self.player.avatar, talkSound=GAME.blop, oncomplete = function() self.finishedreading = true end })
+			Talkies.say("Leiko", " * I'm getting tired. I'm going to bed. *", {image=self.player.avatar, talkSound=GAME.blop, oncomplete = function() self:finishReading(GAME) end })
 			self.bookcount = 0
 	elseif self.finishedreading and not GAME.ch2scene5Unlocked2 then
-		GAME:doBlackScreen("in", "morning")
-		Talkies.say("Maid", "Your Highness, the morning bells have rung. You should wake up before Princess Kana will come in to do so herself.", {talkSound=GAME.blop})
-		Talkies.say("Leiko", " * Ugh I hate mornings... *", {image=self.player.avatar, talkSound=GAME.blop})
-		Talkies.say("Maid", "Your Highness, the peasants you summoned have arrived. Should I bring them in?", {talkSound=GAME.blop})
-		Talkies.say("Leiko", "Yes and bring them to the libary if you can. I won't let them stay here, in my beloved room.--Digusting, imagine that.", {image=self.player.avatar, talkSound=GAME.blop})
-		Talkies.say("Maid", "Yes, your Highness.", {talkSound=GAME.blop})
-		Talkies.say("Leiko", "* I should head over to the library. Better get this over with. *", {image=self.player.avatar, talkSound=GAME.blop, oncomplete=function() GAME:doBlackScreen("out", "morning") end})
-		self.finishedreading = false
-		GAME.ch2scene5Unlocked2 = true
+		
 	end
 
+end
+
+function Scene2_5:finishReading(GAME) 
+	GAME:doBlackScreen("in", "morning")
+	GAME.stayBlack = true
+	Talkies.say("Maid", "Your Highness, the morning bells have rung. You should wake up before Princess Kana will come in to do so herself.", {talkSound=GAME.blop})
+	Talkies.say("Leiko", " * Ugh I hate mornings... *", {image=self.player.avatar, talkSound=GAME.blop})
+	Talkies.say("Maid", "Your Highness, the peasants you summoned have arrived. Should I bring them in?", {talkSound=GAME.blop})
+	Talkies.say("Leiko", "Yes and bring them to the libary if you can. I won't let them stay here, in my beloved room.--Digusting, imagine that.", {image=self.player.avatar, talkSound=GAME.blop})
+	Talkies.say("Maid", "Yes, your Highness.", {talkSound=GAME.blop})
+	Talkies.say("Leiko", "* I should head over to the library. Better get this over with. *", {image=self.player.avatar, talkSound=GAME.blop, oncomplete=function() GAME:doBlackScreen("out", "morning") end})
 end
 
 function Scene2_5:loadLevel(GAME)

@@ -140,6 +140,10 @@ function Game:tweenupdate(dt)
 		self:doBlackScreen("out", "ch2")
 	end
 
+	if self.stayBlack and self.chapter2.scene == 5 and self.objects[4].colour[4] == 1 and self.chapter == 2 then 
+		for k, v in pairs(self.tweens) do self.tweens[k] = nil end
+	end
+
 end
 
 function Game:doBlackScreen(direction, style, character, text)
@@ -160,6 +164,7 @@ function Game:doBlackScreen(direction, style, character, text)
 		if style == "morning" then
 			local t4 = tween.new(1, self.objects[4], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
 			table.insert(self.tweens, t4)
+			print("ok")
 		end
 	end
 	if direction == "out" then
