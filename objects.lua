@@ -31,7 +31,7 @@ return {
 	},
 	{
 		type = "text",
-		text = "END OF THE BETA. Stay tuned.",
+		text = "END OF THE DEMO. Stay tuned.",
 		colour = {1, 1, 1, 0},
 		x = love.graphics.getWidth() / 4 - 70,
 		y = love.graphics.getHeight() / 4 - 50,
