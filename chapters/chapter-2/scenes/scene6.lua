@@ -163,4 +163,5 @@ function Scene2_6:endBeta(GAME)
     GAME.objects[1].colour[4] = 1
     GAME.objects[5].colour[4] = 1
     GAME.player.canmove = false
+    print("a")
 end
