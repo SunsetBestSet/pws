@@ -13,6 +13,7 @@ active_enemies = require 'character-info/active-enemies'
 
 -- Load plugins
 Object = require 'libs/classic'
+Talkies = require "libs/talkies"
 
 -- Load classes
 require 'game'
@@ -34,16 +35,20 @@ enemy_list = {enemy1, enemy2}
 --canSwitchScreen = true
 
 -- Start game
+
+Talkies.font = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 40)
 game = Game()
 
 end
 
 function love.draw() -- graphics
 	game:draw()
+	Talkies.draw(dt)
 end
 
 function love.update(dt) -- game updates
 	game:update(dt)
+	Talkies.update(dt)
 end
 
 function love.keypressed(key) -- detect key presses

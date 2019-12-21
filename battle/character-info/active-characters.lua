@@ -3,6 +3,7 @@ moves = require 'battle-info/move_info'
 characters = { 
 		hiko = {
 		name = "Hiko",
+		pronouns = {"he", "him"},
 		character_id = 3,
 		magic = "green",
 		stats = {
@@ -15,7 +16,12 @@ characters = {
 		EXP = 0,
 		LVL = 1,
 		status = {
-			status_effects = {}
+			status_effects = {},
+			attack = 4 * 5,
+			defense = 3 * 5,
+			focus = 1 * 5,
+			speed = 3 * 5,
+			hp = 3 * 100,
 		},
 		move = {
 			moves.floral_healing, 
@@ -25,6 +31,7 @@ characters = {
 },
 leiko = {
 		name = "Leiko",
+		pronouns = {"she", "her"},
 		character_id = 1,
 		magic = "purple",
 		stats = {
@@ -37,7 +44,12 @@ leiko = {
 		EXP = 0,
 		LVL = 1,
 		status = {
-			status_effects = {}
+			status_effects = {{"humiliated", 3}},
+			attack = 4 * 5,
+			defense = 3 * 5,
+			focus = 1 * 5,
+			speed = 3 * 5,
+			hp = 3 * 100,
 		},
 		move = {
 			moves.flower_dance,

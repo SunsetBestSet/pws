@@ -12,7 +12,12 @@ enemies = {
 			EXP = 0,
 			LVL = 1,
 			status = {
-				status_effects = {}
+				status_effects = {},
+				attack = 1 * 5,
+				defense = 4 * 5,
+				focus = 3 * 5,
+				speed = 4 * 5,
+				hp = 100,
 			},
 			move = {
 				moves.sunsteel_strike, 
@@ -32,7 +37,12 @@ enemies = {
 			EXP = 0,
 			LVL = 1,
 			status = {
-				status_effects = {}
+				status_effects = {},
+				attack = 2 * 5,
+				defense = 3 * 5,
+				focus = 2 * 5,
+				speed = 5 * 5,
+				hp = 2 * 100,
 			},
 			move = {
 				moves.screech, 

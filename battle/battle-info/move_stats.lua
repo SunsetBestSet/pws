@@ -1,8 +1,4 @@
--- list of moves. Tables with information
 
-local attack = require 'battle-info/subattacks'
-local status = require 'battle-info/status'
-local move = require 'battle-info/moves'
 return {
 
 	scratch = {
@@ -12,7 +8,6 @@ return {
 		description = "The user uses their long nails to scratch their opponent.",
 		type = "physical",
 		strength = 5,
-		attack = move.scratch,
 	},
 	humiliate = {
 		id = 02,
@@ -21,7 +16,6 @@ return {
 		description = "The user insults their opponent until the opponent cries. The next time the opponent uses a move, the opponent will hit themselves (if the opponent uses a healing item in the next turn, the user will steal it.)",
 		type = "special",
 		strength = 0,
-		attack = move.humiliate,
 	},
 	poison_powder = {
 		id = 03,
@@ -30,7 +24,6 @@ return {
 		description = "The user throws/blows poison powder onto the target. The target loses health and gets a poison status effect.",
 		type = "special",
 		strength = 2,
-		attack = move.poison_powder,
 	},
 	heart_swap = {
 		id = 04,
@@ -39,7 +32,6 @@ return {
 		description = "The user’s health is swapped with the target’s health.",
 		type = "special",
 		strength = 0,
-		attack = move.heart_swap,
 	},
 	captivating_curse = {
 		id = 05,
@@ -48,7 +40,6 @@ return {
 		description = "The target faints if the user also does.",
 		type = "special",
 		strength = 0,
-		attack = move.captivating_curse,
 	},	
 	flower_dance = {
 		id = 06,
@@ -58,7 +49,6 @@ return {
 		type = "special",
 		strength = 0,
 		amount = 2,
-		attack = move.flower_dance,
 	},
 	wrath = { -- Hoeveel moves wordt de cooldown?
 		id = 07,
@@ -68,7 +58,6 @@ return {
 		type = "special/physical",
 		strength = 2,
 		amount = 1,
-		attack = move.wrath,
 	},
 	hypnosis = {
 		id = 08,
@@ -77,7 +66,6 @@ return {
 		description = "Puts the target to sleep.",
 		type = "special",
 		strength = 0,
-		attack = move.hypnosis,
 	},
 	meditate = {
 		id = 09,
@@ -87,7 +75,6 @@ return {
 		type = "special",
 		strength = 0,
 		amount = 2,
-		attack = move.meditate,
 	},
 	sunsteel_strike = {
 		id = 10,
@@ -96,7 +83,6 @@ return {
 		description = "The user uses their weapon to strike the target.",
 		type = "physical",
 		strength = 8,
-		attack = move.sunsteel_strike,
 	},
 	moonblast = {
 		id = 11,
@@ -105,7 +91,6 @@ return {
 		description = "The user redirects moonlight onto the target. (very strong move but can only be used at night.)",
 		type = "physical",
 		strength = 7,
-		attack = move.moonblast,
 	},
 	telekinesis = {
 		id = 12,
@@ -114,7 +99,6 @@ return {
 		description = "User lifts up the target and smashes them to the ground.",
 		type = "physical",
 		strength = 5,
-		attack = move.telekinesis,
 	},
 	calamity = {
 		id = 13,
@@ -123,7 +107,6 @@ return {
 		description = "The user poisons target and puts them to sleep.",
 		type = "special",
 		strength = 0,
-		attack = move.calamity,
 	},
 	dance = {
 		id = 14,
@@ -133,7 +116,6 @@ return {
 		type = "special",
 		strength = 0,
 		priority = true,
-		attack = move.dance,
 	},
 	drain = {
 		id = 15,
@@ -142,7 +124,6 @@ return {
 		description = "Drains half of the health of the target and gains it.",
 		type = "special",
 		strength = 0,
-		attack = move.drain,
 	},
 	floral_healing = {
 		id = 16,
@@ -151,7 +132,6 @@ return {
 		description = "The user restores the target's HP by up to half of its max HP.",
 		type = "special",
 		strength = 0,
-		attack = move.floral_healing,
 	},
 	screech = {
 		id = 17,
@@ -161,7 +141,6 @@ return {
 		type = "special",
 		strength = 0,
 		amount = 3,
-		attack = move.screech,
 	},
 }
 --[[
@@ -175,18 +154,5 @@ return {
 		strength = 0,
 		attack = {},
 	},
-
-moves die worden geschrapt (sws):
-* dance
-moves die ik aan ze zijkant leg voor nu, misschien komen ze nog:
-* calamity
-* moonblast, we hebben een tijd systeem nodig i don't think that's it chief
-* wrath, het deel dat t maar 2 keer gebruikt kan worden
-* humiliate
-* poison powder
-* captivating curse
-* hypnosis
-- 
-
 
 	]]--

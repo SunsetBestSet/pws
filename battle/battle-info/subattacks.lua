@@ -1,12 +1,12 @@
 return {
 	humiliate = function (target) 
-		table.insert(target.status_effects, "humiliated")
+		table.insert(target.status.status_effects, {"humiliated", 3})
 	end,
 	swap_health = function (target, user) 
 		user.status.hp, target.status.hp = target.status.hp, user.status.hp 
 	end,
 	poison = function (target)
-		table.insert(target.status.status_effects, "poisoned")
+		table.insert(target.status.status_effects, {"poisoned", 3})
 	end,
 	curse = function (target, user)
 		user.curser = true
@@ -16,19 +16,19 @@ return {
 		target.cursedBy = user
 	end,
 	setToSleep = function (target) 
-		table.insert(target.status.status_effects, "sleeping")
+		table.insert(target.status.status_effects, {"sleeping", 3})
 	end,
 	raiseAttack = function(user, amount)
-		user.stats.attack = user.stats.attack + amount
+		user.status.attack = user.status.attack + amount
 	end,
 	raiseDefense = function(user, amount) 
-		user.stats.defense = user.stats.defense + amount
+		user.status.defense = user.status.defense + amount
 	end,
 	lowerAttack = function(target, amount)
-		target.stats.attack = target.stats.attack - amount
+		target.status.attack = target.status.attack - amount
 	end,
 	lowerDefense = function(target, amount)
-		target.stats.defense = target.stas.defense - amount
+		target.status.defense = target.status.defense - amount
 	end,
 	damage = function(target, user, move) -- effectiveness of attacks. magic relations
 		if (target.magic == 'green' and user.magic == 'purple') or (target.magic == 'blue' and user.magic == 'green') or (target.magic == 'purple' and user.magic == 'blue') then

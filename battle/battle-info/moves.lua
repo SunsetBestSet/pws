@@ -1,5 +1,6 @@
-attack = require 'battle-info/subattacks'
-status = require 'battle-info/status'
+local attack = require 'battle-info/subattacks'
+local status = require 'battle-info/status'
+local move_info = require 'battle-info/move_stats'
 
 return {
 	scratch = function(target, user, move)
@@ -14,7 +15,7 @@ return {
 	captivating_curse = attack.curse,
 	flower_dance = function(target)
 		attack.poison(target)
-		attack.lowerDefense(target, move_info[flower_dance].amount)
+		attack.lowerDefense(target, move_info.flower_dance.amount)
 	end,
 	wrath = function(target, user)
 		if not user.cooldown[1] then
@@ -28,16 +29,16 @@ return {
 	end,
 	hypnosis = attack.setToSleep,
 	meditate = function(user)
-		attack.raiseAttack(user, move_info[meditate].amount)
+		attack.raiseAttack(user, move_info.meditate.amount)
 	end,
 	sunsteel_strike = function(target, user)
-		attack.damage(target, user, move_info[sunsteel_strike].amount)
+		attack.damage(target, user, move_info.sunsteel_strike)
 	end,
 	moonblast = function(target, user)
-		attack.damage(target, user, move_info[moonblast].amount)
+		attack.damage(target, user, move_info[moonblast])
 	end,
 	telekinesis = function(target, user)
-		attack.damage(target, user, move_info[telekinesis].amount)
+		attack.damage(target, user, move_info[telekinesis])
 	end,
 	dance = function(target)
 		-- idk how to do this yet lol
