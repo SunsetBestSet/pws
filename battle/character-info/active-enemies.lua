@@ -2,6 +2,7 @@ enemies = {
 		enemy1 = {
 			name = "Old Man Robert",
 			magic = "blue",
+			pronouns = {"he", "him"},
 			stats = {
 				attack = 1,
 				defense = 4,

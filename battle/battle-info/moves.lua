@@ -8,13 +8,13 @@ return {
 	end,
 	humiliate = attack.humiliate,
 	poison_powder = function(target, user)
-		attack.poison(target)
+		attack.addeffect(target, "poisoned")
 		attack.damage(target, user, move_info[poison_powder])
 	end,
 	heart_swap = attack.swap_health,
 	captivating_curse = attack.curse,
 	flower_dance = function(target)
-		attack.poison(target)
+		attack.addeffect(target, "poisoned")
 		attack.lowerDefense(target, move_info.flower_dance.amount)
 	end,
 	wrath = function(target, user)
@@ -48,8 +48,8 @@ return {
 		attack.lowerDefense(target, move_info[screech].amount)
 	end,
 	calamity = function(target)
-		attack.poison(target)
-		attack.setToSleep(target)
+		attack.addeffect(target, "poisoned")
+		attack.addeffect(target, "sleeping")
 	end,
 	drain = attack.drain,
 	heal = attack.heal,

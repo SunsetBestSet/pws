@@ -38,11 +38,12 @@ return {
 		else
 			effectiveness = 1
 		end
-		local damage = user.stats.attack * move.strength * effectiveness * 0.01 
-		target.status.hp = target.status.hp * (1 - damage)
+		local damage = user.status.attack * move.strength * effectiveness * .5 - .5 * target.status.defense
+		target.status.hp = target.status.hp - damage
+		if target.status.hp < 0 then target.status.hp = 0 end
 	end,
 	dance = function(target)
-		-- idk how to do this yet
+		-- we scrapping this move lmao
 	end,
 	drain = function(target, user)
 		local damage = target.status.hp / 2
@@ -56,4 +57,16 @@ return {
 		target.status.hp = target.stats.hp * 0.5 * 100
 		end
 	end,
+	addeffect = function (target, effect)
+		local affected = false
+		for k, v in pairs(target.status.status_effects) do 
+			if target.status.status_effects[k][1] == effect then 
+				affected = true
+				Talkies.say("GAME", target.name .. " is already " .. effect .. "!")
+			end
+		end
+		if not affected then 
+			table.insert(target.status.status_effects, {effect, 3})
+		end
+	end
 }

@@ -6,6 +6,8 @@ function Battle:new()
 	self.selected_move = {}
 	self.canSwitchScreen = true
 	self.debugFont = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 30)
+	self.turn = 1
+	self.attacking = "player"
 end
 
 function Battle:draw(dt)
@@ -30,6 +32,19 @@ function Battle:update(dt)
 end
 
 function Battle:keypressed(key)
+	if key == 'return' and Talkies.isOpen() then 
+		Talkies.onAction()
+	elseif key == 'return' then
+		if self.screen == 1 then
+			self.selected_move = player.move[self.selection]
+			self.screen = 2
+			self:doSelectTarget()
+			self.canSwitchScreen = false
+		elseif self.screen == 2 and self.canSwitchScreen then
+			self.screen = 3
+			self:execute_attack(enemy_list[self.selection], player, self.selected_move)
+		end
+	end
 
 	if key == 'right'  and self.screen ~= 3 then -- move self.selection to the right
 		if (self.screen == 2 and self.selection < 2) or (self.screen == 1 and self.selection < 3) then
@@ -37,16 +52,6 @@ function Battle:keypressed(key)
 		end
 	elseif key == 'left' and self.selection > 1 and self.screen ~= 3 then -- move self.selection to the left
 		self.selection = self.selection - 1
-	elseif key == 'return' and self.screen == 1 then
-		self.selected_move = player.move[self.selection]
-		self.screen = 2
-		self:doSelectTarget()
-		self.canSwitchScreen = false
-	elseif key == 'return' and self.screen == 2 and self.canSwitchScreen then
-		self.screen = 3
-		self:execute_attack(enemy_list[self.selection], player, self.selected_move)
-	elseif key == 'return' then 
-		Talkies.onAction()
 	end
 
 end
@@ -57,10 +62,13 @@ function Battle:start_battle(enemy, player)
 end
 
 function Battle:execute_attack(target, user, selected_move)
+	-- grab status effects
 	local effects = user.status.status_effects
+	-- create local variables for status effects
 	local humiliated = false
 	local sleeping = false
 	local awakened = false
+
 	if #effects == 0 then
 		selected_move.attack(target, user, selected_move)
 	else
@@ -73,18 +81,35 @@ function Battle:execute_attack(target, user, selected_move)
 			elseif effects[k][1] == "sleeping" then 
 				effects[k][2] = effects[k][2] - 1
 				sleeping = true
+			elseif effects[k][1] == "poisoned" then 
+				selected_move.attack(target, user, selected_move)
 			end
 		end
 	end
-	user.status.status_effects = effects
-	if sleeping then 
-		Talkies.say("GAME", user.name .. " is asleep!")
-	elseif humiliated then
-		Talkies.say("GAME", user.name .. " feels humiliated!")
-		Talkies.say("GAME", user.name .. " is crying...")
-		Talkies.say("GAME", user.name .. " used " .. selected_move.name .. " on " .. user.pronouns[2] .. "self to cope...")
+	if target.status.hp <= 0 then 
+		Talkies.say("GAME", user.name .. " used " .. selected_move.name .. " on " .. target.name .. "!")
+		Talkies.say("GAME", target.name .. " was knocked out!")
+	elseif user.status.hp <= 0  then 
+		Talkies.say("GAME", user.name .. " was knocked out!")
 	else
-		Talkies.say("GAME", user.name .. " used " .. selected_move.name .. " on " .. target.name .. "!", {oncomplete=function() self:enemy_turn(target, user, selected_move) end})
+		user.status.status_effects = effects
+		if sleeping then 
+			Talkies.say("GAME", user.name .. " is asleep!")
+		elseif humiliated then
+			Talkies.say("GAME", user.name .. " feels humiliated!")
+			Talkies.say("GAME", user.name .. " is crying...")
+			if self.attacking == "player" then
+				Talkies.say("GAME", user.name .. " used " .. selected_move.name .. " on " .. user.pronouns[2] .. "self to cope...", {oncomplete=function() self:enemy_turn(target, user, selected_move) end})
+			else 
+				Talkies.say("GAME", user.name .. " used " .. selected_move.name .. " on " .. user.pronouns[2] .. "self to cope...", {oncomplete=function() self:newTurn() end})
+			end
+		else
+			if self.attacking == "player" then
+				Talkies.say("GAME", user.name .. " used " .. selected_move.name .. " on " .. target.name .. "!", {oncomplete=function() self:enemy_turn(target, user, selected_move) end})
+			else 
+				Talkies.say("GAME", user.name .. " used " .. selected_move.name .. " on " .. target.name .. "!", {oncomplete=function() self:newTurn() end})
+			end
+		end
 	end
 end
 
@@ -163,10 +188,26 @@ function Battle:drawSelectTarget(enemy_1, enemy_2)
 end
 
 function Battle:enemy_turn(user, target)
+	self.attacking = "enemy"
 	math.randomseed(os.time())
 	local rand = math.random(2)
 	local move = user.move[rand]
-	move.attack(target, user, move)
-	local text = user.name .. " used " .. move.name .. " on " .. target.name .. "!"
-	Talkies.say("GAME", text, {oncomplete=function() end})
+	self:execute_attack(target, user, move)
+end
+
+function Battle:newTurn()
+	if enemy_list[1].status.hp <= 0 or enemy_list[2].status.hp <= 0 or player.status.hp <= 0 then
+		self:endBattle()
+	else
+		self.selection = 1
+		self.screen = 1
+		self.turn = self.turn + 1
+		print("turn: " .. self.turn)
+		Talkies.clearMessages()
+		self.attacking = "player"
+	end
+
+end
+function Battle:endBattle()
+	Talkies.say("GAME", "end of battle!")
 end
