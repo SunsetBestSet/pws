@@ -9,7 +9,7 @@ return {
 	humiliate = attack.humiliate,
 	poison_powder = function(target, user)
 		attack.addeffect(target, "poisoned")
-		attack.damage(target, user, move_info[poison_powder])
+		attack.damage(target, user, move_info.poison_powder)
 	end,
 	heart_swap = attack.swap_health,
 	captivating_curse = attack.curse,
@@ -35,17 +35,17 @@ return {
 		attack.damage(target, user, move_info.sunsteel_strike)
 	end,
 	moonblast = function(target, user)
-		attack.damage(target, user, move_info[moonblast])
+		attack.damage(target, user, move_info.moonblast)
 	end,
 	telekinesis = function(target, user)
-		attack.damage(target, user, move_info[telekinesis])
+		attack.damage(target, user, move_info.telekinesis)
 	end,
 	dance = function(target)
 		-- idk how to do this yet lol
 	end,
 	floral_healing = attack.heal,
 	screech = function(target)
-		attack.lowerDefense(target, move_info[screech].amount)
+		attack.lowerDefense(target, move_info.screech.amount)
 	end,
 	calamity = function(target)
 		attack.addeffect(target, "poisoned")

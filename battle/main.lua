@@ -22,8 +22,8 @@ require 'startscreen'
 
 
 -- Declare variables/tables that require the libraries
-
-player = active_characters.leiko
+ally = active_characters[1]
+player = active_characters[2]
 enemy1 = active_enemies.enemy1
 enemy2 = active_enemies.enemy2
 enemies = active_enemies

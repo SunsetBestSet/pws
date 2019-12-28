@@ -47,8 +47,10 @@ return {
 	end,
 	drain = function(target, user)
 		local damage = target.status.hp / 2
+		local maxHP = user.stats.hp * 100
 		target.status.hp = target.status.hp - damage
 		user.status.hp = user.status.hp + damage
+		if user.status.hp > maxHP then user.status.hp = maxHP end
 	end,
 	heal = function(target)
 		local heal = target.stats.hp * 0.5 * 100
