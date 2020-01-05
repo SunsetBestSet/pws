@@ -19,15 +19,14 @@ character = {
 moves = require 'battle-info/move_info'
 
 characters = {
-	leiko = {
+	{
 		name = "Leiko",
+		pronouns = {"she", "her"},
 		character_id = 1,
 		magic = "purple",
 		stats = {
 			attack = 4,
 			defense = 3,
-			focus = 1,
-			speed = 3,
 			hp = 3,
 		},
 		EXP = 0,
@@ -41,15 +40,14 @@ characters = {
 			moves.humiliate, 
 		},
 	},
-	kana = {
+	{
 		name = "Kana",
+		pronouns = {"she", "her"},
 		character_id = 2,
 		magic = "blue",
 		stats = {
 			attack = 4,
 			defense = 3,
-			focus = 4,
-			speed = 2,
 			hp = 1, 
 		},
 		EXP = 0,
@@ -63,15 +61,14 @@ characters = {
 			moves.meditate,
 		},
 	},
-	hiko = {
+	{
 		name = "Hiko",
+		pronouns = {"he", "him"},
 		character_id = 3,
 		magic = "green",
 		stats = {
 			attack = 1,
 			defense = 4,
-			focus = 3,
-			speed = 4,
 			hp = 2,
 		},
 		EXP = 0,
@@ -81,20 +78,19 @@ characters = {
 		},
 		move = {
 			moves.floral_healing, 
-			moves.dance, 
+			moves.screech, 
 			moves.drain,
 
 		}
 	},
-	irene = {
+	{
 		name = "Irene", 
+		pronouns = {"she", "her"},
 		character_id = 4, 
 		magic = "purple", 
 		stats = {
 			attack = 3, 
 			defense = 1, 
-			focus = 3,
-			speed = 3, 
 			hp = 4,
 		},
 		EXP = 0,
@@ -112,10 +108,11 @@ characters = {
 	},
 }
 
--- set actual hitpoints
-characters.hiko.status.hp = characters.hiko.stats.hp * 100
-characters.leiko.status.hp = characters.leiko.stats.hp * 100
-characters.kana.status.hp = characters.kana.stats.hp * 100
-characters.irene.status.hp = characters.irene.stats.hp * 100
+-- set actual stats
+for k, v in pairs(characters) do 
+	characters[k].status.hp = characters[k].stats.hp * 100
+	characters[k].status.defense = characters[k].stats.defense * 5
+	characters[k].status.attack = characters[k].stats.attack * 5
+end
 
 return characters

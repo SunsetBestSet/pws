@@ -7,9 +7,8 @@ attack = require 'battle-info/subattacks'
 status = require 'battle-info/status'
 move = require 'battle-info/moves'
 characters = require 'character-info/characters'
-items = require 'items/item_info'
 active_characters = require 'character-info/active-characters'
-active_enemies = require 'character-info/active-enemies'
+enemies = require 'character-info/enemies'
 
 -- Load plugins
 Object = require 'libs/classic'
@@ -20,19 +19,6 @@ require 'game'
 require 'battle'
 require 'startscreen'
 
-
--- Declare variables/tables that require the libraries
-ally = active_characters[1]
-player = active_characters[2]
-enemy1 = active_enemies.enemy1
-enemy2 = active_enemies.enemy2
-enemies = active_enemies
-enemy_list = {enemy1, enemy2}
-
--- Declare other variables
-
---screen = 1
---canSwitchScreen = true
 
 -- Start game
 

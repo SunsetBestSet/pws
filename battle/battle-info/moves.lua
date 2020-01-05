@@ -6,7 +6,9 @@ return {
 	scratch = function(target, user, move)
 		attack.damage(target, user, move)
 	end,
-	humiliate = attack.humiliate,
+	humiliate = function(target)
+		attack.addeffect(target, "humiliated")
+	end,
 	poison_powder = function(target, user)
 		attack.addeffect(target, "poisoned")
 		attack.damage(target, user, move_info.poison_powder)
@@ -27,7 +29,9 @@ return {
 			-- Display "You can't use this move anymore!"
 		end 
 	end,
-	hypnosis = attack.setToSleep,
+	hypnosis = function(target)
+		attack.addeffect(target, "sleeping")
+	end,
 	meditate = function(user)
 		attack.raiseAttack(user, move_info.meditate.amount)
 	end,
