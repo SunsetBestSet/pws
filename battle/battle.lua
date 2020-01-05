@@ -40,21 +40,29 @@ end
 function Battle:draw(dt)
 	if self.power then 
 		local WINDOW_WIDTH, WINDOW_HEIGHT = love.graphics.getDimensions()
-
+		love.graphics.setFont(self.debugFont)
 		if self.enemycount == 1 then 
 			local image = love.graphics.newImage("assets/battle-sprites/" .. self.enemy1.image)
 			local image_width, image_height = image:getDimensions()
 			love.graphics.draw(image, WINDOW_WIDTH / 2 - image_width * 3, WINDOW_HEIGHT / 2 - image_height * 3 - WINDOW_HEIGHT * .1, 0, 6)
+			love.graphics.print("HP: " .. self.enemy1.status.hp, WINDOW_WIDTH / 2 - image_width * 3, (WINDOW_HEIGHT / 2 - image_height * 3 - WINDOW_HEIGHT * .1) - 25)
 		elseif self.enemycount == 2 then 
 			local image1 = love.graphics.newImage("assets/battle-sprites/" .. self.enemy1.image)
 			local image1_width, image1_height = image1:getDimensions()
 			love.graphics.draw(image1, WINDOW_WIDTH / 4 - image1_width * 3, WINDOW_HEIGHT / 2 - image1_height * 3 - WINDOW_HEIGHT * .1, 0, 6)
+			love.graphics.print("HP: " .. self.enemy1.status.hp, WINDOW_WIDTH / 4 - image1_width * 3, (WINDOW_HEIGHT / 2 - image1_height * 3 - WINDOW_HEIGHT * .1) - 25)
 			local image2 = love.graphics.newImage("assets/battle-sprites/" .. self.enemy2.image)
 			local image2_width, image2_height = image2:getDimensions()
 			love.graphics.draw(image2, WINDOW_WIDTH * .75 - image2_width * 3, WINDOW_HEIGHT / 2 - image2_height * 3 - WINDOW_HEIGHT * .1, 0, 6)
-
+			love.graphics.print("HP: " .. self.enemy2.status.hp, WINDOW_WIDTH * .75 - image1_width * 3, (WINDOW_HEIGHT / 2 - image1_height * 3 - WINDOW_HEIGHT * .1) - 25)
 		end
-		love.graphics.setFont(self.debugFont)
+		
+		love.graphics.print(self.player.name .. " HP: " .. self.player.status.hp, WINDOW_WIDTH - 150, 0)
+		
+		if self.ally ~= nil then 
+			love.graphics.print(self.ally.name .. " HP: " .. self.ally.status.hp, WINDOW_WIDTH - 150, 25)
+		end
+
 		--self:display_stats(self.enemy1, self.enemy2, self.player)
 		if self.screen == 1 then
 			self:draw_moveselection(self.player)
@@ -87,7 +95,7 @@ function Battle:keypressed(key)
 				if self.selection < 3 then 
 					self:execute_attack(self.enemy_list[self.selection], self.player, self.selected_move)
 				else
-					self:execute_attack(ally, self.player, self.selected_move)
+					self:execute_attack(self.ally, self.player, self.selected_move)
 				end
 			end
 		end
@@ -237,14 +245,14 @@ function Battle:display_stats()
 			end
 		end
 
-		love.graphics.print(ally.name .. " stats", 600, 130)
-		love.graphics.print("HP: " .. ally.status.hp, 600, 160)
-		love.graphics.print("DEFENSE: " .. ally.status.defense, 600, 180)
-		love.graphics.print("ATTACK: " .. ally.status.attack, 600, 200)
-		love.graphics.print("SPEED: " .. ally.status.speed, 600, 220)
-		if ally.status.status_effects ~= 0 then 
-			for k, v in pairs(ally.status.status_effects) do 
-				love.graphics.print("COUNTER(" .. ally.status.status_effects[k][1] .. "): " .. ally.status.status_effects[k][2], 600, 220 + 20 * k)
+		love.graphics.print(self.ally.name .. " stats", 600, 130)
+		love.graphics.print("HP: " .. self.ally.status.hp, 600, 160)
+		love.graphics.print("DEFENSE: " .. self.ally.status.defense, 600, 180)
+		love.graphics.print("ATTACK: " .. self.ally.status.attack, 600, 200)
+		love.graphics.print("SPEED: " .. self.ally.status.speed, 600, 220)
+		if self.ally.status.status_effects ~= 0 then 
+			for k, v in pairs(self.ally.status.status_effects) do 
+				love.graphics.print("COUNTER(" .. self.ally.status.status_effects[k][1] .. "): " .. self.ally.status.status_effects[k][2], 600, 220 + 20 * k)
 			end
 		end
 	end
@@ -321,20 +329,20 @@ function Battle:ally_turn()
 	self.attacking = "ally"
 	math.randomseed(os.time())
 	local rand = math.random(3)
-	local move = ally.move[rand]
+	local move = self.ally.move[rand]
 	math.randomseed(os.time())
 	local rand = math.random(2)
 	local target = self.enemy_list[rand]
 	if move.name == "Floral Healing" then
 		target = self.player
 	end
-	self:execute_attack(target, ally, move)
+	self:execute_attack(target, self.ally, move)
 end
 
 function Battle:newTurn()
 	if self.enemy1.status.hp == 0 and (self.enemycount == 1 or self.enemy2.status.hp == 0) then 
 		self:endBattle("player")
-	elseif self.player.status.hp == 0 and ( self.enemycount == 1 or ally.status.hp == 0) then
+	elseif self.player.status.hp == 0 and ( self.enemycount == 1 or self.ally.status.hp == 0) then
 		self:endBattle("enemy")
 	else
 		self.selection = 1

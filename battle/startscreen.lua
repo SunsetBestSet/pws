@@ -26,6 +26,6 @@ function Startscreen:keypressed(key)
 	end
 
 	if self.selection == 2 and key == 'return' then 
-		battle:initiate(nil, characters[2], enemies[3]) 
+		battle:initiate(nil, characters[2], enemies[3], characters[1], enemies[1]) 
 	end
 end
