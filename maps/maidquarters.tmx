@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="12" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="3">
+<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="12" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="4">
  <editorsettings>
   <export target="maidroom.lua" format="lua"/>
  </editorsettings>
@@ -161,14 +161,14 @@
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,0,1034,0,0,0,
-0,0,0,0,0,0,0,0,1074,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
-0,0,0,0,0,0,0,1358,0,0,0,0,
-0,0,0,0,0,0,0,1398,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0,
 0,0,0,0,0,0,0,0,0,0,0,0
 </data>
@@ -197,6 +197,7 @@
     <property name="nextMap" value="maps/infirmary_hallway.lua"/>
    </properties>
   </object>
+  <object id="3" name="maid_spawn" x="132.598" y="83.7152" width="17.5626" height="17.2699"/>
  </objectgroup>
  <objectgroup id="12" name="custom_collisions">
   <properties>

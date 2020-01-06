@@ -41,13 +41,13 @@ return {
     {
       name = "inner",
       firstgid = 1001,
-      filename = "../chapter_1/maps/inner1.tsx",
+      filename = "inner.tsx",
       tilewidth = 16,
       tileheight = 16,
       spacing = 0,
       margin = 0,
       columns = 40,
-      image = "../chapter_1/maps/inner.png",
+      image = "inner.png",
       imagewidth = 640,
       imageheight = 400,
       tileoffset = {

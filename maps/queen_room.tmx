@@ -4,7 +4,7 @@
   <export target="queen_room.lua" format="lua"/>
  </editorsettings>
  <tileset firstgid="1" source="indoor.tsx.tmx"/>
- <tileset firstgid="1001" source="../chapter_1/maps/inner1.tsx"/>
+ <tileset firstgid="1001" source="inner.tsx"/>
  <layer id="3" name="floor" width="26" height="17">
   <data encoding="csv">
 41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,41,

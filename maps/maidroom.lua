@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 13,
-  nextobjectid = 3,
+  nextobjectid = 4,
   properties = {},
   tilesets = {
     {
@@ -46,10 +46,10 @@ return {
       tileheight = 16,
       spacing = 0,
       margin = 0,
-      columns = 40,
+      columns = 46,
       image = "overworld0.png",
-      imagewidth = 640,
-      imageheight = 576,
+      imagewidth = 740,
+      imageheight = 676,
       tileoffset = {
         x = 0,
         y = 0
@@ -61,7 +61,7 @@ return {
       },
       properties = {},
       terrains = {},
-      tilecount = 1440,
+      tilecount = 1932,
       tiles = {}
     }
   },
@@ -334,14 +334,14 @@ return {
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 1034, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 1074, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 1358, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 1398, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
       }
@@ -414,6 +414,19 @@ return {
           properties = {
             ["nextMap"] = "maps/infirmary_hallway.lua"
           }
+        },
+        {
+          id = 3,
+          name = "maid_spawn",
+          type = "",
+          shape = "rectangle",
+          x = 132.598,
+          y = 83.7152,
+          width = 17.5626,
+          height = 17.2699,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },

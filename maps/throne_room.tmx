@@ -167,10 +167,10 @@
   <object id="2" name="kana_spawn" x="81" y="56.3333" width="14" height="26.6667"/>
   <object id="3" name="leiko_spawn" x="193.333" y="55.3334" width="14" height="27"/>
   <object id="4" name="retainer_spawn" x="54.6667" y="52" width="15" height="13.3333"/>
-  <object id="5" name="player_spawn" x="124.027" y="168.132" width="14" height="13"/>
-  <object id="6" name="satoru_spawn" x="146.199" y="175.196" width="14.3333" height="14.3333"/>
-  <object id="7" name="kana_spawn_2" x="123" y="122.477" width="14" height="26.6667"/>
-  <object id="8" name="leiko_spawn_2" x="145.801" y="123.031" width="14" height="27"/>
+  <object id="5" name="player_spawn" x="122.777" y="145.882" width="14" height="13"/>
+  <object id="6" name="satoru_spawn" x="146.949" y="154.196" width="14.3333" height="14.3333"/>
+  <object id="7" name="kana_spawn_2" x="122.5" y="103.977" width="14" height="26.6667"/>
+  <object id="8" name="leiko_spawn_2" x="146.801" y="106.781" width="14" height="27"/>
   <object id="10" name="left_door" x="0" y="63.875" width="7.80682" height="32">
    <properties>
     <property name="nextMap" value="maps/left_stairs.lua"/>
