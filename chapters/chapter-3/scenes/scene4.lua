@@ -38,7 +38,7 @@ function Scene3_4:loadLevel(GAME)
 Talkies.say("Hiko", "Sis?", {image=GAME.npc.avatarhiko, talkSound=GAME.blop,})
 Talkies.say("Irene", "Yeah?", {image=self.player.avatar, talkSound=GAME.blop})
 Talkies.say("Hiko", "Why do you keep being mean to everyone?", {image=GAME.npc.avatarhiko, talkSound=GAME.blop,})
-Talkies.say("Irene", "I'm not 'being mean'. They're attitude is just frustrating.", {image=self.player.avatar, talkSound=GAME.blop})
+Talkies.say("Irene", "I'm not 'being mean'. Their attitude is just frustrating.", {image=self.player.avatar, talkSound=GAME.blop})
 Talkies.say("Hiko", "But Princess Kana has shown me cool spells and told me a lot of stories! And Princess Leiko is really funny and likes to play hide and seek with me!", {image=GAME.npc.avatarhiko, talkSound=GAME.blop,})
 Talkies.say("Irene", "Since when are you this close with the princesses?", {image=self.player.avatar, talkSound=GAME.blop})
 Talkies.say("Hiko", "Dunno. They're nice!", {image=GAME.npc.avatarhiko, talkSound=GAME.blop,})
@@ -54,7 +54,7 @@ Talkies.say("Irene", "...", {image=self.player.avatar, talkSound=GAME.blop})
 Talkies.say("Irene", "Ugh, you're right. Kana's right too. These quarrels aren't helping out.", {image=self.player.avatar, talkSound=GAME.blop})
 Talkies.say("Irene", "We gotta do something and work together, even if I don't like it.", {image=self.player.avatar, talkSound=GAME.blop})
 Talkies.say("Hiko", "Does this mean you'll try to be nicer?", {image=GAME.npc.avatarhiko, talkSound=GAME.blop,})
-Talkies.say("Irene", "I guess. Can't promise anything though.--Come on, let's head back and get some sleep.", {image=self.player.avatar, talkSound=GAME.blop})
+Talkies.say("Irene", "I guess. Can't promise anything though.--Come on, let's head back and get some sleep.", {image=self.player.avatar, talkSound=GAME.blop, oncomplete=self:startScene4})
 
   end
 end

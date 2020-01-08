@@ -57,9 +57,8 @@ function Scene3_2:loadLevel(GAME)
     Talkies.say("Leiko", "I think we'll be alright! You've got me!",  {image=GAME.npc.avatarleiko, talkSound=GAME.blop,})
     Talkies.say("Kana", "We certainly will, Farmer. Thank you for the information.", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
     Talkies.say("Farmer", "Before you go-", {talkSound=GAME.blop})
-    Talkies.say("Hiko", "Ahh!! A wolf!", {image=GAME.npc.avatarhiko, talkSound=GAME.blop,})
+    Talkies.say("Hiko", "OH NO! A TROLL!", {image=GAME.npc.avatarhiko, talkSound=GAME.blop,})
     Talkies.say("Farmer", "Oh no! You might have to fight this one off!", {oncomplete = function() Scene3_2:startScene3(GAME) end})
-
   end
 end
 
