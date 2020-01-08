@@ -101,8 +101,6 @@ function Scene1:manageKeypresses(key, GAME)
 		Talkies.onAction()
 	end
 
-	
-
 end
 
 function Scene1:loadLevel(GAME)

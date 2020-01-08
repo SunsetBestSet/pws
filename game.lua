@@ -25,6 +25,7 @@ function Game:new()
 	self.interact_bed_hiko = false
 	self.interact_bed_irene = false
 	self.characters = require 'characters'
+	self.battle = Battle()
 	self.chapter1 = Chapter1()
 	self.chapter2 = Chapter2()
 	self.chapter3 = Chapter3()
@@ -51,6 +52,8 @@ function Game:new()
 
 	self.castleExit = "leikoroom"
 
+
+	WINDOW_WIDTH, WINDOW_HEIGHT = love.graphics.getDimensions()
 end
 
 function Game:setupPhysics()
@@ -160,7 +163,14 @@ function Game:tweenupdate(dt)
 		self:doBlackScreen("out", "ch2")
 	end
 
-	if self.doFadeOut and self.chapter2.scene == 6 and self.objects[3].colour[4] == 1 and self.chapter == 3 then
+	--[[if self.doFadeOut and self.chapter2.scene == 6 and self.objects[3].colour[4] == 1 and self.chapter == 3 then
+		self.doFadeOut = false
+		self.level = "maps/farmlands1.lua"
+		self:loadLevel()
+		self:doBlackScreen("out", "ch3")
+	end]]
+
+	if self.doFadeOut and self.objects[6].colour[4] == 1 and self.chapter == 3 and self.chapter3.scene == 1 then
 		self.doFadeOut = false
 		self.level = "maps/farmlands1.lua"
 		self:loadLevel()
@@ -210,7 +220,7 @@ function Game:doBlackScreen(direction, style, character, text)
 			table.insert(self.tweens, t3)
 		end
 		if style == "ch3" then
-			local t6 = tween.new(1, self.objects[3], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
+			local t6 = tween.new(1, self.objects[6], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
 			table.insert(self.tweens, t6)
 		end
 		if style == "morning" then
@@ -231,7 +241,7 @@ function Game:doBlackScreen(direction, style, character, text)
 			table.insert(self.tweens, t3)
 		end
 		if style == "ch3" then
-			local t6 = tween.new(0.05, self.objects[3], {colour = {1, 1, 1, 0}, y = love.graphics.getHeight() / 4 - 75}, 'outExpo')
+			local t6 = tween.new(0.05, self.objects[6], {colour = {1, 1, 1, 0}, y = love.graphics.getHeight() / 4 - 75}, 'outExpo')
 			table.insert(self.tweens, t6)
 		end
 		if style == "morning" then
@@ -268,10 +278,12 @@ function Game:manageKeypresses(key)
 
 	if key == 'h' then
 		self.chapter = 3
-		self.level = "maps/farmlands1.lua"
+		self.chapter3.scene = 2
+		self.level = "maps/farmlands2.lua"
 		self:loadLevel()
 	end
 
+	self.battle:keypressed(key)
 end
 
 function Game:update(dt)
@@ -306,6 +318,7 @@ function Game:update(dt)
 
 	self:tweenupdate(dt)
 
+	self.battle:update(dt)
 end
 
 function Game:manageKeyboard(dt)
@@ -338,7 +351,10 @@ function Game:manageKeyboard(dt)
 
 end
 
-function Game:draw()
+function Game:draw(dt)
+
+	if not self.battle.power then 
+
 	local tx, ty = self.camera.x - love.graphics.getWidth() / 2, self.camera.y - love.graphics.getHeight() / 2
 
 	tx = math.floor(tx)
@@ -365,5 +381,7 @@ function Game:draw()
 	love.graphics.print("Chapter: " .. self.chapter, 0, 96)
 
 	self:drawTweens()
+
+	end
 
 end

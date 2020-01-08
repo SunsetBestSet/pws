@@ -8,18 +8,14 @@ function Battle:new()
 	self.debugFont = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 25)
 	self.turn = 1
 	self.attacking = "player"
-	--[[self.player = active_characters[2]
-	self.ally = active_characters[1]
-	self.enemy1 = self.enemy_list[1]
-	self.enemy2 = self.enemy_list[2]
-	]]
 	self.enemycount = 1
+	self.characters = require "character-info/characters"
 
 	love.graphics.setDefaultFilter("nearest", "nearest")
 end
 
 function Battle:initiate(oncomplete, player, enemy1, ally, enemy2)
-	self.player = player 
+	self.player = self.characters[player] 
 	self.enemy1 = enemy1
 	self.ally = ally or nil
 	self.enemy2 = enemy2 or nil

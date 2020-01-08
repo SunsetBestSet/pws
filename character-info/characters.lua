@@ -101,7 +101,7 @@ characters = {
 		move = {
 			moves.wrath,
 			moves.poison_powder,
-			moves.captivating_curse, 
+			moves.scratch, 
 		},
 		-- cooldown for Irene's special move
 		cooldown = {false, 0}, 

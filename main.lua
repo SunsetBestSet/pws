@@ -7,10 +7,20 @@ Talkies = require "libs/talkies"
 Camera = require "libs/Camera"
 tween = require "libs/tween"
 
--- load entities
+-- load battle database
+move_info = require 'battle-info/move_info'
+attack = require 'battle-info/subattacks'
+status = require 'battle-info/status'
+move = require 'battle-info/moves'
+characters = require 'character-info/characters'
+active_characters = require 'character-info/active-characters'
+enemies = require 'character-info/enemies'
+
+-- load components
 require "player"
 require "game"
 require "npc"
+require "battle"
 
 -- load chapters
 require "chapters/chapter-1/chapter1"
@@ -49,11 +59,12 @@ function love.update(dt)
 end
 
 
-function love.draw()
+function love.draw(dt)
 	maid64.start()
 	game:draw(dt)
 	maid64.finish()
 	Talkies.draw()
+	game.battle:draw(dt)
 end
 
 

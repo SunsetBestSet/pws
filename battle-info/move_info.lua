@@ -1,8 +1,8 @@
 -- list of moves. Tables with information
 
-attack = require 'battle-info/subattacks'
-status = require 'battle-info/status'
-move = require 'battle-info/moves'
+local attack = require 'battle-info/subattacks'
+local status = require 'battle-info/status'
+local move = require 'battle-info/moves'
 return {
 
 	scratch = {
@@ -175,5 +175,18 @@ return {
 		strength = 0,
 		attack = {},
 	},
+
+moves die worden geschrapt (sws):
+* dance
+moves die ik aan ze zijkant leg voor nu, misschien komen ze nog:
+* calamity
+* moonblast, we hebben een tijd systeem nodig i don't think that's it chief
+* wrath, het deel dat t maar 2 keer gebruikt kan worden
+* humiliate
+* poison powder
+* captivating curse
+* hypnosis
+- 
+
 
 	]]--
