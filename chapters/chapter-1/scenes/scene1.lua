@@ -100,6 +100,9 @@ function Scene1:manageKeypresses(key, GAME)
 	elseif key == "space" then
 		Talkies.onAction()
 	end
+
+	
+
 end
 
 function Scene1:loadLevel(GAME)

@@ -155,6 +155,9 @@ elseif GAME.level == "maps/maidroom.lua" then
 		local hallway_door4 = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_hallwaydoor4")
 		hallway_door4.nextMap = object.properties.nextMap;
 		table.insert(GAME.entities, hallway_door4)
+	elseif object.name == "maid_spawn" then
+		GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, GAME.npcmaidImage, GAME.world, 200, 64, 200)
+		table.insert(GAME.entities, GAME.npc)
 	end
 
 -- infirmary
@@ -388,6 +391,8 @@ function Scene2_1:manageCollisions(thisName, otherName, cols, i, GAME)
 				GAME:loadLevel()
 			elseif thisName == "ent_player" and otherName == "ent_kanadoor" and GAME.player.facing == "N" then
 				GAME.level = cols[i].other.nextMap
+				GAME.music.castle2:stop()
+				GAME.music.kana:play()
 				GAME.chapter2.scene = 2
 				GAME:loadLevel()
 			elseif thisName == "ent_player" and otherName == "ent_infirmaryhallway" and GAME.player.facing == "E" then
@@ -455,6 +460,8 @@ function Scene2_1:manageCollisions(thisName, otherName, cols, i, GAME)
 				GAME.castleExit = "maidroom"
 				GAME.level = cols[i].other.nextMap
 				GAME:loadLevel()
+			elseif thisName == "ent_player" and otherName == "ent_npc" then
+				GAME.interact = true
 			end
 
 		elseif GAME.level == "maps/infirmary.lua" then
@@ -583,6 +590,12 @@ end
 
 function Scene2_1:manageKeypresses(key, GAME)
 
+	if (key == 'space') and GAME.interact and GAME.level == "maps/maidroom.lua" then
+		Talkies.say("Maid", "Your Highness?", {talkSound=GAME.blop})
+		Talkies.say("Leiko", "I'm looking for Kana, do you know where she is?", {image=self.player.avatar, talkSound=GAME.blop})
+		Talkies.say("Maid", "I believe she's in the room next to yours, playing the koto.", {talkSound=GAME.blop})
+		GAME.interact = false
+	end
 	if key == "space" then
 		Talkies.onAction()
 	end
@@ -607,6 +620,8 @@ end
 end
 
 function Scene2_1:loadLevel(GAME)
+	GAME.music.castle2:play()
+	GAME.music.castle:stop()
 	if GAME.level == "maps/leiko_room1.lua" and GAME.ch2scene1Unlocked == false then
 		GAME.player.canMove = false
 		GAME.player.facing = "S"

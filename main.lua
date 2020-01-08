@@ -15,6 +15,7 @@ require "npc"
 -- load chapters
 require "chapters/chapter-1/chapter1"
 require "chapters/chapter-2/chapter2"
+require "chapters/chapter-3/chapter3"
 require "chapters/chapter-2/scenes/scene6"
 require "chapters/chapter-2/scenes/scene2"
 
@@ -36,7 +37,7 @@ function love.load()
 	maid64.setup(320)
 
 	Talkies.font = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 40)
-	
+
 	game = Game()
 
 end

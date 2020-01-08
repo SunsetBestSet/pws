@@ -41,7 +41,7 @@ return {
     {
       name = "inner",
       firstgid = 1001,
-      filename = "inner1.tsx",
+      filename = "inner.tsx",
       tilewidth = 16,
       tileheight = 16,
       spacing = 0,

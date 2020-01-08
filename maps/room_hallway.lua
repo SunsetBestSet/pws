@@ -72,10 +72,10 @@ return {
       tileheight = 16,
       spacing = 0,
       margin = 0,
-      columns = 40,
+      columns = 46,
       image = "overworld0.png",
-      imagewidth = 640,
-      imageheight = 576,
+      imagewidth = 740,
+      imageheight = 676,
       tileoffset = {
         x = 0,
         y = 0
@@ -87,7 +87,7 @@ return {
       },
       properties = {},
       terrains = {},
-      tilecount = 1440,
+      tilecount = 1932,
       tiles = {}
     }
   },
