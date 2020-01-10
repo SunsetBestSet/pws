@@ -1,5 +1,6 @@
 Chapter4 = Object:extend()
 require "chapters/chapter-4/scenes/scene1"
+require "chapters/chapter-4/scenes/scene2"
 
 
 function Chapter4:new()
@@ -10,13 +11,14 @@ function Chapter4:new()
   self.leiko = love.graphics.newImage('assets/sprites/leiko.png')
   self.irene = love.graphics.newImage('assets/sprites/irene.png')
   self.hiko = love.graphics.newImage('assets/sprites/hiko.png')
+  self.satoru = love.graphics.newImage('assets/sprites/satoru.png')
 end
 
 function Chapter4:loadEntities(object,GAME)
   if self.scene == 1 then
     self.scene1:loadEntities(object, GAME)
   elseif self.scene == 2 then
-    self.scene1:loadEntities(object, GAME)
+    self.scene2:loadEntities(object, GAME)
   end
   return GAME
 end
@@ -33,7 +35,7 @@ function Chapter4:manageCollisions(thisName, otherName, cols, i, GAME)
   if self.scene == 1 then
     self.scene1:manageCollisions(thisName, otherName, cols, i, GAME)
   elseif self.scene == 2 then
-    self.scene1:manageCollisions(thisName, otherName, cols, i, GAME)
+    self.scene2:manageCollisions(thisName, otherName, cols, i, GAME)
   end
   return GAME
 end
@@ -42,7 +44,7 @@ function Chapter4:manageKeypresses(key, GAME)
   if self.scene == 1 then
     self.scene1:manageKeypresses(key, GAME)
   elseif self.scene == 2 then
-    self.scene1:manageKeypresses(key, GAME)
+    self.scene2:manageKeypresses(key, GAME)
   end
   return GAME
 end
@@ -51,7 +53,7 @@ function Chapter4:loadLevel(GAME)
   if self.scene == 1 then
     self.scene1:loadLevel(GAME)
   elseif self.scene == 2 then
-    self.scene1:loadLevel(GAME)
+    self.scene2:loadLevel(GAME)
   end
 end
 

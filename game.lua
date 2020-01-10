@@ -82,7 +82,7 @@ function Game:loadLevel()
 	if self.chapter == 2 then
 		self = self.chapter2:loadAssets(self)
 	elseif self.chapter == 3 then
-			self = self.chapter3:loadAssets(self)
+		self = self.chapter3:loadAssets(self)
 	end
 	for k, object in pairs(self.map.objects) do
 		if self.chapter == 1 then
@@ -106,6 +106,8 @@ function Game:loadLevel()
 		self = self.chapter2:loadLevel(self)
 	elseif self.chapter == 3 then
 		self = self.chapter3:loadLevel(self)
+	elseif self.chapter == 4 then
+		self = self.chapter4:loadLevel(self)
 	end
 end
 
@@ -124,6 +126,8 @@ function Game:checkCols(entity, cols)
 			self = self.chapter2:manageCollisions(thisName, otherName, cols, i, self)
 		elseif self.chapter == 3 then
 			self = self.chapter3:manageCollisions(thisName, otherName, cols, i, self)
+		elseif self.chapter == 4 then
+			self = self.chapter4:manageCollisions(thisName, otherName, cols, i, self)
 		end
 	end
 
@@ -288,6 +292,8 @@ function Game:manageKeypresses(key)
 		self = self.chapter2:manageKeypresses(key, self)
 	elseif self.chapter == 3 then
 		self = self.chapter3:manageKeypresses(key, self)
+	elseif self.chapter == 4 then
+		self = self.chapter4:manageKeypresses(key, self)
 	end
 
 	if key == 'h' then
