@@ -56,9 +56,12 @@ Talkies.say("Irene", "Ugh, you're right. Kana's right too. These quarrels aren't
 Talkies.say("Irene", "We gotta do something and work together, even if I don't like it.", {image=self.player.avatar, talkSound=GAME.blop})
 Talkies.say("Hiko", "Does this mean you'll try to be nicer?", {image=GAME.npc.avatarhiko, talkSound=GAME.blop,})
 Talkies.say("Irene", "I guess. Can't promise anything though.--Come on, let's head back and get some sleep.", {image=self.player.avatar, talkSound=GAME.blop})
-Talkies.say("Irene", "AAAHHH-- I'M GETTING ATTACKED HIKO HELP", {image=self.player.avatar, talkSound=GAME.blop, oncomplete=function() GAME.battle:initiate(self:startCH3(GAME), 4, enemies[2], 3, enemies[3]) end})
+Talkies.say("Irene", "AAAHHH-- I'M GETTING ATTACKED HIKO HELP", {image=self.player.avatar, talkSound=GAME.blop, oncomplete=function() GAME.battle:initiate(function() self:startCH4(GAME) end, 4, enemies[2], 3, enemies[3]) end})
 end
 
-function Scene3_4:startCH3(GAME)
-  GAME.chapter = 4
+function Scene3_4:startCH4(GAME)
+    GAME.chapter = 4
+    GAME.music.ch3:stop()
+    GAME:doBlackScreen("in", "ch4")
+    GAME.doFadeOut = true
 end

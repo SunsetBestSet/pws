@@ -16,19 +16,11 @@ function Scene4_2:loadEntities(object, GAME, map)
 	elseif object.name == "satoru_spawn" then
 		GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, GAME.chapter4.satoru, GAME.world, 200, 64, 200)
 		table.insert(GAME.entities, GAME.npc)
-	elseif object.name == "door" then
-		local door = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_door")
-		door.nextMap = object.properties.nextMap;
-		table.insert(GAME.entities, door)
 	end
 end
 
 function Scene4_2:manageCollisions(thisName, otherName, cols, i, GAME)
-	if thisName == "ent_player" and otherName == "ent_door" then 
-		GAME.level = cols[i].other.nextMap
-		GAME.chapter4.scene = 3
-		GAME:loadLevel()
-	end
+
 end
 
 function Scene4_2:manageKeypresses(key, GAME)
@@ -48,5 +40,11 @@ function Scene4_2:loadLevel(GAME)
 	Talkies.say("Kana", "Can't. There's fences.", {image=self.kana.avatar, talkSound=GAME.blop})
 	Talkies.say("Satoru", "Well... If you go West enough at the north of the village, there is a small spot without any fences.", {image=self.satoru.avatar, talkSound=GAME.blop})
 	Talkies.say("Leiko", "Thank you!!! Let's go Kana!", {image=self.leiko.avatar, talkSound=GAME.blop})
-	Talkies.say("Kana (struggling to speak)", "Yeah, let's go...", {image=self.kana.avatar, talkSound=GAME.blop})
+	Talkies.say("Kana (struggling to speak)", "Yeah, let's go...", {image=self.kana.avatar, talkSound=GAME.blop, oncomplete=function() self:startScene4(GAME) end})
+end
+
+function Scene4_2:startScene4(GAME)
+	GAME:doBlackScreen("in")
+ 	GAME.doFadeOut = true
+ 	GAME.chapter4.scene = 3
 end

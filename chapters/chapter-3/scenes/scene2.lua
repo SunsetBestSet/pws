@@ -59,6 +59,7 @@ function Scene3_2:loadLevel(GAME)
     Talkies.say("Farmer", "Before you go-", {talkSound=GAME.blop})
     Talkies.say("Hiko", "OH NO! A TROLL!", {image=GAME.npc.avatarhiko, talkSound=GAME.blop,})
     Talkies.say("Farmer", "Oh no! You might have to fight this one off!", {oncomplete = function() GAME.battle:initiate(function() self:startScene3(GAME) end, 4, enemies[2])  end})
+    Talkies.say("GAME", "Use the arrow keys and [ENTER] to play!")
   end
 end
 

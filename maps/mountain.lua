@@ -234,7 +234,9 @@ return {
       offsetx = 0,
       offsety = 0,
       draworder = "topdown",
-      properties = {},
+      properties = {
+        ["collidable"] = true
+      },
       objects = {
         {
           id = 1,
@@ -481,20 +483,24 @@ return {
       offsetx = 0,
       offsety = 0,
       draworder = "topdown",
-      properties = {},
+      properties = {
+        ["collidable"] = false
+      },
       objects = {
         {
           id = 15,
           name = "north_exit",
           type = "",
           shape = "rectangle",
-          x = 97.4545,
+          x = 100.364,
           y = 0.909091,
-          width = 93.4545,
+          width = 87.2727,
           height = 9.90909,
           rotation = 0,
           visible = true,
-          properties = {}
+          properties = {
+            ["nextMap"] = "maps/top.lua"
+          }
         },
         {
           id = 16,
@@ -514,10 +520,10 @@ return {
           name = "fairy_encounter",
           type = "",
           shape = "rectangle",
-          x = 45.25,
-          y = 153,
-          width = 72.75,
-          height = 119.75,
+          x = 271.25,
+          y = 156,
+          width = 38.75,
+          height = 31.75,
           rotation = 0,
           visible = true,
           properties = {}
@@ -563,58 +569,6 @@ return {
         },
         {
           id = 25,
-          name = "irene_spawn",
-          type = "",
-          shape = "rectangle",
-          x = 460.5,
-          y = 274.5,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 26,
-          name = "hiko_spawn",
-          type = "",
-          shape = "rectangle",
-          x = 385.227,
-          y = 274.5,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 27,
-          name = "kana_spawn",
-          type = "",
-          shape = "rectangle",
-          x = 408.477,
-          y = 289.5,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 28,
-          name = "leiko_spawn",
-          type = "",
-          shape = "rectangle",
-          x = 437.363,
-          y = 289.5,
-          width = 0,
-          height = 0,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 29,
           name = "irene_spawn",
           type = "",
           shape = "rectangle",

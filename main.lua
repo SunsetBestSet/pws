@@ -42,6 +42,7 @@ local entities = {}
 
 
 function love.load()
+	love.window.setTitle("The Disk")
 	love.window.setMode(640, 640)
 	maid64.setup(320)
 	Talkies.font = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 40)

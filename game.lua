@@ -181,12 +181,12 @@ function Game:tweenupdate(dt)
 		self:doBlackScreen("out", "ch2")
 	end
 
-	--[[if self.doFadeOut and self.chapter2.scene == 6 and self.objects[3].colour[4] == 1 and self.chapter == 3 then
+	if self.doFadeOut and self.chapter4.scene == 3 and self.objects[1].colour[4] == 1 then
 		self.doFadeOut = false
-		self.level = "maps/farmlands1.lua"
+		self.level = "maps/town2.lua"
 		self:loadLevel()
-		self:doBlackScreen("out", "ch3")
-	end]]
+		self:doBlackScreen("out")
+	end
 
 	if self.doFadeOut and self.objects[6].colour[4] == 1 and self.chapter == 3 and self.chapter3.scene == 1 then
 		self.doFadeOut = false
@@ -216,6 +216,13 @@ function Game:tweenupdate(dt)
 		self:doBlackScreen("out")
 	end
 
+	if self.doFadeOut and self.objects[7].colour[4] == 1 and self.chapter == 4 then
+		self.doFadeOut = false
+		self.level = "maps/town2.lua"
+		self:loadLevel()
+		self:doBlackScreen("out", "ch4")
+	end
+
 	if self.stayBlack and self.chapter2.scene == 5 and self.objects[4].colour[4] == 1 and self.chapter == 2 then
 		for k, v in pairs(self.tweens) do self.tweens[k] = nil end
 	end
@@ -241,6 +248,10 @@ function Game:doBlackScreen(direction, style, character, text)
 			local t6 = tween.new(1, self.objects[6], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
 			table.insert(self.tweens, t6)
 		end
+		if style == "ch4" then
+			local t7 = tween.new(1, self.objects[7], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
+			table.insert(self.tweens, t7)
+		end
 		if style == "morning" then
 			local t4 = tween.new(1, self.objects[4], {colour = {1, 1, 1, 1}, y = love.graphics.getHeight() / 4 - 75}, 'inQuad')
 			table.insert(self.tweens, t4)
@@ -261,6 +272,10 @@ function Game:doBlackScreen(direction, style, character, text)
 		if style == "ch3" then
 			local t6 = tween.new(0.05, self.objects[6], {colour = {1, 1, 1, 0}, y = love.graphics.getHeight() / 4 - 75}, 'outExpo')
 			table.insert(self.tweens, t6)
+		end
+		if style == "ch4" then
+			local t7 = tween.new(0.05, self.objects[7], {colour = {1, 1, 1, 0}, y = love.graphics.getHeight() / 4 - 75}, 'outExpo')
+			table.insert(self.tweens, t7)
 		end
 		if style == "morning" then
 			local t4 = tween.new(0.05, self.objects[4], {colour = {1, 1, 1, 0}, y = love.graphics.getHeight() / 4 - 75}, 'outExpo')
@@ -297,8 +312,9 @@ function Game:manageKeypresses(key)
 	end
 
 	if key == 'h' then
-		self.chapter = 4
-		self.level = "maps/town2.lua"
+		self.chapter = 3
+		self.chapter3.scene = 4
+		self.level = "maps/forest.lua"
 		self:loadLevel()
 	end
 

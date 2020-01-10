@@ -110,9 +110,9 @@
   <object id="4" x="-8.5" y="0.125" width="8" height="319.489"/>
  </objectgroup>
  <objectgroup id="6" name="Objects">
-  <object id="9" name="hiko_spawn" x="99.477" y="132.75"/>
-  <object id="10" name="kana_spawn" x="155.977" y="197.5"/>
-  <object id="11" name="leiko_spawn" x="221.363" y="132.75"/>
-  <object id="12" name="irene_spawn" x="159.25" y="72.75"/>
+  <object id="9" name="hiko_spawn" x="105.727" y="132" width="16" height="25"/>
+  <object id="10" name="kana_spawn" x="201.852" y="132" width="16" height="24"/>
+  <object id="11" name="leiko_spawn" x="152.25" y="167.875" width="16" height="24"/>
+  <object id="12" name="irene_spawn" x="152.25" y="79.25" width="16" height="24"/>
  </objectgroup>
 </map>

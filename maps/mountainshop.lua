@@ -226,34 +226,6 @@ return {
           rotation = 0,
           visible = true,
           properties = {}
-        },
-        {
-          id = 9,
-          name = "door",
-          type = "",
-          shape = "rectangle",
-          x = 128.5,
-          y = 153.75,
-          width = 31,
-          height = 5.75,
-          rotation = 0,
-          visible = true,
-          properties = {}
-        },
-        {
-          id = 10,
-          name = "door",
-          type = "",
-          shape = "rectangle",
-          x = 128.5,
-          y = 153.75,
-          width = 31,
-          height = 5.75,
-          rotation = 0,
-          visible = true,
-          properties = {
-            ["nextMap"] = "maps/town2.lua"
-          }
         }
       }
     },
@@ -342,7 +314,7 @@ return {
           shape = "rectangle",
           x = 0,
           y = 144.125,
-          width = 127.75,
+          width = 159.75,
           height = 15.75,
           rotation = 0,
           visible = true,

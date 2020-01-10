@@ -44,6 +44,14 @@ return {
 		x = love.graphics.getWidth() / 4 - 75,
 		y = love.graphics.getHeight() / 4 - 50,
 		font = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 100)
+	},
+	{
+		type = "text",
+		text = "CHAPTER 4: Kana",
+		colour = {1, 1, 1, 0},
+		x = love.graphics.getWidth() / 4 - 75,
+		y = love.graphics.getHeight() / 4 - 50,
+		font = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 100)
 	}
 
 }
