@@ -40,6 +40,7 @@ function Game:new()
 	self.chapter1 = Chapter1()
 	self.chapter2 = Chapter2()
 	self.chapter3 = Chapter3()
+	self.chapter4 = Chapter4()
 	self.chapter = 1
 	self.ch2scene1Unlocked = false
 	self.ch2scene2Unlocked = false
@@ -90,6 +91,8 @@ function Game:loadLevel()
 			self = self.chapter2:loadEntities(object, self)
 		elseif self.chapter == 3 then
 			self = self.chapter3:loadEntities(object, self)
+		elseif self.chapter == 4 then
+			self = self.chapter4:loadEntities(object, self)
 		end
 	end
 
@@ -288,14 +291,13 @@ function Game:manageKeypresses(key)
 	end
 
 	if key == 'h' then
-		self.chapter = 3
-		self.chapter3.scene = 4
-		self.level = "maps/forest.lua"
+		self.chapter = 4
+		self.level = "maps/town2.lua"
 		self:loadLevel()
 	end
 
-	if key == 'i' then 
-		self.battle:initiate(nil, 2, enemies[4], 3, enemies[5])
+	if key == 'c' then 
+		Talkies.clearMessages()
 	end
 
 	self.battle:keypressed(key)

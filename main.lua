@@ -25,6 +25,7 @@ require "battle"
 require "chapters/chapter-1/chapter1"
 require "chapters/chapter-2/chapter2"
 require "chapters/chapter-3/chapter3"
+require "chapters/chapter-4/chapter4"
 require "chapters/chapter-2/scenes/scene6"
 require "chapters/chapter-2/scenes/scene2"
 
