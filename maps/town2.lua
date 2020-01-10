@@ -1371,8 +1371,8 @@ return {
           name = "hiko_spawn",
           type = "",
           shape = "rectangle",
-          x = 371.462,
-          y = 393.273,
+          x = 372,
+          y = 445,
           width = 16,
           height = 24,
           rotation = 0,
@@ -1384,8 +1384,8 @@ return {
           name = "kana_spawn",
           type = "",
           shape = "rectangle",
-          x = 371.5,
-          y = 359.727,
+          x = 372,
+          y = 410,
           width = 16,
           height = 24,
           rotation = 0,
@@ -1397,8 +1397,8 @@ return {
           name = "leiko_spawn",
           type = "",
           shape = "rectangle",
-          x = 396.083,
-          y = 359,
+          x = 395,
+          y = 410,
           width = 16,
           height = 24,
           rotation = 0,
@@ -1410,8 +1410,8 @@ return {
           name = "irene_spawn",
           type = "",
           shape = "rectangle",
-          x = 396.978,
-          y = 393.394,
+          x = 395,
+          y = 445.061,
           width = 16,
           height = 24,
           rotation = 0,
@@ -1458,7 +1458,7 @@ return {
           rotation = 0,
           visible = true,
           properties = {
-            ["nextMap"] = "mountainshop.lua"
+            ["nextMap"] = "maps/mountainshop.lua"
           }
         },
         {

@@ -125,6 +125,9 @@
 </data>
  </layer>
  <objectgroup id="7" name="custom_collisions">
+  <properties>
+   <property name="collidable" type="bool" value="true"/>
+  </properties>
   <object id="1" x="240.667" y="1.77636e-15" width="238" height="126.667"/>
   <object id="2" x="130.364" y="228.727" width="11.2727" height="72.9091"/>
   <object id="3" x="142.545" y="243.636" width="11.2727" height="41.8182"/>
@@ -145,7 +148,10 @@
   <object id="21" x="160.699" y="80" width="30.5739" height="47.0909"/>
  </objectgroup>
  <objectgroup id="8" name="Objects">
-  <object id="15" name="north_exit" x="97.4545" y="0.909091" width="93.4545" height="9.90909">
+  <properties>
+   <property name="collidable" type="bool" value="false"/>
+  </properties>
+  <object id="15" name="north_exit" x="100.364" y="0.909091" width="87.2727" height="9.90909">
    <properties>
     <property name="nextMap" value="maps/top.lua"/>
    </properties>
@@ -156,9 +162,5 @@
   <object id="23" name="kana_spawn" x="408.477" y="289.5"/>
   <object id="24" name="leiko_spawn" x="437.363" y="289.5"/>
   <object id="25" name="irene_spawn" x="460.5" y="274.5"/>
-  <object id="26" name="hiko_spawn" x="385.227" y="274.5"/>
-  <object id="27" name="kana_spawn" x="408.477" y="289.5"/>
-  <object id="28" name="leiko_spawn" x="437.363" y="289.5"/>
-  <object id="29" name="irene_spawn" x="460.5" y="274.5"/>
  </objectgroup>
 </map>

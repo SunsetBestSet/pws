@@ -354,10 +354,10 @@
   <object id="80" x="241.667" y="4.33333" width="333" height="8.33333"/>
  </objectgroup>
  <objectgroup id="8" name="Objects">
-  <object id="59" name="hiko_spawn" x="371.462" y="393.273" width="16" height="24"/>
-  <object id="60" name="kana_spawn" x="371.5" y="359.727" width="16" height="24"/>
-  <object id="61" name="leiko_spawn" x="396.083" y="359" width="16" height="24"/>
-  <object id="62" name="irene_spawn" x="396.978" y="393.394" width="16" height="24"/>
+  <object id="59" name="hiko_spawn" x="372" y="445" width="16" height="24"/>
+  <object id="60" name="kana_spawn" x="372" y="410" width="16" height="24"/>
+  <object id="61" name="leiko_spawn" x="395" y="410" width="16" height="24"/>
+  <object id="62" name="irene_spawn" x="395" y="445.061" width="16" height="24"/>
   <object id="64" name="south_exit" x="366.455" y="553.273" width="51.2727" height="5.63636"/>
   <object id="65" name="north_exit" x="3.182" y="3.40909" width="88.5909" height="8.68182">
    <properties>
@@ -366,7 +366,7 @@
   </object>
   <object id="79" name="door_shop" x="303.813" y="171.938" width="15.625" height="3.4375">
    <properties>
-    <property name="nextMap" value="mountainshop.lua"/>
+    <property name="nextMap" value="maps/mountainshop.lua"/>
    </properties>
   </object>
   <object id="81" name="hiko_spawn2" x="14.977" y="70.5"/>

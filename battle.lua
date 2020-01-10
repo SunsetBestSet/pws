@@ -25,6 +25,8 @@ function Battle:initiate(oncomplete, player, enemy1, ally, enemy2)
 	game.music.castle2:stop()
   	game.music.town:stop()
 	game.music.ch3:stop()
+	game.music.mountain:stop()
+	game.music.top:stop()
 	if enemy1.name == "Mysterious Man" then 
 		game.music.boss:play()
 	else
@@ -413,16 +415,15 @@ function Battle:newTurn()
 end
 function Battle:endBattle(winner)
 	if winner == "player" then 
+		self.power = false
 		Talkies.say(self.player.name, "We won!")
-		Talkies.say("GAME", "end of battle!", {oncomplete = function() self.power = false end})
 		self.oncomplete()
 	elseif winner == "enemy" then 
 		if self.enemy1.name == "Mysterious Man" then 
-			Talkies.say(self.player.name, "NO!!! We can't let Kewon fall...")
-			Talkies.say("GAME", "end of battle!", {oncomplete = function() self:tryAgain() end})
+			Talkies.say(self.player.name, "NO!!! We can't let Kewon fall...", {oncomplete = function() self:tryAgain() end})
 		else
+			self.power = false
 			Talkies.say(self.player.name, "Oh no.... I'm feeling dizzy... Let's get out of here...")
-			Talkies.say("GAME", "end of battle!", {oncomplete = function() self.power = false end})
 			self.oncomplete()
 		end
 	end
@@ -450,6 +451,11 @@ function Battle:endBattle(winner)
 end
 
 function Battle:tryAgain()
-	Talkies.say(self.player.name, "Come on! Hiko, heal me up. Let's fight him together!", {oncomplete=function() self:initiate(nil, 2, enemies[4], 3, enemies[5]) end})
+	Talkies.say(self.player.name, "Come on! Hiko, heal me up!", {image=game.chapter4.scene5.kana.avatar})
+	Talkies.say(self.player.name .. " (thinking)", "Who should I fight with?", {options={
+		{"Hiko", function() self:initiate(nil, 2, enemies[4], 3, enemies[5]) end},
+		{"Leiko", function() self:initiate(nil, 2, enemies[4], 1, enemies[5]) end},
+		{"Irene", function() self:initiate(nil, 2, enemies[4], 4, enemies[5]) end},
+	}, image=game.chapter4.scene5.kana.avatar})
 	self.power = false
 end

@@ -8,8 +8,8 @@ return {
   height = 20,
   tilewidth = 16,
   tileheight = 16,
-  nextlayerid = 6,
-  nextobjectid = 5,
+  nextlayerid = 7,
+  nextobjectid = 13,
   properties = {},
   tilesets = {
     {
@@ -249,6 +249,71 @@ return {
           y = 0.125,
           width = 8,
           height = 319.489,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        }
+      }
+    },
+    {
+      type = "objectgroup",
+      id = 6,
+      name = "Objects",
+      visible = true,
+      opacity = 1,
+      offsetx = 0,
+      offsety = 0,
+      draworder = "topdown",
+      properties = {},
+      objects = {
+        {
+          id = 9,
+          name = "hiko_spawn",
+          type = "",
+          shape = "rectangle",
+          x = 105.727,
+          y = 132,
+          width = 16,
+          height = 25,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 10,
+          name = "kana_spawn",
+          type = "",
+          shape = "rectangle",
+          x = 201.852,
+          y = 132,
+          width = 16,
+          height = 24,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 11,
+          name = "leiko_spawn",
+          type = "",
+          shape = "rectangle",
+          x = 152.25,
+          y = 167.875,
+          width = 16,
+          height = 24,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 12,
+          name = "irene_spawn",
+          type = "",
+          shape = "rectangle",
+          x = 152.25,
+          y = 79.25,
+          width = 16,
+          height = 24,
           rotation = 0,
           visible = true,
           properties = {}
