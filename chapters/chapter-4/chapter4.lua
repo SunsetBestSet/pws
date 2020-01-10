@@ -5,6 +5,7 @@ require "chapters/chapter-4/scenes/scene2"
 
 function Chapter4:new()
   self.scene1 = Scene4_1()
+  self.scene2 = Scene4_2()
   self.scene = 1
 
   self.character = love.graphics.newImage('assets/sprites/kana.png')
