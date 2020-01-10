@@ -14,11 +14,22 @@ function Game:new()
 		castle=love.audio.newSource("assets/castle.mp3", "stream"),
 		castle2=love.audio.newSource("assets/castle2.mp3", "stream"),
 		kana=love.audio.newSource("assets/kana.mp3", "stream"),
-	ch3=love.audio.newSource("assets/ch3.mp3", "stream")}
+		ch3=love.audio.newSource("assets/ch3.mp3", "stream"),
+		mountain=love.audio.newSource("assets/mountain.mp3", "stream"),
+		top=love.audio.newSource("assets/top.mp3", "stream"),
+		battle=love.audio.newSource("assets/battle.mp3", "stream"),
+		boss=love.audio.newSource("assets/boss.mp3", "stream")}
 	self.music.prologue:setVolume(.3)
 	self.music.prologue:setLooping( true )
 	self.music.town:setLooping( true )
 	self.music.castle:setLooping( true )
+	self.music.castle2:setLooping( true )
+	self.music.kana:setLooping( true )
+	self.music.ch3:setLooping( true )
+	self.music.battle:setLooping( true )
+	self.music.boss:setLooping( true )
+	self.music.mountain:setLooping( true )
+	self.music.top:setLooping( true )
 	self.stop = false
 	self.camera = Camera()
 	self.camera:setFollowStyle('TOPDOWN_TIGHT')
@@ -278,9 +289,13 @@ function Game:manageKeypresses(key)
 
 	if key == 'h' then
 		self.chapter = 3
-		self.chapter3.scene = 2
-		self.level = "maps/farmlands2.lua"
+		self.chapter3.scene = 4
+		self.level = "maps/forest.lua"
 		self:loadLevel()
+	end
+
+	if key == 'i' then 
+		self.battle:initiate(nil, 2, enemies[4], 3, enemies[5])
 	end
 
 	self.battle:keypressed(key)

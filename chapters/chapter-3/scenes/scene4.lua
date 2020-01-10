@@ -34,7 +34,8 @@ function Scene3_4:manageKeypresses(key, GAME)
 end
 
 function Scene3_4:loadLevel(GAME)
-  if GAME.level == "maps/forest.lua" then
+  self.scene = 5
+  print("h")
 Talkies.say("Hiko", "Sis?", {image=GAME.npc.avatarhiko, talkSound=GAME.blop,})
 Talkies.say("Irene", "Yeah?", {image=self.player.avatar, talkSound=GAME.blop})
 Talkies.say("Hiko", "Why do you keep being mean to everyone?", {image=GAME.npc.avatarhiko, talkSound=GAME.blop,})
@@ -54,14 +55,10 @@ Talkies.say("Irene", "...", {image=self.player.avatar, talkSound=GAME.blop})
 Talkies.say("Irene", "Ugh, you're right. Kana's right too. These quarrels aren't helping out.", {image=self.player.avatar, talkSound=GAME.blop})
 Talkies.say("Irene", "We gotta do something and work together, even if I don't like it.", {image=self.player.avatar, talkSound=GAME.blop})
 Talkies.say("Hiko", "Does this mean you'll try to be nicer?", {image=GAME.npc.avatarhiko, talkSound=GAME.blop,})
-Talkies.say("Irene", "I guess. Can't promise anything though.--Come on, let's head back and get some sleep.", {image=self.player.avatar, talkSound=GAME.blop, oncomplete=function() self:startScene4(GAME) end})
-
-  end
+Talkies.say("Irene", "I guess. Can't promise anything though.--Come on, let's head back and get some sleep.", {image=self.player.avatar, talkSound=GAME.blop})
+Talkies.say("Irene", "AAAHHH-- I'M GETTING ATTACKED HIKO HELP", {image=self.player.avatar, talkSound=GAME.blop, oncomplete=function() GAME.battle:initiate(self:startCH3(GAME), 4, enemies[2], 3, enemies[3]) end})
 end
 
-function Scene3_4:startScene4(GAME)
-	GAME:doBlackScreen("in")
-  GAME.doFadeOut = true
-  GAME.chapter3.scene = 4
-
+function Scene3_4:startCH3(GAME)
+  GAME.chapter = 4
 end

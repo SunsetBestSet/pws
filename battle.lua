@@ -17,20 +17,34 @@ end
 function Battle:initiate(oncomplete, player, enemy1, ally, enemy2)
 	self.player = self.characters[player] 
 	self.enemy1 = enemy1
-	self.ally = ally or nil
+	self.ally = self.characters[ally] or nil
 	self.enemy2 = enemy2 or nil
+	self.screen = 1
+	self.selection = 1
+
+	game.music.castle2:stop()
+  	game.music.town:stop()
+	game.music.ch3:stop()
+	if enemy1.name == "Mysterious Man" then 
+		game.music.boss:play()
+	else
+		game.music.battle:play()
+	end
 
 	self.oncomplete = oncomplete or function()  end
 	if self.ally == nil then
 		self.enemycount = 1 
 		self.enemy_list = {enemy1}
+		self.active_characters = {self.player}
+		Talkies.say("GAME", "You've been attacked by " .. enemy1.name)
 	else 
 		self.enemycount = 2
 		self.enemy_list = {enemy1, enemy2}
+		self.active_characters = {self.player, self.ally}
+		Talkies.say("GAME", "You've been attacked by " .. enemy1.name and enemy2.name)
 	end
 	self.power = true
-	-- ACTIVE THIS!!!! THIS ENSURES THE PLAYER CANNOT MOVE
-	--game.player.canMove = false
+	game.player.canMove = false
 end
 
 function Battle:draw(dt)
@@ -140,6 +154,7 @@ function Battle:execute_attack(target, user, selected_move)
 	else
 		if #effects == 0 then
 			selected_move.attack(target, user, selected_move)
+			target.status.hp = math.floor(target.status.hp)
 			if target.status.hp <= 0 then Talkies.say("GAME", target.name .. " was knocked out!") end
 		else
 			for k, v in pairs(effects) do 
@@ -148,11 +163,13 @@ function Battle:execute_attack(target, user, selected_move)
 					humiliated = true
 					effects[k][2] = effects[k][2] - 1
 					selected_move.attack(target, user, selected_move)
+					target.status.hp = math.floor(target.status.hp)
 				elseif effects[k][1] == "sleeping" then 
 					effects[k][2] = effects[k][2] - 1
 					sleeping = true
 				elseif effects[k][1] == "poisoned" then 
 					selected_move.attack(target, user, selected_move)
+					target.status.hp = math.floor(target.status.hp)
 					effects[k][2] = effects[k][2] - 1
 				end
 			end
@@ -161,7 +178,23 @@ function Battle:execute_attack(target, user, selected_move)
 		user.status.status_effects = effects
 
 		if sleeping then 
-			Talkies.say("GAME", user.name .. " is asleep!")
+			if self.attacking == "player" then
+				if self.enemycount == 1 then 
+					Talkies.say("GAME", user.name .. " is asleep!", {oncomplete=function() self:enemy1_turn() end})
+				elseif self.enemycount == 2 then 
+					Talkies.say("GAME", user.name .. " is asleep!", {oncomplete=function() self:ally_turn() end})
+				end
+			elseif self.attacking == "ally" then
+				Talkies.say("GAME", user.name .. " is asleep!", {oncomplete=function() self:enemy1_turn() end})
+			elseif self.attacking == "enemy1" then
+				if self.enemycount == 1 then 
+					Talkies.say("GAME", user.name .. " is asleep!", {oncomplete=function() self:newTurn() end})
+				elseif self.enemycount == 2 then 
+					Talkies.say("GAME", user.name .. " is asleep!", {oncomplete=function() self:enemy2_turn() end})
+				end
+			elseif self.attacking == "enemy2" then
+				Talkies.say("GAME", user.name .. " is asleep!", {oncomplete=function() self:newTurn() end})
+			end
 		elseif humiliated then
 			Talkies.say("GAME", user.name .. " feels humiliated!")
 			Talkies.say("GAME", user.name .. " is crying...")
@@ -304,7 +337,10 @@ function Battle:enemy1_turn()
 		target = self.player
 	elseif self.enemycount == 2 then 
 		local rand = math.random(2)
-		target = active_characters[rand]
+		target = self.active_characters[rand]
+	end
+	if move.name == "Floral Healing" and self.enemycount == 2 then
+		target = self.enemy2
 	end
 	self:execute_attack(target, user, move)
 end
@@ -317,7 +353,10 @@ function Battle:enemy2_turn()
 	local move = user.move[rand]
 	math.randomseed(os.time())
 	local rand = math.random(2)
-	local target = active_characters[rand]
+	local target = self.active_characters[rand]
+	if move.name == "Floral Healing" then
+		target = self.enemy1
+	end
 	self:execute_attack(target, user, move)
 end
 
@@ -357,8 +396,8 @@ function Battle:newTurn()
 				end
 			end
 		end
-		for k, v in pairs(active_characters) do 
-			local character = active_characters[k]
+		for k, v in pairs(self.active_characters) do 
+			local character = self.active_characters[k]
 			for key, value in pairs(character.status.status_effects) do 
 				local effect = character.status.status_effects[key]
 				if effect[2] == 0 then 
@@ -375,11 +414,42 @@ end
 function Battle:endBattle(winner)
 	if winner == "player" then 
 		Talkies.say(self.player.name, "We won!")
+		Talkies.say("GAME", "end of battle!", {oncomplete = function() self.power = false end})
+		self.oncomplete()
 	elseif winner == "enemy" then 
-		Talkies.say(self.player.name, "Oh no.... I'm feeling dizzy... Let's get out of here...")
+		if self.enemy1.name == "Mysterious Man" then 
+			Talkies.say(self.player.name, "NO!!! We can't let Kewon fall...")
+			Talkies.say("GAME", "end of battle!", {oncomplete = function() self:tryAgain() end})
+		else
+			Talkies.say(self.player.name, "Oh no.... I'm feeling dizzy... Let's get out of here...")
+			Talkies.say("GAME", "end of battle!", {oncomplete = function() self.power = false end})
+			self.oncomplete()
+		end
 	end
-	Talkies.say("GAME", "end of battle!", {oncomplete = function() self.power = false end})
-	self.oncomplete()
-	-- ACTIVATE THIS OR ELSE THE PLAYER CAN'T MOVE AFTER THE Battle
-	-- game.player.canMove = true
+	game.player.canMove = true
+	self.player.status.hp = self.player.stats.hp * 100
+	self.player.status.attack, self.player.status.defense = self.player.stats.attack * 5, self.player.stats.defense
+	self.enemy1.status.hp = self.enemy1.stats.hp * 100
+	self.enemy1.status.attack, self.enemy1.status.defense = self.enemy1.stats.attack * 5, self.enemy1.stats.defense
+	if self.enemycount == 2 then 
+		self.ally.status.hp = self.ally.stats.hp * 100
+		self.ally.status.attack, self.ally.status.defense = self.ally.stats.attack * 5, self.ally.stats.defense
+		self.enemy2.status.hp = self.enemy2.stats.hp * 100
+		self.enemy2.status.attack, self.enemy2.status.defense = self.enemy2.stats.attack * 5, self.enemy2.stats.defense
+	end
+	if self.enemy1.name == "Mysterious Man" then 
+		game.music.boss:stop()
+	else
+		game.music.battle:stop()
+	end
+	if game.chapter == 3 then 
+		game.music.ch3:play()
+	elseif game.chapter == 4 then 
+		game.music.mountain:play()
+	end
+end
+
+function Battle:tryAgain()
+	Talkies.say(self.player.name, "Come on! Hiko, heal me up. Let's fight him together!", {oncomplete=function() self:initiate(nil, 2, enemies[4], 3, enemies[5]) end})
+	self.power = false
 end

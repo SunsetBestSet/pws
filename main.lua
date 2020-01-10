@@ -13,7 +13,6 @@ attack = require 'battle-info/subattacks'
 status = require 'battle-info/status'
 move = require 'battle-info/moves'
 characters = require 'character-info/characters'
-active_characters = require 'character-info/active-characters'
 enemies = require 'character-info/enemies'
 
 -- load components
@@ -43,13 +42,9 @@ local entities = {}
 
 function love.load()
 	love.window.setMode(640, 640)
-
 	maid64.setup(320)
-
 	Talkies.font = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 40)
-
 	game = Game()
-
 end
 
 
