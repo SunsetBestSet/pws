@@ -64,6 +64,8 @@ function Game:new()
 
 	self.castleExit = "leikoroom"
 
+	self.location = "Irene's house"
+
 
 	WINDOW_WIDTH, WINDOW_HEIGHT = love.graphics.getDimensions()
 end
@@ -318,7 +320,7 @@ function Game:manageKeypresses(key)
 		self:loadLevel()
 	end
 
-	if key == 'c' then 
+	if key == 'c' then
 		Talkies.clearMessages()
 	end
 
@@ -392,7 +394,7 @@ end
 
 function Game:draw(dt)
 
-	if not self.battle.power then 
+	if not self.battle.power then
 
 	local tx, ty = self.camera.x - love.graphics.getWidth() / 2, self.camera.y - love.graphics.getHeight() / 2
 
@@ -410,6 +412,8 @@ function Game:draw(dt)
 	self.camera:draw()
 
 	love.graphics.setFont(self.debugFont)
+	love.graphics.print(self.location, 20, 10)
+--[[
 	love.graphics.print(self.player.x,0,12)
 	love.graphics.print(self.player.y,0,24)
 	love.graphics.print(self.player.facing, 0, 36)
@@ -417,7 +421,8 @@ function Game:draw(dt)
 	love.graphics.print(self.level, 0, 60)
 	love.graphics.print("chapter 1: scene: " .. self.chapter1.scene, 0, 72)
 	love.graphics.print("chapter 2: scene: " .. self.chapter2.scene, 0, 84)
-	love.graphics.print("Chapter: " .. self.chapter, 0, 96)
+	love.graphics.print("Chapter: " .. self.chapter, 0, 96) --]]
+
 
 	self:drawTweens()
 

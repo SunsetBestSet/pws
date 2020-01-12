@@ -9,6 +9,7 @@ function Scene4_5:new()
 end
 
 function Scene4_5:loadEntities(object, GAME, map)
+	GAME.location = "Mountain"
 	if object.name == "kana_spawn" then
 		GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.chapter4.character, GAME.world, 200, 64, 200, "W")
 		table.insert(GAME.entities, GAME.player)
@@ -25,7 +26,7 @@ function Scene4_5:loadEntities(object, GAME, map)
 end
 
 function Scene4_5:manageCollisions(thisName, otherName, cols, i, GAME)
-	
+
 end
 
 function Scene4_5:manageKeypresses(key, GAME)

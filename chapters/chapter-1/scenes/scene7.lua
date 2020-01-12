@@ -14,6 +14,7 @@ function Scene7:new()
 end
 
 function Scene7:loadEntities(object, GAME, map)
+	GAME.location = "Throne Room"
 		if object.name == "player_spawn" then
 			GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200, "N")
 			table.insert(GAME.entities, GAME.player)

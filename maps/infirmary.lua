@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 21,
-  nextobjectid = 9,
+  nextobjectid = 10,
   properties = {},
   tilesets = {
     {
@@ -306,6 +306,19 @@ return {
           y = 79,
           width = 13,
           height = 13.5,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 9,
+          name = "nurse_spawn",
+          type = "",
+          shape = "rectangle",
+          x = 250.5,
+          y = 160.5,
+          width = 15.25,
+          height = 15.5,
           rotation = 0,
           visible = true,
           properties = {}

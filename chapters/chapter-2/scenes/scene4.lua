@@ -9,6 +9,7 @@ end
 function Scene2_4:loadEntities(object, GAME, map)
 
 	if GAME.level == "maps/kanaroom.lua" then
+		GAME.location = "Kana's Room"
 		if object.name == "player_spawn" then
 			GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 			table.insert(GAME.entities, GAME.player)
@@ -24,6 +25,7 @@ function Scene2_4:loadEntities(object, GAME, map)
 			table.insert(GAME.entities, hallway_door2)
 		end
 	elseif GAME.level == "maps/room_hallway.lua" then
+		GAME.location = "Bedroom Hallway"
 			if object.name == "player_spawn1" and GAME.castleExit == "library_hallway" then
 				GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 				table.insert(GAME.entities, GAME.player)

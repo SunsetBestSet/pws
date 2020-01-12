@@ -5,7 +5,7 @@ function ThroneRoom:new()
 end
 
 function ThroneRoom:loadEntities(object, GAME, map)
-
+GAME.location = "Throne Room"
 end
 
 function ThroneRoom:manageKeypresses(key, GAME)
@@ -20,6 +20,5 @@ function ThroneRoom:manageCollisions(thisName, otherName, cols, i, GAME)
 end
 
 function ThroneRoom:loadLevel(GAME)
-	
-end
 
+end

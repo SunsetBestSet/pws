@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 8,
-  nextobjectid = 13,
+  nextobjectid = 14,
   properties = {},
   tilesets = {
     {
@@ -312,6 +312,19 @@ return {
           properties = {
             ["nextMap"] = "maps/sitting_room.lua"
           }
+        },
+        {
+          id = 13,
+          name = "knight_spawn",
+          type = "",
+          shape = "rectangle",
+          x = 64.3333,
+          y = 179.333,
+          width = 15,
+          height = 14.6667,
+          rotation = 0,
+          visible = true,
+          properties = {}
         }
       }
     },

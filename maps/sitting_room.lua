@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 14,
-  nextobjectid = 5,
+  nextobjectid = 7,
   properties = {},
   tilesets = {
     {
@@ -299,6 +299,19 @@ return {
           y = 88.5,
           width = 14.75,
           height = 14.25,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 6,
+          name = "maid_spawn",
+          type = "",
+          shape = "rectangle",
+          x = 33.3333,
+          y = 104,
+          width = 13.3333,
+          height = 13.6667,
           rotation = 0,
           visible = true,
           properties = {}

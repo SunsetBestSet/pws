@@ -9,6 +9,7 @@ end
 
 function Scene3_1:loadEntities(object, GAME, map)
   GAME.level = "maps/farmlands1.lua"
+	GAME.location = "Random Farm Path"
   if GAME.level == "maps/farmlands1.lua" then
     if object.name == "player_spawn" then
       GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
@@ -44,7 +45,7 @@ function Scene3_1:loadLevel(GAME)
     Talkies.say("Kana", "I'm sure Mother won't be happy to hear you dirtied your shoes again Leiko.", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
     Talkies.say("Leiko", "Ugh! Stop lecturing me and help me out of this mud swamp!", {image=GAME.npc.avatarleiko, talkSound=GAME.blop,})
     Talkies.say("Leiko", "And how was I supposed to know?! We never walk outside the city walls, we always take the carriage!", {image=GAME.npc.avatarleiko, talkSound=GAME.blop,})
-    Talkies.say("Kana", "I clearly told you that there are no stone paths as in the inner walls, besides, you should have learned this before- infrastructure is an important part of-", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
+    Talkies.say("Kana", "I clearly told you that there are no stone paths as in the inner walls, besides, you should have learned this before-", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
     Talkies.say("Leiko", "Yeah but this is MUD! On my shoes!", {image=GAME.npc.avatarleiko, talkSound=GAME.blop,})
     Talkies.say("Irene", "Are you two butterflies done? It's mud, not the end of the world.", {image=self.player.avatar, talkSound=GAME.blop})
     Talkies.say("Leiko", "Well, it is the end of the world when my shoes are custom made in the Northern monastery and probably cost more than your house!", {image=GAME.npc.avatarleiko, talkSound=GAME.blop,})
@@ -64,8 +65,9 @@ function Scene3_1:loadLevel(GAME)
     Talkies.say("Irene", "I'm not in the mood to have another headache for the rest of the night. Now give me some minutes of silence so I can figure out where-", {image=self.player.avatar, talkSound=GAME.blop})
     Talkies.say("Kana", "I do not understand why you keep being rude and shushing me as if I'm not the heir to the throne!", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
     Talkies.say("Kana", "I believe we should discuss and come to an understanding before working together becomes impossible.", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
-    Talkies.say("Irene", "Okay, let me tell you loud and clear: I don't like how the two of you think you can just order me around and degrade me with words. I'm human, just like you.", {image=self.player.avatar, talkSound=GAME.blop})
-    Talkies.say("Irene", "Your little sister's an arrogant brat and you probably think you're more sophisticated than everyone here- tsk telling everyone you know better.", {image=self.player.avatar, talkSound=GAME.blop})
+    Talkies.say("Irene", "Okay, let me tell you loud and clear: I don't like how the two of you think you can just order me around and degrade me with words.", {image=self.player.avatar, talkSound=GAME.blop})
+		Talkies.say("Irene", " I'm human, just like you.", {image=self.player.avatar, talkSound=GAME.blop})
+    Talkies.say("Irene", "Your little sister's an arrogant brat and you probably think you're more sophisticated than everyone here!", {image=self.player.avatar, talkSound=GAME.blop})
     Talkies.say("Irene", "The fact that you royals think you're above me just because you were born lucky is stupid.", {image=self.player.avatar, talkSound=GAME.blop})
     Talkies.say("Leiko", "I mean you're right about Kana but you're the rude one here!", {image=GAME.npc.avatarleiko, talkSound=GAME.blop,})
     Talkies.say("Leiko", "It doesn't matter if I was born lucky I'm still a princess!", {image=GAME.npc.avatarleiko, talkSound=GAME.blop,})

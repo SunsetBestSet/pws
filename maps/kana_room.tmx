@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="16" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="18" nextobjectid="10">
+<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="16" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="18" nextobjectid="13">
  <editorsettings>
   <export target="kanaroom.lua" format="lua"/>
  </editorsettings>
@@ -150,19 +150,22 @@
 </data>
  </layer>
  <objectgroup id="11" name="Objects">
-  <object id="2" name="kana_spawn" x="85.25" y="96.625" width="15.75" height="14.5"/>
+  <object id="2" name="kana_spawn" x="85.9167" y="94.2917" width="15.75" height="14.5"/>
   <object id="3" name="player_spawn" x="200.356" y="163.962" width="13.875" height="12.375"/>
   <object id="7" name="hallway_door2" x="192.601" y="202.686" width="31.2494" height="5.01237">
    <properties>
     <property name="nextMap" value="maps/room_hallway.lua"/>
    </properties>
   </object>
-  <object id="9" name="maid_spawn" x="64.3182" y="80.1818" width="13.25" height="13.75"/>
+  <object id="9" name="maid_spawn" x="58.485" y="100.015" width="13.25" height="13.75"/>
+  <object id="10" name="kimono" x="31.8333" y="55.1667" width="23.25" height="3.08333"/>
+  <object id="11" name="write" x="32.5" y="124.167" width="32.25" height="4.33333"/>
+  <object id="12" name="music" x="80.4167" y="121.75" width="31" height="3.5"/>
  </objectgroup>
  <objectgroup id="12" name="custom_collisions">
   <properties>
    <property name="collidable" type="bool" value="true"/>
   </properties>
-  <object id="8" x="31.75" y="31.75" width="23" height="23.75"/>
+  <object id="8" x="32.4167" y="32.0833" width="23" height="22.4167"/>
  </objectgroup>
 </map>

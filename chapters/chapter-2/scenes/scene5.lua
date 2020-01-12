@@ -16,6 +16,7 @@ function Scene2_5:loadEntities(object, GAME, map)
 
 -- Leiko's room
 if GAME.level == "maps/leiko_room1.lua" then
+	GAME.location = "Leiko's Room"
 		if object.name == "player_spawn" then
 			GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 			table.insert(GAME.entities, GAME.player)
@@ -38,6 +39,7 @@ if GAME.level == "maps/leiko_room1.lua" then
 		end
 -- Leiko hallway
 elseif GAME.level == "maps/room_hallway.lua" then
+	GAME.location = "Bedroom Hallway"
 		if object.name == "player_spawn1" and GAME.castleExit == "library_hallway" then
 			GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 			table.insert(GAME.entities, GAME.player)
@@ -69,6 +71,7 @@ elseif GAME.level == "maps/room_hallway.lua" then
 		end
 -- library hallway
 elseif GAME.level == "maps/library_hallway.lua" then
+	GAME.location = "Left Hallway"
 	if object.name == "player_spawn" and GAME.castleExit == "room_hallway" then
 		GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 		table.insert(GAME.entities, GAME.player)
@@ -162,16 +165,16 @@ function Scene2_5:manageKeypresses(key, GAME)
   --if key == "space" and self.bedinteract and self.finishedreading == false then
     --  Talkies.say("Leiko", "* I should't go to sleep right now. *", {image=self.player.avatar, talkSound=GAME.blop})
   if key == "space" and self.interact_book1 and self.book1finished == false and not self.finishedreading then
-      Talkies.say("Mountains of Kewon", "The mountains of Kewon are said to be dangerous and life-risking, with a reason. ")
-			Talkies.say("Mountains of Kewon", "Monsterous human-eating Yokai inhabit the tops, lurking between the trees and in caves.")
-			Talkies.say("Mountains of Kewon", "Yokai are vengeful spirits, created out of hatred and evil as a result of a prior event, memory or strong emotions.")
-			Talkies.say("Mountains of Kewon", "There are many types, sizes and forms, of which many have not been documented. ")
-			Talkies.say("Mountains of Kewon", "A strong mist that sometimes surrounds the mountain tops is believed to be related to Yokai.")
-			Talkies.say("Mountains of Kewon", "Spiritual and ancestoral specialists see the thick mist or heavy thunder clouds as a protective layer,")
-			Talkies.say("Mountains of Kewon", " meant to keep out citizens from reaching the disk or confronting Yokai in times of instablity or danger.")
-			Talkies.say("Mountains of Kewon", "Weather specialists believe this is nonsense, ")
-			Talkies.say("Mountains of Kewon", "and the mist is simply caused by the numerous bodies of water on and surrounding the mountain vaporating. ")
-			Talkies.say("Mountains of Kewon", "Since research is difficult to be done, theories are left unproven.")
+      Talkies.say("Mountains of Kuwon", "The mountains of Kuwon are said to be dangerous and life-risking, with a reason. ")
+			Talkies.say("Mountains of Kuwon", "Monsterous human-eating Yokai inhabit the tops, lurking between the trees and in caves.")
+			Talkies.say("Mountains of Kuwon", "Yokai are vengeful spirits, created out of hatred and evil as a result of a prior event, memory or strong emotions.")
+			Talkies.say("Mountains of Kuwon", "There are many types, sizes and forms, of which many have not been documented. ")
+			Talkies.say("Mountains of Kuwon", "A strong mist that sometimes surrounds the mountain tops is believed to be related to Yokai.")
+			Talkies.say("Mountains of Kuwon", "Spiritual and ancestoral specialists see the thick mist or heavy thunder clouds as a protective layer,")
+			Talkies.say("Mountains of Kuwon", " meant to keep out citizens from reaching the disk or confronting Yokai in times of instablity or danger.")
+			Talkies.say("Mountains of Kuwon", "Weather specialists believe this is nonsense, ")
+			Talkies.say("Mountains of Kuwon", "and the mist is simply caused by the numerous bodies of water on and surrounding the mountain vaporating. ")
+			Talkies.say("Mountains of Kuwon", "Since research is difficult to be done, theories are left unproven.")
 
 			Talkies.say("Leiko", " * Even this book is unsure about what those dark clouds might be...  *", {image=self.player.avatar, talkSound=GAME.blop})
 			Talkies.say("Leiko", " * I don't think that it's a coincidince though. And why would the child be lying about something serious like this...? *", {image=self.player.avatar, talkSound=GAME.blop})
@@ -181,21 +184,21 @@ function Scene2_5:manageKeypresses(key, GAME)
 			self.interact_book1 = false
 
   elseif key == "space" and self.interact_book2 and self.book2finished == false and not self.finishedreading then
-      Talkies.say("Ancestoral Rituals of Kewon", "Kewon, a kingdom with several prosperous centuries to its name, has a deep connection with its religion, past and ancestors.")
-			Talkies.say("Ancestoral Rituals of Kewon", "There is a long list of monthly and yearly celebrations and rituals that are executed by the entire kingdom or by the royal family and their most important religious spokesmen.")
-			Talkies.say("Ancestoral Rituals of Kewon", "In Kewon, the Festival of New Beginnings starting the new lunar year is considered one of the most important and valueable celebrations regarding the country and the people's health, luck and prosperity.")
+      Talkies.say("Ancestoral Rituals of Kuwon", "Kuwon, a kingdom with several prosperous centuries to its name, has a deep connection with its religion, past and ancestors.")
+			Talkies.say("Ancestoral Rituals of Kuwon", "There is a long list of monthly and yearly celebrations and rituals that are executed by the entire kingdom or by the royal family and their most important religious spokesmen.")
+			Talkies.say("Ancestoral Rituals of Kuwon", "In Kuwon, the Festival of New Beginnings starting the new lunar year is considered one of the most important and valueable celebrations regarding the country and the people's health, luck and prosperity.")
 
-			Talkies.say("Ancestoral Rituals of Kewon", "During the festival, the start of the year is celebrated, and locals travel to their closest tempels to celebrate and pray to the Gods for their overal well-being in Kewon.")
-			Talkies.say("Ancestoral Rituals of Kewon", "It is usual for the towns to organize night markets surrounding the tempels, decorated with flowers, laterns and candles, ")
-			Talkies.say("Ancestoral Rituals of Kewon", "where the locals can enjoy traditional lunar dishes, latern dances, fireworks and cheerful flute music.")
-			Talkies.say("Ancestoral Rituals of Kewon", "While the citizens celebrate on the streets, the royal family prepares a ritual.")
-			Talkies.say("Ancestoral Rituals of Kewon", "Together with a religious spokesman, the family prays for their country's prosperity and health to the Gods,")
-			Talkies.say("Ancestoral Rituals of Kewon", " before the king and queen emit a portion of their energy onto a spiritual plate that will cause the three protector spirits of Kewon to temporarily appear and swim as koi above the kingdom.")
-			Talkies.say("Ancestoral Rituals of Kewon", "The spirits each represent the three magics, and stand as a symbol for peace, balance and prosperity. ")
+			Talkies.say("Ancestoral Rituals of Kuwon", "During the festival, the start of the year is celebrated, and locals travel to their closest tempels to celebrate and pray to the Gods for their overal well-being in Kuwon.")
+			Talkies.say("Ancestoral Rituals of Kuwon", "It is usual for the towns to organize night markets surrounding the tempels, decorated with flowers, laterns and candles, ")
+			Talkies.say("Ancestoral Rituals of Kuwon", "where the locals can enjoy traditional lunar dishes, latern dances, fireworks and cheerful flute music.")
+			Talkies.say("Ancestoral Rituals of Kuwon", "While the citizens celebrate on the streets, the royal family prepares a ritual.")
+			Talkies.say("Ancestoral Rituals of Kuwon", "Together with a religious spokesman, the family prays for their country's prosperity and health to the Gods,")
+			Talkies.say("Ancestoral Rituals of Kuwon", " before the king and queen emit a portion of their energy onto a spiritual plate that will cause the three protector spirits of Kuwon to temporarily appear and swim as koi above the kingdom.")
+			Talkies.say("Ancestoral Rituals of Kuwon", "The spirits each represent the three magics, and stand as a symbol for peace, balance and prosperity. ")
 
-			Talkies.say("Ancestoral Rituals of Kewon", "Many believe that the rituals and prayers are of great necessity.")
-			Talkies.say("Ancestoral Rituals of Kewon", "They believe the spirit's balance is directly related to their well-being and powers.")
-			Talkies.say("Ancestoral Rituals of Kewon", "Others might say this is unrelated to the spirts. ...")
+			Talkies.say("Ancestoral Rituals of Kuwon", "Many believe that the rituals and prayers are of great necessity.")
+			Talkies.say("Ancestoral Rituals of Kuwon", "They believe the spirit's balance is directly related to their well-being and powers.")
+			Talkies.say("Ancestoral Rituals of Kuwon", "Others might say this is unrelated to the spirts. ...")
 
 			Talkies.say("Leiko", " * The Festival of New Beginnings used to be my favorite as a child, but since I've gotten older it has only been annoying. *", {image=self.player.avatar, talkSound=GAME.blop})
 			Talkies.say("Leiko", " * Ritual here, prayer there. Ugh.  *", {image=self.player.avatar, talkSound=GAME.blop})
@@ -205,8 +208,8 @@ function Scene2_5:manageKeypresses(key, GAME)
 			self.book2finished = true
 			self.interact_book2 = false
   elseif key == "space" and self.interact_book3 and self.book3finished == false and not self.finishedreading then
-      Talkies.say("Disruption of Powers", "All citizens of Kewon are aware of the peaceful balance between the three magics: purple, blue and green.")
-			Talkies.say("Disruption of Powers", "This is done by an allpowerful disk created by the three great ancestors of Kewon, meant to keep the kingdom balanced and in peace.")
+      Talkies.say("Disruption of Powers", "All citizens of Kuwon are aware of the peaceful balance between the three magics: purple, blue and green.")
+			Talkies.say("Disruption of Powers", "This is done by an allpowerful disk created by the three great ancestors of Kuwon, meant to keep the kingdom balanced and in peace.")
 			Talkies.say("Disruption of Powers", "To prevent misusage of the disk and the balance to be disrupted, the disk is believed to be sealed away in the great mountain closest to the capital.")
 			Talkies.say("Disruption of Powers", "What exactly will happen if the disk disrupts the balance between the magics, is unknown. ")
 
@@ -214,7 +217,7 @@ function Scene2_5:manageKeypresses(key, GAME)
 			Talkies.say("Disruption of Powers", "This can cause several problems that can end fatally for many.")
 			Talkies.say("Disruption of Powers", "For one, the theory suggests, it will worsen the condition of the weak and sick, since an individual's magic is part of their being and lifesource. ")
 			Talkies.say("Disruption of Powers", "Another theory suggests that the magics will be distributed unevenly. Two types might lose their powers while the other gains more. ")
-			Talkies.say("Disruption of Powers", "Which theory might be correct, is still unknown to Kewonian scientists. ")
+			Talkies.say("Disruption of Powers", "Which theory might be correct, is still unknown to Kuwonian scientists. ")
 			Talkies.say("Disruption of Powers", "Many hope for the best and pray the legendary disk will never be found or ...")
 
 			Talkies.say("Leiko", " * 'Worsen the condition of the weak'...--Could this apply to Kana as well? *", {image=self.player.avatar, talkSound=GAME.blop})
@@ -229,12 +232,12 @@ function Scene2_5:manageKeypresses(key, GAME)
 			Talkies.say("Leiko", " * I'm getting tired. I'm going to bed. *", {image=self.player.avatar, talkSound=GAME.blop, oncomplete = function() self:finishReading(GAME) end })
 			self.bookcount = 0
 	elseif self.finishedreading and not GAME.ch2scene5Unlocked2 then
-		
+
 	end
 
 end
 
-function Scene2_5:finishReading(GAME) 
+function Scene2_5:finishReading(GAME)
 	GAME:doBlackScreen("in", "morning")
 	GAME.stayBlack = true
 	GAME.ch2scene5Unlocked2 = true

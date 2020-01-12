@@ -8,17 +8,18 @@ function Shop:new()
 end
 
 function Shop:loadEntities(object, GAME, map)
+	GAME.location = "Satoru's Shop"
 	if object.name == "player_spawn" then
 		GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 		table.insert(GAME.entities, GAME.player)
 		GAME.player.canMove = false
-	elseif object.name == "nao_spawn" then 
+	elseif object.name == "nao_spawn" then
 		GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, self.nao_img, GAME.world, 200, 64, 200)
 		table.insert(GAME.entities, GAME.npc)
-	elseif object.name == "satoru_spawn" then 
+	elseif object.name == "satoru_spawn" then
 		GAME.npc = Nonplayable(math.floor(object.x), math.floor(object.y), 14, 22, self.satoru_img, GAME.world, 200, 64, 200)
 		table.insert(GAME.entities, GAME.npc)
-	elseif object.name == "door" then 
+	elseif object.name == "door" then
 		local door = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_door")
 		door.nextMap = object.properties.nextMap;
 		table.insert(GAME.entities, door)

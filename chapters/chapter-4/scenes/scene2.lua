@@ -7,6 +7,7 @@ function Scene4_2:new()
 end
 
 function Scene4_2:loadEntities(object, GAME, map)
+	GAME.location = "Satoru's Shop"
 	if object.name == "kana_spawn" then
 		GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.chapter4.character, GAME.world, 200, 64, 200, "N")
 		table.insert(GAME.entities, GAME.player)

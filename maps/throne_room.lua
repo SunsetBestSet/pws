@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 13,
-  nextobjectid = 16,
+  nextobjectid = 18,
   properties = {},
   tilesets = {
     {
@@ -480,6 +480,19 @@ return {
           y = 231.667,
           width = 64.3333,
           height = 8,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 16,
+          name = "knight_spawn",
+          type = "",
+          shape = "rectangle",
+          x = 97,
+          y = 205,
+          width = 14.3333,
+          height = 14.6667,
           rotation = 0,
           visible = true,
           properties = {}

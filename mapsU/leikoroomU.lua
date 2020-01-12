@@ -7,6 +7,7 @@ function leiko_room:new()
 end
 
 function leiko_room:loadEntities(object, GAME, map)
+	GAME.location = "Leiko's Room"
 	if object.name == "player_spawn" then
 		GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200, "N")
 		table.insert(GAME.entities, GAME.player)
@@ -30,7 +31,7 @@ function leiko_room:manageKeypresses(key, GAME)
 		Talkies.say("Leiko", "This disk supposedly keeps us all in harmony and peace, but can also disrupt it when someone gets their hands on it and wishes to do so.", {image=self.leiko_avatar, talkSound=GAME.blop})
 		Talkies.say("Leiko", "Because of that, they sealed it away somewhere.", {image=self.leiko_avatar, talkSound=GAME.blop})
 		Talkies.say("Leiko", "Now, the legend also warns us of an evil, that should appear 15000 years after the seal was placed.", {image=self.leiko_avatar, talkSound=GAME.blop})
-		Talkies.say("Leiko", "This evil would break the seal and find the disk, and use it to bring calamity over Kewon.", {image=self.leiko_avatar, talkSound=GAME.blop})
+		Talkies.say("Leiko", "This evil would break the seal and find the disk, and use it to bring calamity over Kuwon.", {image=self.leiko_avatar, talkSound=GAME.blop})
 		Talkies.say("Leiko", "I don't exactly know what happens in detail except for this line here, 'for the clouds and weakest will cry first'. Whatever that means.", {image=self.leiko_avatar, talkSound=GAME.blop})
 		Talkies.say("Hiko", "Is that why there were crazy clouds around the mountain?!", {image=GAME.player.avatar, talkSound=GAME.blop})
 		Talkies.say("Leiko", "Well... I might be. If that really is where the disk was sealed. Do you think that's what you saw?", {image=self.leiko_avatar, talkSound=GAME.blop})

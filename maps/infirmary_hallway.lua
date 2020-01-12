@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 11,
-  nextobjectid = 10,
+  nextobjectid = 11,
   properties = {},
   tilesets = {
     {
@@ -46,10 +46,10 @@ return {
       tileheight = 16,
       spacing = 0,
       margin = 0,
-      columns = 40,
+      columns = 46,
       image = "overworld0.png",
-      imagewidth = 640,
-      imageheight = 576,
+      imagewidth = 740,
+      imageheight = 676,
       tileoffset = {
         x = 0,
         y = 0
@@ -61,7 +61,7 @@ return {
       },
       properties = {},
       terrains = {},
-      tilecount = 1440,
+      tilecount = 1932,
       tiles = {}
     }
   },
@@ -337,6 +337,19 @@ return {
           y = 75.3333,
           width = 12,
           height = 12.3333,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 10,
+          name = "maid_spawn",
+          type = "",
+          shape = "rectangle",
+          x = 63.75,
+          y = 156,
+          width = 15.5,
+          height = 15.75,
           rotation = 0,
           visible = true,
           properties = {}

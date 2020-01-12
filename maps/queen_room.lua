@@ -9,7 +9,7 @@ return {
   tilewidth = 16,
   tileheight = 16,
   nextlayerid = 10,
-  nextobjectid = 12,
+  nextobjectid = 13,
   properties = {},
   tilesets = {
     {
@@ -347,6 +347,19 @@ return {
           y = 94.5,
           width = 16.5,
           height = 16.25,
+          rotation = 0,
+          visible = true,
+          properties = {}
+        },
+        {
+          id = 12,
+          name = "queen_spawn",
+          type = "",
+          shape = "rectangle",
+          x = 169.667,
+          y = 209,
+          width = 13.3333,
+          height = 15,
           rotation = 0,
           visible = true,
           properties = {}

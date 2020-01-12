@@ -7,6 +7,7 @@ function Scene2_6:new()
 end
 
 function Scene2_6:loadEntities(object, GAME, map)
+  GAME.location = "Library"
   if object.name == "player_spawn" then
     GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
     table.insert(GAME.entities, GAME.player)

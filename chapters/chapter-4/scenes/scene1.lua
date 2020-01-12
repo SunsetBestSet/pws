@@ -8,6 +8,7 @@ function Scene4_1:new()
 end
 
 function Scene4_1:loadEntities(object, GAME, map)
+	GAME.location = "Mountain Village"
 	if object.name == "kana_spawn" then
 		GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.chapter4.character, GAME.world, 200, 64, 200, "N")
 		table.insert(GAME.entities, GAME.player)
@@ -28,7 +29,7 @@ function Scene4_1:loadEntities(object, GAME, map)
 end
 
 function Scene4_1:manageCollisions(thisName, otherName, cols, i, GAME)
-	if thisName == "ent_player" and otherName == "ent_door" then 
+	if thisName == "ent_player" and otherName == "ent_door" then
 		GAME.level = cols[i].other.nextMap
 		GAME.chapter4.scene = 2
 		GAME:loadLevel()
@@ -45,7 +46,7 @@ function Scene4_1:loadLevel(GAME)
 	GAME.music.mountain:play()
 	Talkies.say("Hiko", "Wow!! Look at all those cool trees!", {image=self.hiko.avatar, talkSound=GAME.blop})
 	Talkies.say("Kana (happy)", "Those are yorishiro , we only have a few of them in the capital.", {image=self.kana.avatar, talkSound=GAME.blop})
-	Talkies.say("Kana (happy)", "They're traditional to Kewon culture and sacred to our religion.", {image=self.kana.avatar, talkSound=GAME.blop})
+	Talkies.say("Kana (happy)", "They're traditional to Kuwon culture and sacred to our religion.", {image=self.kana.avatar, talkSound=GAME.blop})
 	Talkies.say("Hiko", "So cool! And what does that rope mean?", {image=self.hiko.avatar, talkSound=GAME.blop})
 	Talkies.say("Kana", "The ropes show us those trees are sacred and are inhabited by good spirits. Cutting one of the trees brings misfortune.", {image=self.kana.avatar, talkSound=GAME.blop})
 	Talkies.say("Hiko", "Oh wow! Ghosts! In trees!", {image=self.hiko.avatar, talkSound=GAME.blop})

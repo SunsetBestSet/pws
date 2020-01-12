@@ -10,7 +10,7 @@ function Scene2_2:loadEntities(object, GAME, map)
 
 	-- Kana's room
 	if GAME.level == "maps/kanaroom.lua" then
-
+GAME.location = "Kana's Room"
 		if object.name == "player_spawn" then
 			GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 			table.insert(GAME.entities, GAME.player)
@@ -24,10 +24,20 @@ function Scene2_2:loadEntities(object, GAME, map)
 			local hallway_door2 = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_hallwaydoor2")
 			hallway_door2.nextMap = object.properties.nextMap;
 			table.insert(GAME.entities, hallway_door2)
+		elseif object.name == "kimono" then
+			local kimono = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_kimono")
+			table.insert(GAME.entities, kimono)
+		elseif object.name == "write" then
+			local write = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_write")
+			table.insert(GAME.entities, write)
+		elseif object.name == "music" then
+			local music = Entity(math.floor(object.x), math.floor(object.y), math.floor(object.width), math.floor(object.height), nil, GAME.world, "ent_music")
+			table.insert(GAME.entities, music)
 		end
 
 		-- room hallway
 	elseif GAME.level == "maps/room_hallway.lua" then
+		GAME.location = "Bedroom Hallway"
 			if object.name == "player_spawn1" and GAME.castleExit == "library_hallway" then
 				GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 				table.insert(GAME.entities, GAME.player)
@@ -60,6 +70,7 @@ function Scene2_2:loadEntities(object, GAME, map)
 
 		--Infirmary's hallway
 	elseif GAME.level == "maps/infirmary_hallway.lua" then
+		GAME.location = "Right Hallway"
 		if object.name == "player_spawn" and GAME.castleExit == "room_hallway" then
 			GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 			table.insert(GAME.entities, GAME.player)
@@ -107,6 +118,13 @@ function Scene2_2:manageCollisions(thisName, otherName, cols, i, GAME)
 				GAME:loadLevel()
 			else
 				Talkies.say("Leiko", "* Why am I chickening out? It's not like she's gonna lecture me again...--isn't she? *", {image=self.player.avatar, talkSound=GAME.blop,})
+			end
+			if thisName == "ent_player" and otherName == "ent_kimono" then
+				self.kimono_interact = true
+			elseif thisName == "ent_player" and otherName == "ent_write" then
+				self.write_interact = true
+			elseif thisName == "ent_player" and otherName == "ent_music" then
+				self.music_interact = true
 			end
 		end
 
@@ -171,11 +189,22 @@ elseif key == "up" then Talkies.prevOption()
 elseif key == "down" then Talkies.nextOption()
 end
 
--- options and rest of dialogue check
-if key == "g" then Scene2_2:moreMessages(GAME)
-elseif key == "h" then Scene2_2:spy(GAME)
-elseif key == "j" then Scene2_2:sorry(GAME)
-elseif key == "k" then Scene2_2:fault(GAME)
+if (key == 'space') and self.kimono_interact then
+	Talkies.say("Leiko", "* This is my sister's ceremonial kimono. *", {image=self.player.avatar, talkSound=GAME.blop,})
+	Talkies.say("Leiko", "* She is supposed to only wear it during important occasions, yet she wears it almost every weekend. *", {image=self.player.avatar, talkSound=GAME.blop,})
+	Talkies.say("Leiko", "* 'It's my cultural heritage' she says. *", {image=self.player.avatar, talkSound=GAME.blop,})
+	Talkies.say("Leiko", "* I think it's a bit outdated but okay. *", {image=self.player.avatar, talkSound=GAME.blop,})
+	self.kimono_interact = false
+elseif (key == 'space') and self.write_interact then
+	Talkies.say("Leiko", "* Calligraphy is also one of Kana's hobbies...--Imagine writing stuff all day, really boring. *", {image=self.player.avatar, talkSound=GAME.blop,})
+	Talkies.say("Leiko", "* She says it's good for keeping a healty balance between mind and soul. Don't get it. *", {image=self.player.avatar, talkSound=GAME.blop,})
+	self.write_interact = false
+elseif (key == 'space') and self.music_interact then
+	Talkies.say("Leiko", "* Kana likes to play the koto, an traditional Kuwonian instrument. Mother forced her to learn it when she was a toddler. *", {image=self.player.avatar, talkSound=GAME.blop,})
+	Talkies.say("Leiko", "* She also likes to sing songs while playing. She's kinda good at it. *", {image=self.player.avatar, talkSound=GAME.blop,})
+	Talkies.say("Leiko", "* Guests enjoy it a lot when she plays at parties. *", {image=self.player.avatar, talkSound=GAME.blop,})
+	Talkies.say("Leiko", "* Can't relate. I hate being forced to do stuff. *", {image=self.player.avatar, talkSound=GAME.blop,})
+	self.music_interact = false
 end
 
 end

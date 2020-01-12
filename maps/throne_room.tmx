@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="18" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="16">
+<map version="1.2" tiledversion="1.3.0" orientation="orthogonal" renderorder="right-down" compressionlevel="0" width="18" height="15" tilewidth="16" tileheight="16" infinite="0" nextlayerid="13" nextobjectid="18">
  <editorsettings>
   <export target="throne_room.lua" format="lua"/>
  </editorsettings>
@@ -184,6 +184,7 @@
   <object id="12" name="player_spawn2" x="32.8788" y="70.4394" width="15.5" height="15.75"/>
   <object id="13" name="player_spawn1" x="242.091" y="69.5152" width="14.3333" height="16"/>
   <object id="14" name="outside_door" x="111.667" y="231.667" width="64.3333" height="8"/>
+  <object id="16" name="knight_spawn" x="97" y="205" width="14.3333" height="14.6667"/>
  </objectgroup>
  <objectgroup id="12" name="custom_collisions"/>
 </map>

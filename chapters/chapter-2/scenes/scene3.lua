@@ -10,7 +10,7 @@ function Scene2_3:loadEntities(object, GAME, map)
 
 	-- infirmary
 	if GAME.level == "maps/infirmary.lua" then
-
+		GAME.location = "Infirmary"
 		if GAME.ch2scene3Unlocked == false then
 			if object.name == "player_spawn" then
 				GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
@@ -35,6 +35,7 @@ function Scene2_3:loadEntities(object, GAME, map)
 			end
 		end
 	elseif GAME.level == "maps/infirmary_hallway.lua" then
+		GAME.location = "Right Hallway"
 		if object.name == "player_spawn" and GAME.castleExit == "room_hallway" then
 			GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 			table.insert(GAME.entities, GAME.player)
@@ -65,6 +66,7 @@ function Scene2_3:loadEntities(object, GAME, map)
 			table.insert(GAME.entities, main_hallway )
 		end
 	elseif GAME.level == "maps/room_hallway.lua" then
+		GAME.location = "Bedroom Hallway"
 			if object.name == "player_spawn1" and GAME.castleExit == "library_hallway" then
 				GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 				table.insert(GAME.entities, GAME.player)

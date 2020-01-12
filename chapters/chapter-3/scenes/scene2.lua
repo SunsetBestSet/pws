@@ -9,6 +9,7 @@ end
 
 function Scene3_2:loadEntities(object, GAME, map)
   if GAME.level == "maps/farmlands2.lua" then
+		GAME.location = "Farm"
     if object.name == "player_spawn" then
       GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
       table.insert(GAME.entities, GAME.player)
@@ -56,7 +57,7 @@ function Scene3_2:loadLevel(GAME)
     Talkies.say("Farmer", "I think so, yes, but you need to be careful, they can be quite scary.", {talkSound=GAME.blop})
     Talkies.say("Leiko", "I think we'll be alright! You've got me!",  {image=GAME.npc.avatarleiko, talkSound=GAME.blop,})
     Talkies.say("Kana", "We certainly will, Farmer. Thank you for the information.", {image=GAME.npc.avatarkana, talkSound=GAME.blop})
-    Talkies.say("Farmer", "Before you go-", {talkSound=GAME.blop})
+    Talkies.say("Farmer", "Good luck-", {talkSound=GAME.blop})
     Talkies.say("Hiko", "OH NO! A TROLL!", {image=GAME.npc.avatarhiko, talkSound=GAME.blop,})
     Talkies.say("Farmer", "Oh no! You might have to fight this one off!", {oncomplete = function() GAME.battle:initiate(function() self:startScene3(GAME) end, 4, enemies[2])  end})
     Talkies.say("GAME", "Use the arrow keys and [ENTER] to play!")

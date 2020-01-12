@@ -8,6 +8,7 @@ function Scene4_4:new()
 end
 
 function Scene4_4:loadEntities(object, GAME, map)
+	GAME.location = "Mountain Path"
 	if object.name == "kana_spawn" then
 		GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.chapter4.character, GAME.world, 200, 64, 200, "N")
 		table.insert(GAME.entities, GAME.player)
@@ -30,11 +31,11 @@ function Scene4_4:loadEntities(object, GAME, map)
 end
 
 function Scene4_4:manageCollisions(thisName, otherName, cols, i, GAME)
-	if thisName == "ent_player" and otherName == "ent_door" then 
+	if thisName == "ent_player" and otherName == "ent_door" then
 		GAME.level = cols[i].other.nextMap
 		GAME.chapter4.scene = 5
 		GAME:loadLevel()
-	elseif thisName == "ent_player" and otherName == "ent_yokai" then 
+	elseif thisName == "ent_player" and otherName == "ent_yokai" then
 		GAME.battle:initiate(nil, 2, enemies[1])
 		GAME.world:remove(self.yokai)
 	end

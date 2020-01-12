@@ -7,6 +7,7 @@ function Town:new()
 end
 
 function Town:loadEntities(object, GAME, map, scene4)
+	GAME.location = "Kuwon's Capital"
 	if object.name == "player_spawn_shop" and GAME.exitThrough == "shop_town" then
 		GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 		table.insert(GAME.entities, GAME.player)

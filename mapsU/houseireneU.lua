@@ -9,6 +9,7 @@ function HouseIrene:new()
 end
 
 function HouseIrene:loadEntities(object, GAME, map)
+	GAME.location = "Irene's House"
 	if object.name == "player_spawn" then
 		GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
 		table.insert(GAME.entities, GAME.player)
@@ -94,7 +95,7 @@ function HouseIrene:manageKeypresses(key, GAME)
 		if GAME.chapter1.scene < 5 then
 			Talkies.say("Irene", "Go play outside! I'm busy.", {image=GAME.npc.avatarirene, talkSound=GAME.blop,})
 			self.interact_irene = false
-		elseif GAME.chapter1.scene == 5 and not self.unlockScene5 then 
+		elseif GAME.chapter1.scene == 5 and not self.unlockScene5 then
 			Talkies.say("Irene", "!!", {image=GAME.npc.avatarirene, talkSound=GAME.blop,})
 			Talkies.say("Irene", "Hiko, what have I said about opening the door like that?", {image=GAME.npc.avatarirene, talkSound=GAME.blop,})
 			Talkies.say("Hiko", "There's a man! Up in the mountain!", {image=GAME.player.avatar, talkSound=GAME.blop,})

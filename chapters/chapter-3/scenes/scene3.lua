@@ -9,6 +9,7 @@ end
 
 function Scene3_3:loadEntities(object, GAME, map)
   if GAME.level == "maps/forest.lua" then
+		GAME.location = "Fairy Forest"
     if object.name == "player_spawn" then
       GAME.player = Player(math.floor(object.x), math.floor(object.y), 16, 24, GAME.charImage, GAME.world, 200, 64, 200)
       table.insert(GAME.entities, GAME.player)

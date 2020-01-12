@@ -19,7 +19,11 @@ function Chapter2:new()
 	self.irene = love.graphics.newImage('assets/sprites/irene.png')
 	self.hiko = love.graphics.newImage('assets/sprites/hiko.png')
 	self.doc = love.graphics.newImage('assets/sprites/doc.png')
+	self.nurse = love.graphics.newImage('assets/sprites/nurse.png')
 	self.maid = love.graphics.newImage('assets/sprites/maid.png')
+	self.knight = love.graphics.newImage('assets/sprites/knight.png')
+	self.chef = love.graphics.newImage('assets/sprites/chef.png')
+	self.queen = love.graphics.newImage('assets/sprites/chizue.png')
 end
 
 function Chapter2:loadEntities(object, GAME)
@@ -48,6 +52,10 @@ function Chapter2:loadAssets(GAME)
 	GAME.npchikoImage = self.hiko
 	GAME.npcmaidImage = self.maid
 	GAME.npcdocImage = self.doc
+	GAME.npcnurseImage = self.nurse
+	GAME.npcknightImage = self.knight
+	GAME.npcchefImage = self.chef
+	GAME.npcqueenImage = self.queen
 	return GAME
 end
 
