@@ -1,13 +1,18 @@
 Game = Object:extend()
 
 function Game:new()
-	self.level = "maps/scene1.lua"
-	self.entities = {}
-	self.debug = {}
-	self.player = {}
-	self.interact = false
+	self.level = "maps/scene1.lua" -- Set initial map of game
+	self.entities = {} -- Create empty table for entities
+	self.debug = {} -- Create empty table for debug information
+	self.player = {} -- Create empty table to store player in
+	self.interact = false -- Create boolean that dictates whether the player is interacting with an object
+
+	--[[
+		Load assets
+	]]
 	self.debugFont = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 20)
 	self.blop = love.audio.newSource("assets/talk.wav", "static")
+	-- Create table for all the music files
 	self.music = {
 		prologue= love.audio.newSource("assets/prologue.mp3", "stream"),
 		town=love.audio.newSource("assets/townmusic.mp3", "stream"),
@@ -19,7 +24,9 @@ function Game:new()
 		top=love.audio.newSource("assets/top.mp3", "stream"),
 		battle=love.audio.newSource("assets/battle.mp3", "stream"),
 		boss=love.audio.newSource("assets/boss.mp3", "stream")}
+	-- Make the prologue music softer
 	self.music.prologue:setVolume(.3)
+	-- Set all the music files to loop
 	self.music.prologue:setLooping( true )
 	self.music.town:setLooping( true )
 	self.music.castle:setLooping( true )
@@ -30,18 +37,30 @@ function Game:new()
 	self.music.boss:setLooping( true )
 	self.music.mountain:setLooping( true )
 	self.music.top:setLooping( true )
+
+	-- Miscelaneous variables
 	self.stop = false
-	self.camera = Camera()
-	self.camera:setFollowStyle('TOPDOWN_TIGHT')
 	self.interact_bed_hiko = false
 	self.interact_bed_irene = false
+
+	-- Load camera plugin
+	self.camera = Camera()
+	self.camera:setFollowStyle('TOPDOWN_TIGHT')
+
+	-- Load character information
 	self.characters = require 'characters'
+
+	-- Create battle
 	self.battle = Battle()
+
+	-- Create chapters & set the chapter
 	self.chapter1 = Chapter1()
 	self.chapter2 = Chapter2()
 	self.chapter3 = Chapter3()
 	self.chapter4 = Chapter4()
 	self.chapter = 1
+
+	-- Create booleans to unlock chapters
 	self.ch2scene1Unlocked = false
 	self.ch2scene2Unlocked = false
 	self.ch2scene3Unlocked = false
@@ -49,7 +68,11 @@ function Game:new()
 	self.ch2scene5Unlocked1 = false
 	self.ch2scene5Unlocked2 = false
 	self.ch2scene6Unlocked = false
+
+	-- Load in objects (titles, shapes, etc.)
 	self.objects = require 'objects'
+
+	-- Create table for tweens (animations)
 	self.tweens = {}
 	self.doFadeOut = false
 
@@ -60,32 +83,44 @@ function Game:new()
 	self.throne_room = ThroneRoom()
 	self.leiko_room = leiko_room()
 
+	-- load first level/map
 	self:loadLevel()
 
+	-- Set castle exit
 	self.castleExit = "leikoroom"
 
+	-- Set initial location
 	self.location = "Irene's house"
 
-
+	-- Get window size
 	WINDOW_WIDTH, WINDOW_HEIGHT = love.graphics.getDimensions()
 end
 
 function Game:setupPhysics()
+	-- Make world for collisions
 	self.world = bump.newWorld()
 end
 
 function Game:loadLevel()
 
-	self.entities = {}
-	self:setupPhysics()
-	self.map = sti(self.level, { "bump" })
-	self.map:bump_init(self.world)
+	self.entities = {} -- Make entities table empty every time a map loads
+	self:setupPhysics() -- See above. Creates world for collisions to be tracked in
+	self.map = sti(self.level, { "bump" }) -- Set map
+	self.map:bump_init(self.world) -- Initiate collision world
+	
+	--[[
+		Load assets (per chapter)
+	]]
 	self = self.chapter1:loadAssets(self)
 	if self.chapter == 2 then
 		self = self.chapter2:loadAssets(self)
 	elseif self.chapter == 3 then
 		self = self.chapter3:loadAssets(self)
 	end
+
+	--[[
+		load entities (per chapter)
+	]]
 	for k, object in pairs(self.map.objects) do
 		if self.chapter == 1 then
 			self = self.chapter1:loadEntities(object, self)
@@ -98,10 +133,16 @@ function Game:loadLevel()
 		end
 	end
 
+	-- Delete object layers so they don't show up on the map
 	self.map:removeLayer("Objects")
 	self.map:removeLayer("custom_collisions")
+
 	self.stop = true
 	self.complete = false
+
+	--[[
+		Load level per chapter (e.g: dialogue shown at begin of level)
+	]]
 	if self.chapter == 1 then
 		self = self.chapter1:loadLevel(self)
 	elseif self.chapter == 2 then
@@ -117,7 +158,7 @@ end
 
 function Game:checkCols(entity, cols)
 
-	local thisName = entity.name;
+	local thisName = entity.name 
 
 	for i,v in ipairs (cols) do
 

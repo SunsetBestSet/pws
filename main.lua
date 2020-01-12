@@ -1,3 +1,4 @@
+-- load libraries / plugins
 bump = require "libs/bump"
 sti = require "libs/sti"
 Object = require "libs/classic"
@@ -37,38 +38,52 @@ require "mapsU/throneroomU"
 require "mapsU/leikoroomU"
 
 
+-- create variables for physics
 local cols,GRAVITY,map,world
 local entities = {}
 
 
 function love.load()
+	-- Set the window title & size
 	love.window.setTitle("The Disk")
 	love.window.setMode(640, 640)
+	-- Set up digital resolution (we are upscaling a small resolution)
 	maid64.setup(320)
+	-- Set font of the talk textboxes
 	Talkies.font = love.graphics.newFont("assets/fonts/monogram_extended.ttf", 40)
+	-- Create instance of class "Game"
 	game = Game()
 end
 
 
-function love.update(dt)
+function love.update(dt) -- Runs every frame
+	-- Update the game
 	game:update(dt)
+	-- Update the talk box plugin
 	Talkies.update(dt)
 end
 
 
-function love.draw(dt)
+function love.draw(dt) -- Runs every frame
+	-- Start digital resolution simulation
 	maid64.start()
+	-- Draw the game (overworld)
 	game:draw(dt)
+	-- Stop digital resolution simulation
 	maid64.finish()
+	-- Draw talk textboxes (over the digital resolution simulation)
 	Talkies.draw()
+	-- Draw battle screen
 	game.battle:draw(dt)
 end
 
 
 function love.resize(w, h)
+	-- Function in maid64 plugin to upscale digital resolution
 	maid64.resize(w, h)
 end
 
 function love.keypressed(key)
+	-- Manage key presses of overworld & battle screen
 	game:manageKeypresses(key)
 end

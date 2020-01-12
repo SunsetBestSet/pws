@@ -118,7 +118,7 @@
  </layer>
  <objectgroup id="14" name="custom_collisions">
   <properties>
-   <property name="colliable" type="bool" value="true"/>
+   <property name="collidable" type="bool" value="true"/>
   </properties>
   <object id="12" x="160.5" y="-7" width="13" height="198.5"/>
   <object id="13" x="-5" y="160.5" width="132" height="20.5"/>
