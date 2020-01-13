@@ -354,7 +354,7 @@ function Game:manageKeypresses(key)
 		self = self.chapter4:manageKeypresses(key, self)
 	end
 
-	if key == 'h' then
+	--[[if key == 'h' then
 		self.chapter = 3
 		self.chapter3.scene = 4
 		self.level = "maps/forest.lua"
@@ -363,7 +363,7 @@ function Game:manageKeypresses(key)
 
 	if key == 'c' then
 		Talkies.clearMessages()
-	end
+	end]]
 
 	self.battle:keypressed(key)
 end
