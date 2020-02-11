@@ -121,4 +121,6 @@ function Scene1:startScene(GAME)
 	GAME:doBlackScreen("out")
 	GAME.music.prologue:stop()
 	GAME.music.town:play()
+	Talkies.say("Game", "Use [SPACE], to move on to the next line in cutscenes!")
+	Talkies.say("Game", "To walk, use WASD on your keyboard. You can interact with people or objects by using [SPACE]!")
 end

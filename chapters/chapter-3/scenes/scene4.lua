@@ -36,7 +36,6 @@ end
 
 function Scene3_4:loadLevel(GAME)
   self.scene = 5
-  print("h")
 Talkies.say("Hiko", "Sis?", {image=GAME.npc.avatarhiko, talkSound=GAME.blop,})
 Talkies.say("Irene", "Yeah?", {image=self.player.avatar, talkSound=GAME.blop})
 Talkies.say("Hiko", "Why do you keep being mean to everyone?", {image=GAME.npc.avatarhiko, talkSound=GAME.blop,})

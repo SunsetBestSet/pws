@@ -57,6 +57,7 @@ function Scene7:loadLevel(GAME)
 end
 
 function Scene7:clouds(GAME)
+	Talkies.say("GAME", "* YOU CHOSE THE OPTION 'Clouds'!*")
 	Talkies.say("Hiko", "Yes! I'm really telling the truth! The clouds around the mountain are weird and scary. Just look!!", {image=GAME.player.avatar, talkSound=GAME.blop})
 	Talkies.say("Game", "* The Royals turn around to take a look.")
 	Talkies.say("Royals", "...?", {talksound=GAME.blop})
@@ -66,6 +67,7 @@ function Scene7:clouds(GAME)
 end
 
 function Scene7:man(GAME)
+	Talkies.say("GAME", "* YOU CHOSE THE OPTION 'Man'!*")
 	Talkies.say("Hiko", "I am! With Nao's far-away-see thingy I saw a scary man doing something creepy on the mountain.", {image=GAME.player.avatar, talkSound=GAME.blop})
 	Talkies.say("Kana (slightly surprised)", "But the mountain is nearly inaccessible.", {image=self.kana_avatar, talkSound=GAME.blop})
 	Talkies.say("Hiko", "Satoru saw him too! Really! He was near the clouds! I am sure he made the clouds look like that!!", {image=GAME.player.avatar, talkSound=GAME.blop})
@@ -75,6 +77,7 @@ function Scene7:man(GAME)
 end
 
 function Scene7:disk(GAME)
+	Talkies.say("GAME", "* YOU CHOSE THE OPTION 'Disk'!*")
 	Talkies.say("Hiko", "I'm really not lying! I saw this big, big thing! This man was doing stuff with it!", {image=GAME.player.avatar, talkSound=GAME.blop})
 	Talkies.say("Leiko", "Thing..?", {image=self.leiko_avatar, talkSound=GAME.blop})
 	Talkies.say("Hiko", "Yes! A big circle thing! And it was making the clouds look weird! Look!", {image=GAME.player.avatar, talkSound=GAME.blop})
