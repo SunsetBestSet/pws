@@ -107,7 +107,7 @@ function Game:loadLevel()
 	self:setupPhysics() -- See above. Creates world for collisions to be tracked in
 	self.map = sti(self.level, { "bump" }) -- Set map
 	self.map:bump_init(self.world) -- Initiate collision world
-	
+
 	--[[
 		Load assets (per chapter)
 	]]
@@ -158,7 +158,7 @@ end
 
 function Game:checkCols(entity, cols)
 
-	local thisName = entity.name 
+	local thisName = entity.name
 
 	for i,v in ipairs (cols) do
 
@@ -354,7 +354,7 @@ function Game:manageKeypresses(key)
 		self = self.chapter4:manageKeypresses(key, self)
 	end
 
-	if key == 'h' then
+	--[[if key == 'h' then
 		self.chapter = 3
 		self.chapter3.scene = 4
 		self.level = "maps/forest.lua"
@@ -363,7 +363,7 @@ function Game:manageKeypresses(key)
 
 	if key == 'c' then
 		Talkies.clearMessages()
-	end
+	end]]
 
 	self.battle:keypressed(key)
 end
