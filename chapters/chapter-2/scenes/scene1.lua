@@ -443,7 +443,7 @@ function Scene2_1:manageCollisions(thisName, otherName, cols, i, GAME)
 				GAME:loadLevel()
 			elseif thisName == "ent_player" and otherName == "ent_kanadoor" and GAME.player.facing == "N" then
 				GAME.level = cols[i].other.nextMap
-				GAME.music.castle2:stop()
+				GAME.music.castle:stop()
 				GAME.music.kana:play()
 				GAME.chapter2.scene = 2
 				GAME:loadLevel()
@@ -759,8 +759,6 @@ end
 end
 
 function Scene2_1:loadLevel(GAME)
-	GAME.music.castle2:play()
-	GAME.music.castle:stop()
 	if GAME.level == "maps/leiko_room1.lua" and GAME.ch2scene1Unlocked == false then
 		GAME.player.canMove = false
 		GAME.player.facing = "S"

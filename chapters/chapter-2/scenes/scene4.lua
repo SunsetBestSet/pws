@@ -78,7 +78,7 @@ function Scene2_4:manageCollisions(thisName, otherName, cols, i, GAME)
 		if thisName == "ent_player" and otherName == "ent_leikodoor" and GAME.player.facing == "N" then
 			GAME.level = cols[i].other.nextMap
 			GAME.music.kana:stop()
-			GAME.music.castle2:play()
+			GAME.music.castle:play()
 			GAME.chapter2.scene = 5
 			GAME:loadLevel()
 		elseif thisName == "ent_player" and otherName == "ent_libraryhallway" and GAME.player.facing == "W" then

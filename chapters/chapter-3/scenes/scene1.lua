@@ -36,7 +36,7 @@ function Scene3_1:manageKeypresses(key, GAME)
 end
 
 function Scene3_1:loadLevel(GAME)
-  GAME.music.castle2:stop()
+  GAME.music.castle:stop()
   GAME.music.town:stop()
   GAME.music.ch3:play()
   if GAME.level == "maps/farmlands1.lua" then
